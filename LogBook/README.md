@@ -1,10 +1,11 @@
 Research Internship Log Book
 ============================
-April - June 2016. Done at the University of Groningen, the Netherlands.
-
+- Title: Comparison of Energy consumption of Wi-Fi and Bluetooth Communication in Context aware Building.
 - First Supervisor: Prof. Marco Aiello
 - Second Supervisor: Dr. Alexander Lazovik
 - Daily Supervisor: Azkario Rizky Pratama
+- Duration: April - June 2016
+- Location: The University of Groningen, the Netherlands.
 
 ![alt tag](schedule.png)
 
@@ -12,6 +13,7 @@ April #2
 --------
 - **Thu Apr 14 2016**
 	- Fixing the research proposal.
+	- Learning how to code in Swift (iOS)
 - **Fri Apr 15 2016**
 	- Submitting the starting form.
 	
@@ -20,3 +22,13 @@ April #3
 - **Mon Apr 18 2016**
 	- Creating Git repository.
 	- Creating logbook.
+	- Reading literatures: Both reference papers, Apple Instruments)
+	
+May #3 (Midterm Eval)
+---------------------
+
+May #4 (Midterm Eval)
+---------------------
+
+June #4 (Final Eval)
+--------------------
