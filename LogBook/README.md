@@ -22,7 +22,15 @@ April #3
 - **Mon Apr 18 2016**
 	- Creating Git repository.
 	- Creating logbook.
-	- Reading literatures: Both reference papers, Apple Instruments)
+	- Reading literatures: Both reference papers, Apple Instruments
+	- Learning how to code in iOS (Swift):https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Lesson2.html
+	
+- **Tue Apr 19 15:19:41 CEST 2016**
+	- Got the Mini PC for testing.
+	- Installing Xubuntu in the Mini PC.
+	- Got the example code of Estimote beacon.
+	- Reading the example code (a little bit).
+	
 	
 May #3 (Midterm Eval)
 ---------------------
