@@ -30,6 +30,10 @@ April #3
 	- Installing Xubuntu in the Mini PC.
 	- Got the example code of Estimote beacon.
 	- Reading the example code (a little bit).
+
+- **Wed Apr 20 13:38:58 CEST 2016**
+	- Continued learning the Swift for iOS.
+	- Created the first project in Swift.
 	
 	
 May #3 (Midterm Eval)
