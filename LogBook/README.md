@@ -35,6 +35,13 @@ April #3
 	- Continued learning the Swift for iOS.
 	- Created the first project in Swift.
 	
+- **Thu Apr 21 11:08:35 CEST 2016**
+	- Continued learning the Swift for iOS.
+	- Learned about story board in iOS (https://www.raywenderlich.com/113388/storyboards-tutorial-in-ios-9-part-1)
+	
+- **Fri Apr 22 15:13:21 CEST 2016**
+	- Designing the storyboard of the app in the paper.
+	- Learning the storyboard in iOS.
 	
 May #3 (Midterm Eval)
 ---------------------
