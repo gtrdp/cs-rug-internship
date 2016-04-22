@@ -487,6 +487,7 @@
 				518EEA661CC7F1C10087ED50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		518EEA671CC7F1C10087ED50 /* Build configuration list for PBXNativeTarget "BTWFTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +496,7 @@
 				518EEA691CC7F1C10087ED50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		518EEA6A1CC7F1C10087ED50 /* Build configuration list for PBXNativeTarget "BTWFUITests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +505,7 @@
 				518EEA6C1CC7F1C10087ED50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

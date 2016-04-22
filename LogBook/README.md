@@ -42,6 +42,7 @@ April #3
 - **Fri Apr 22 15:13:21 CEST 2016**
 	- Designing the storyboard of the app in the paper.
 	- Learning the storyboard in iOS.
+	- Started designing the storyboard.
 	
 May #3 (Midterm Eval)
 ---------------------
