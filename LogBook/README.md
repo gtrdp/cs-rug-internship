@@ -43,6 +43,10 @@ April #3
 	- Designing the storyboard of the app in the paper.
 	- Learning the storyboard in iOS.
 	- Started designing the storyboard.
+
+April #4
+--------
+- 
 	
 May #3 (Midterm Eval)
 ---------------------
