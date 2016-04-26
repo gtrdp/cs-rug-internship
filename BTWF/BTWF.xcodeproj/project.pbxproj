@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		518ADC671CCFBED8006028B8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC661CCFBED7006028B8 /* SettingsViewController.swift */; };
+		518ADC691CCFCD6D006028B8 /* SelectMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC681CCFCD6D006028B8 /* SelectMethodViewController.swift */; };
 		518EEA401CC7F1C10087ED50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EEA3F1CC7F1C10087ED50 /* AppDelegate.swift */; };
 		518EEA421CC7F1C10087ED50 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EEA411CC7F1C10087ED50 /* ViewController.swift */; };
 		518EEA451CC7F1C10087ED50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518EEA431CC7F1C10087ED50 /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		518ADC661CCFBED7006028B8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		518ADC681CCFCD6D006028B8 /* SelectMethodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMethodViewController.swift; sourceTree = "<group>"; };
 		518EEA3C1CC7F1C10087ED50 /* BTWF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTWF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		518EEA3F1CC7F1C10087ED50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		518EEA411CC7F1C10087ED50 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 				518EEA461CC7F1C10087ED50 /* Assets.xcassets */,
 				518EEA481CC7F1C10087ED50 /* LaunchScreen.storyboard */,
 				518EEA4B1CC7F1C10087ED50 /* Info.plist */,
+				518ADC661CCFBED7006028B8 /* SettingsViewController.swift */,
+				518ADC681CCFCD6D006028B8 /* SelectMethodViewController.swift */,
 			);
 			path = BTWF;
 			sourceTree = "<group>";
@@ -261,6 +267,8 @@
 			files = (
 				518EEA421CC7F1C10087ED50 /* ViewController.swift in Sources */,
 				518EEA401CC7F1C10087ED50 /* AppDelegate.swift in Sources */,
+				518ADC691CCFCD6D006028B8 /* SelectMethodViewController.swift in Sources */,
+				518ADC671CCFBED8006028B8 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

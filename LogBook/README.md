@@ -46,7 +46,10 @@ April #3
 
 April #4
 --------
-- 
+- **Tue Apr 26 10:41:29 CEST 2016**
+	- Continued arranging the storyboard.
+	- The basic storyboard for selecting communication method (Wifi or bluetooth) is done.
+	
 	
 May #3 (Midterm Eval)
 ---------------------
