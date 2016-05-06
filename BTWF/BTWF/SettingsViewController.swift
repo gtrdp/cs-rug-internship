@@ -13,7 +13,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var timeInterfalTextField: UITextField!
     @IBOutlet weak var detailLabel: UILabel!
     
-    var method:String = "Wi-Fi" {
+    var method:String = "Wi-Fi (HTTP)" {
         didSet {
             detailLabel.text? = method
         }

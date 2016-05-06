@@ -70,6 +70,10 @@ May #1
 	- Ascension day.
 - **Fri May  6 13:11:55 CEST 2016**
 	- Catching up.
+	- Received communication format.
+		- http://129.125.84.206:8082/bt/beacon
+		- https://gist.github.com/azkario/636ddca0ff1d229df3d9667f9d905782
+	- Moving on to HTTP Connection.
 	
 May #2
 ------

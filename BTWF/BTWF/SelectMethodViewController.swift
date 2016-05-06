@@ -10,7 +10,7 @@ import UIKit
 
 class SelectMethodViewController: UITableViewController {
     
-    var methods:[String] = ["Wi-Fi", "Bluetooth"]
+    var methods:[String] = ["Wi-Fi (HTTP)", "Bluetooth"]
     var selectedMethod:String? {
         didSet {
             if let method = selectedMethod {
