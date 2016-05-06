@@ -46,10 +46,34 @@ April #3
 
 April #4
 --------
+- **Mon Apr 25 11:13:02 CEST 2016** (working on Data Handling course)
+	- Nothing.
 - **Tue Apr 26 10:41:29 CEST 2016**
 	- Continued arranging the storyboard.
 	- The basic storyboard for selecting communication method (Wifi or bluetooth) is done.
+- **Wed Apr 27 11:13:02 CEST 2016**
+	- Kingsday.
+- **Thu Apr 28 11:13:02 CEST 2016** (preparing for SciVis Resit)
+	- Nothing.
+- **Thu Apr 29 11:13:02 CEST 2016** (preparing for Darling)
+	- Nothing.
 	
+May #1
+------
+- **Mon May  2 13:11:55 CEST 2016** (working on Data Handling course)
+	- Nothing.
+- **Tue May  3 13:11:55 CEST 2016** (working on Data Handling course)
+	- Nothing.
+- **Wed May  4 13:11:55 CEST 2016** (working on Data Handling course)
+	- Nothing.
+- **Thu May  5 13:11:55 CEST 2016**
+	- Ascension day.
+- **Fri May  6 13:11:55 CEST 2016**
+	- Catching up.
+	
+May #2
+------
+
 	
 May #3 (Midterm Eval)
 ---------------------
