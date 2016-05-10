@@ -55,7 +55,7 @@ April #4
 	- Kingsday.
 - **Thu Apr 28 11:13:02 CEST 2016** (preparing for SciVis Resit)
 	- Nothing.
-- **Thu Apr 29 11:13:02 CEST 2016** (preparing for Darling)
+- **Fri Apr 29 11:13:02 CEST 2016** (preparing for Darling)
 	- Nothing.
 	
 May #1
@@ -77,6 +77,10 @@ May #1
 	
 May #2
 ------
+- **Mon May  9 14:10:31 CEST 2016**
+	- Searching for bluetooth and http connection in iOS.
+- **Tue May 10 10:18:56 CEST 2016**
+	- 
 
 	
 May #3 (Midterm Eval)

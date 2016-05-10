@@ -103,7 +103,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2cA-05-bEa">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1000" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2cA-05-bEa">
                                                     <rect key="frame" x="8" y="7" width="359" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -113,7 +113,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Server" id="Ov7-s9-dze">
+                            <tableViewSection headerTitle="Server" footerTitle="server address" id="Ov7-s9-dze">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="UnX-MW-IVf">
                                         <rect key="frame" x="0.0" y="320" width="375" height="44"/>
@@ -122,7 +122,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Enk-hv-xPb">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://192.168.0.1/" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Enk-hv-xPb">
                                                     <rect key="frame" x="8" y="7" width="359" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -135,7 +135,7 @@
                             <tableViewSection id="dR9-vs-vDr">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="WdH-Qs-jKL">
-                                        <rect key="frame" x="0.0" y="400" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="409" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WdH-Qs-jKL" id="RMC-od-OeE">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -144,6 +144,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDJ-dv-Nhf">
                                                     <rect key="frame" x="115" y="7" width="145" height="30"/>
                                                     <state key="normal" title="Start Communication"/>
+                                                    <connections>
+                                                        <action selector="startCommunication:" destination="fbi-ex-3TX" eventType="touchUpInside" id="B6h-wY-1X1"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -159,6 +162,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="fNF-Qg-Je7"/>
                     <connections>
                         <outlet property="detailLabel" destination="mgS-Kl-Ezs" id="wkq-2u-eJU"/>
+                        <outlet property="serverAddressTextField" destination="Enk-hv-xPb" id="szm-sD-tS4"/>
                         <outlet property="timeInterfalTextField" destination="2cA-05-bEa" id="EWw-rW-FVH"/>
                     </connections>
                 </tableViewController>

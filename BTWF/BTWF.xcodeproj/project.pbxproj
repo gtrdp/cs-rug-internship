@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C371FD5062E24D0E0CA31A7 /* Pods_BTWF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7B32B8D539C90944D2C995 /* Pods_BTWF.framework */; };
 		518ADC671CCFBED8006028B8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC661CCFBED7006028B8 /* SettingsViewController.swift */; };
 		518ADC691CCFCD6D006028B8 /* SelectMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC681CCFCD6D006028B8 /* SelectMethodViewController.swift */; };
 		518EEA401CC7F1C10087ED50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EEA3F1CC7F1C10087ED50 /* AppDelegate.swift */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2821D8D2E3868B0DD44A1986 /* Pods-BTWF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTWF.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BTWF/Pods-BTWF.debug.xcconfig"; sourceTree = "<group>"; };
+		3C7B32B8D539C90944D2C995 /* Pods_BTWF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BTWF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		518ADC661CCFBED7006028B8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		518ADC681CCFCD6D006028B8 /* SelectMethodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMethodViewController.swift; sourceTree = "<group>"; };
 		518EEA3C1CC7F1C10087ED50 /* BTWF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTWF.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +54,7 @@
 		518EEA5B1CC7F1C10087ED50 /* BTWFUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTWFUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		518EEA5F1CC7F1C10087ED50 /* BTWFUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTWFUITests.swift; sourceTree = "<group>"; };
 		518EEA611CC7F1C10087ED50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		699CF3B5AB0DA8D2D816465E /* Pods-BTWF.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BTWF.release.xcconfig"; path = "Pods/Target Support Files/Pods-BTWF/Pods-BTWF.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C371FD5062E24D0E0CA31A7 /* Pods_BTWF.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +90,8 @@
 				518EEA531CC7F1C10087ED50 /* BTWFTests */,
 				518EEA5E1CC7F1C10087ED50 /* BTWFUITests */,
 				518EEA3D1CC7F1C10087ED50 /* Products */,
+				6227EB442B45DA93BE321173 /* Pods */,
+				66DE6CF73CB9001B3CA92112 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -131,6 +138,23 @@
 			path = BTWFUITests;
 			sourceTree = "<group>";
 		};
+		6227EB442B45DA93BE321173 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2821D8D2E3868B0DD44A1986 /* Pods-BTWF.debug.xcconfig */,
+				699CF3B5AB0DA8D2D816465E /* Pods-BTWF.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		66DE6CF73CB9001B3CA92112 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C7B32B8D539C90944D2C995 /* Pods_BTWF.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,9 +162,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 518EEA641CC7F1C10087ED50 /* Build configuration list for PBXNativeTarget "BTWF" */;
 			buildPhases = (
+				8BF5092FD0811A24816A48DC /* 📦 Check Pods Manifest.lock */,
 				518EEA381CC7F1C10087ED50 /* Sources */,
 				518EEA391CC7F1C10087ED50 /* Frameworks */,
 				518EEA3A1CC7F1C10087ED50 /* Resources */,
+				1DA11F94F1B0A8DBD07FEF3A /* 📦 Embed Pods Frameworks */,
+				D113D307C16EF41DB66A007B /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,6 +286,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1DA11F94F1B0A8DBD07FEF3A /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BTWF/Pods-BTWF-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8BF5092FD0811A24816A48DC /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D113D307C16EF41DB66A007B /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BTWF/Pods-BTWF-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		518EEA381CC7F1C10087ED50 /* Sources */ = {
@@ -408,6 +483,7 @@
 		};
 		518EEA651CC7F1C10087ED50 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2821D8D2E3868B0DD44A1986 /* Pods-BTWF.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
@@ -420,6 +496,7 @@
 		};
 		518EEA661CC7F1C10087ED50 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 699CF3B5AB0DA8D2D816465E /* Pods-BTWF.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
