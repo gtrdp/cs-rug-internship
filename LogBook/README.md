@@ -80,7 +80,10 @@ May #2
 - **Mon May  9 14:10:31 CEST 2016**
 	- Searching for bluetooth and http connection in iOS.
 - **Tue May 10 10:18:56 CEST 2016**
-	- 
+	- Added alamofire for http communication.
+	- Worked on http communication.
+	- HTTP connection template found and tested.
+	
 
 	
 May #3 (Midterm Eval)

@@ -61,6 +61,24 @@ class SettingsViewController: UITableViewController {
             displayAlert("BTWF", content: "Communication started.")
             
             // start the communication
+            let occupancyData = ["nearby_data": ["proximity_zone": "NEAR","proximity_distance": 1.8456140098254021,"rssi":-81], "userId": "pratama"]
+            
+            let urlPath = "http://guntur.web.id/sandbox/btwf.php"
+            let url: NSURL = NSURL(string: urlPath)!
+            let request = NSMutableURLRequest(URL: url)
+            request.HTTPMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(occupancyData, options: [])
+            
+            Alamofire.request(request)
+                .validate()
+                .responseString {response in
+                    print(response.request)
+                    print(response.response)
+                    print(response.result.value)
+                    print(response.result)
+                }
             
         } else {
             displayAlert("BTWF", content: "Please fill out the form first.")
