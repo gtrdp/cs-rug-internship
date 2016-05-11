@@ -83,7 +83,10 @@ May #2
 	- Added alamofire for http communication.
 	- Worked on http communication.
 	- HTTP connection template found and tested.
-	
+- **Wed May 11 11:49:23 CEST 2016**
+	- Continued working on http communication.
+	- Completing the workflow.
+	- Wi-Fi communication finished.
 
 	
 May #3 (Midterm Eval)

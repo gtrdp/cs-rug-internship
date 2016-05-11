@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class SettingsViewController: UITableViewController {
     
@@ -15,7 +14,8 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var timeInterfalTextField: UITextField!
     @IBOutlet weak var serverAddressTextField: UITextField!
     
-    
+    var timeInterfal = ""
+    var serverAddress = ""
     
     var method:String = "Wi-Fi (HTTP)" {
         didSet {
@@ -51,37 +51,31 @@ class SettingsViewController: UITableViewController {
                 selectMethodViewController.selectedMethod = method
             }
         }
+        
+        if segue.identifier == "GoToStartCommunication" {
+            navigationItem.title = "Stop"
+            
+            let svc = segue.destinationViewController as! CommunicationDisplayViewController;
+            svc.communicationMethod = method
+            svc.timeInterval = (timeInterfal as NSString).integerValue
+            svc.serverAddress = serverAddress
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        navigationItem.title = "Settings"
     }
     
     @IBAction func startCommunication(sender: UIButton) {
-        let timeInterfal = timeInterfalTextField.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-        let serverAddress = serverAddressTextField.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        timeInterfal = (timeInterfalTextField.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))!
+        serverAddress = (serverAddressTextField.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))!
         
-        if timeInterfal?.isEmpty == false && serverAddress?.isEmpty == false {
-            displayAlert("BTWF", content: "Communication started.")
-            
+        if timeInterfal.isEmpty == false && serverAddress.isEmpty == false && verifyUrl(serverAddress) {
             // start the communication
-            let occupancyData = ["nearby_data": ["proximity_zone": "NEAR","proximity_distance": 1.8456140098254021,"rssi":-81], "userId": "pratama"]
-            
-            let urlPath = "http://guntur.web.id/sandbox/btwf.php"
-            let url: NSURL = NSURL(string: urlPath)!
-            let request = NSMutableURLRequest(URL: url)
-            request.HTTPMethod = "POST"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(occupancyData, options: [])
-            
-            Alamofire.request(request)
-                .validate()
-                .responseString {response in
-                    print(response.request)
-                    print(response.response)
-                    print(response.result.value)
-                    print(response.result)
-                }
-            
+            self.performSegueWithIdentifier("GoToStartCommunication", sender: nil)
+            displayAlert("BTWF", content: "Communication started.")
         } else {
-            displayAlert("BTWF", content: "Please fill out the form first.")
+            displayAlert("BTWF", content: "Something goes wrong. Please fill out the form first.")
         }
     }
     
@@ -90,73 +84,16 @@ class SettingsViewController: UITableViewController {
         alertCon.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alertCon, animated: true, completion: nil)
     }
-
-    func httpConnection() {
-        // Send HTTP GET Request
-        
-        // Define server side script URL
-        let scriptUrl = "http://swiftdeveloperblog.com/my-http-get-example-script/"
-        
-        // Add one parameter
-        let urlWithParams = scriptUrl + "?userName="
-        
-        // Create NSURL Ibject
-        let myUrl = NSURL(string: urlWithParams);
-        
-        // Creaste URL Request
-        let request = NSMutableURLRequest(URL:myUrl!);
-        
-        // Set request HTTP method to GET. It could be POST as well
-        request.HTTPMethod = "GET"
-        
-        // If needed you could add Authorization header value
-        // Add Basic Authorization
-        /*
-         let username = "myUserName"
-         let password = "myPassword"
-         let loginString = NSString(format: "%@:%@", username, password)
-         let loginData: NSData = loginString.dataUsingEncoding(NSUTF8StringEncoding)!
-         let base64LoginString = loginData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions())
-         request.setValue(base64LoginString, forHTTPHeaderField: "Authorization")
-         */
-        
-        // Or it could be a single Authorization Token value
-        //request.addValue("Token token=884288bae150b9f2f68d8dc3a932071d", forHTTPHeaderField: "Authorization")
-        
-        // Excute HTTP Request
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-            data, response, error in
-            
-            // Check for error
-            if error != nil
-            {
-                print("error=\(error)")
-                return
+    
+    func verifyUrl (urlString: String?) -> Bool {
+        //Check for nil
+        if let urlString = urlString {
+            // create NSURL instance
+            if let url = NSURL(string: urlString) {
+                // check if your application can open the NSURL instance
+                return UIApplication.sharedApplication().canOpenURL(url)
             }
-            
-            // Print out response string
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("responseString = \(responseString)")
-            
-            
-            // Convert server json response to NSDictionary
-            do {
-                if let convertedJsonIntoDict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-                    
-                    // Print out dictionary
-                    print(convertedJsonIntoDict)
-                    
-                    // Get value by key
-                    let firstNameValue = convertedJsonIntoDict["userName"] as? String
-                    print(firstNameValue!)
-                    
-                }
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-            
         }
-        
-        task.resume()
+        return false
     }
 }
