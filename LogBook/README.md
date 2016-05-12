@@ -87,7 +87,10 @@ May #2
 	- Continued working on http communication.
 	- Completing the workflow.
 	- Wi-Fi communication finished.
-
+	- Started working for Bluetooth communication.
+- **Thu May 12 11:44:45 CEST 2016**
+	- Continued working on bluetooth.
+	- Looked about how to read energy consumption in iOS.
 	
 May #3 (Midterm Eval)
 ---------------------
