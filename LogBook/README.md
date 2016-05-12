@@ -90,7 +90,13 @@ May #2
 	- Started working for Bluetooth communication.
 - **Thu May 12 11:44:45 CEST 2016**
 	- Continued working on bluetooth.
-	- Looked about how to read energy consumption in iOS.
+		- Possible communication:
+			- Using BLE Schema (server and client): Need to be tested, whether the pc support this.
+			- Using direct communication schema (classic bluetooth): Does not really seem to be working.
+		- Turned out that iOS devices does not fully support classic bluetooth. It only supports devices with MFi compliant (within External Accessory framework).
+		- Bluetooth 4.0 can also operates in LE mode.
+		- Python for bluetooth: https://github.com/IanHarvey/bluepy
+	- Looked about how to read energy consumption in iOS. (https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/MeasuringEnergyImpact.html)
 	
 May #3 (Midterm Eval)
 ---------------------
