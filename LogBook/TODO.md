@@ -14,3 +14,4 @@ Things to be developed
 	- App for Bluetooth.
 - Mobile Phone:
 	- Bluetooth communication
+	- Tap to hide keyboard -> using delegate pattern?

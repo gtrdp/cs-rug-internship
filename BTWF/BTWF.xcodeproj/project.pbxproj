@@ -10,7 +10,8 @@
 		1C371FD5062E24D0E0CA31A7 /* Pods_BTWF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C7B32B8D539C90944D2C995 /* Pods_BTWF.framework */; };
 		518ADC671CCFBED8006028B8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC661CCFBED7006028B8 /* SettingsViewController.swift */; };
 		518ADC691CCFCD6D006028B8 /* SelectMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC681CCFCD6D006028B8 /* SelectMethodViewController.swift */; };
-		518ADC6B1CE24254006028B8 /* CommunicationDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC6A1CE24254006028B8 /* CommunicationDisplayViewController.swift */; };
+		518ADC6B1CE24254006028B8 /* WiFiComViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC6A1CE24254006028B8 /* WiFiComViewController.swift */; };
+		518ADC731CEB5B07006028B8 /* BTComViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC721CEB5B07006028B8 /* BTComViewController.swift */; };
 		518EEA401CC7F1C10087ED50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EEA3F1CC7F1C10087ED50 /* AppDelegate.swift */; };
 		518EEA451CC7F1C10087ED50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518EEA431CC7F1C10087ED50 /* Main.storyboard */; };
 		518EEA471CC7F1C10087ED50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 518EEA461CC7F1C10087ED50 /* Assets.xcassets */; };
@@ -41,7 +42,8 @@
 		3C7B32B8D539C90944D2C995 /* Pods_BTWF.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BTWF.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		518ADC661CCFBED7006028B8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		518ADC681CCFCD6D006028B8 /* SelectMethodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMethodViewController.swift; sourceTree = "<group>"; };
-		518ADC6A1CE24254006028B8 /* CommunicationDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationDisplayViewController.swift; sourceTree = "<group>"; };
+		518ADC6A1CE24254006028B8 /* WiFiComViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiComViewController.swift; sourceTree = "<group>"; };
+		518ADC721CEB5B07006028B8 /* BTComViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTComViewController.swift; sourceTree = "<group>"; };
 		518EEA3C1CC7F1C10087ED50 /* BTWF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTWF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		518EEA3F1CC7F1C10087ED50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		518EEA441CC7F1C10087ED50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -109,7 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				518EEA3F1CC7F1C10087ED50 /* AppDelegate.swift */,
-				518ADC6A1CE24254006028B8 /* CommunicationDisplayViewController.swift */,
+				518ADC721CEB5B07006028B8 /* BTComViewController.swift */,
+				518ADC6A1CE24254006028B8 /* WiFiComViewController.swift */,
 				518ADC661CCFBED7006028B8 /* SettingsViewController.swift */,
 				518ADC681CCFCD6D006028B8 /* SelectMethodViewController.swift */,
 				518EEA431CC7F1C10087ED50 /* Main.storyboard */,
@@ -340,7 +343,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				518ADC6B1CE24254006028B8 /* CommunicationDisplayViewController.swift in Sources */,
+				518ADC6B1CE24254006028B8 /* WiFiComViewController.swift in Sources */,
+				518ADC731CEB5B07006028B8 /* BTComViewController.swift in Sources */,
 				518EEA401CC7F1C10087ED50 /* AppDelegate.swift in Sources */,
 				518ADC691CCFCD6D006028B8 /* SelectMethodViewController.swift in Sources */,
 				518ADC671CCFBED8006028B8 /* SettingsViewController.swift in Sources */,

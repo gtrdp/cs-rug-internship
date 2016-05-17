@@ -25,7 +25,7 @@ class SettingsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
+//        self.hideKeyboardWhenTappedAround()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -56,7 +56,16 @@ class SettingsViewController: UITableViewController {
         if segue.identifier == "GoToStartCommunication" {
             navigationItem.title = "Stop"
             
-            let svc = segue.destinationViewController as! CommunicationDisplayViewController;
+            let svc = segue.destinationViewController as! WiFiComViewController;
+            svc.communicationMethod = method
+            svc.timeInterval = (timeInterfal as NSString).integerValue
+            svc.serverAddress = serverAddress
+        }
+        
+        if segue.identifier == "BTCommunication" {
+            navigationItem.title = "Stop"
+            
+            let svc = segue.destinationViewController as! BTComViewController;
             svc.communicationMethod = method
             svc.timeInterval = (timeInterfal as NSString).integerValue
             svc.serverAddress = serverAddress
@@ -73,7 +82,13 @@ class SettingsViewController: UITableViewController {
         
         if timeInterfal.isEmpty == false && serverAddress.isEmpty == false && verifyUrl(serverAddress) {
             // start the communication
-            self.performSegueWithIdentifier("GoToStartCommunication", sender: nil)
+            
+            if method == "Wi-Fi (HTTP)" {
+                self.performSegueWithIdentifier("GoToStartCommunication", sender: nil)
+            } else {
+                self.performSegueWithIdentifier("BTCommunication", sender: nil)
+            }
+            
             displayAlert("BTWF", content: "Communication started.")
         } else {
             displayAlert("BTWF", content: "Something goes wrong. Please fill out the form first.")

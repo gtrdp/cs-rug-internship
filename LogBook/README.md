@@ -97,9 +97,18 @@ May #2
 		- Bluetooth 4.0 can also operates in LE mode.
 		- Python for bluetooth: https://github.com/IanHarvey/bluepy
 	- Looked about how to read energy consumption in iOS. (https://developer.apple.com/library/ios/documentation/DeveloperTools/Conceptual/InstrumentsUserGuide/MeasuringEnergyImpact.html)
+	- Bluetooth connection in iOS is inspired from this https://github.com/0x7fffffff/Core-Bluetooth-Transfer-Demo.
+- **Fri May 13 11:44:45 CEST 2016** (working on Data Handling course)
+	- Nothing.
+- **Sat May 14 17:47:26 CEST 2016**
+	- Tried to work on the Bluetooth UI.
 	
 May #3 (Midterm Eval)
 ---------------------
+- **Tue May 17 10:52:39 CEST 2016**
+	- Setting up the PC for bluetooth server.
+		- Ian Harvey's bluepy is used for interacting with BLE. (https://github.com/IanHarvey/bluepy)
+	- Looking up how to hide keyboard -> using delegate pattern.
 
 May #4 (Midterm Eval)
 ---------------------

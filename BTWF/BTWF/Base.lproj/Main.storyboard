@@ -165,11 +165,12 @@
                         <outlet property="serverAddressTextField" destination="Enk-hv-xPb" id="szm-sD-tS4"/>
                         <outlet property="timeInterfalTextField" destination="2cA-05-bEa" id="EWw-rW-FVH"/>
                         <segue destination="w9V-6x-DK1" kind="show" identifier="GoToStartCommunication" id="wMO-Q1-lNj"/>
+                        <segue destination="gMq-VM-KUX" kind="show" identifier="BTCommunication" id="A1r-qM-8bZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cNH-ch-Gn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="730.5" y="-263.5"/>
+            <point key="canvasLocation" x="706.5" y="-242.5"/>
         </scene>
         <!--Select Method-->
         <scene sceneID="Qwe-2q-3sN">
@@ -211,12 +212,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Oh-Np-SUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="T8H-jK-TUA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1340.5" y="-740.5"/>
+            <point key="canvasLocation" x="1340.5" y="-1176.5"/>
         </scene>
         <!--Communication Display-->
         <scene sceneID="cya-PW-O4C">
             <objects>
-                <viewController title="Communication Display" id="w9V-6x-DK1" customClass="CommunicationDisplayViewController" customModule="BTWF" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Communication Display" id="w9V-6x-DK1" customClass="WiFiComViewController" customModule="BTWF" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ddG-jO-P3Y"/>
                         <viewControllerLayoutGuide type="bottom" id="TQS-I7-Euy"/>
@@ -307,7 +308,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="678-uS-v82" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="45a-Ky-ZyI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1340.5" y="8.5"/>
+            <point key="canvasLocation" x="1340.5" y="-453.5"/>
+        </scene>
+        <!--Com View Controller-->
+        <scene sceneID="U1J-hE-9ra">
+            <objects>
+                <viewController id="gMq-VM-KUX" customClass="BTComViewController" customModule="BTWF" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z8y-LH-Vgy"/>
+                        <viewControllerLayoutGuide type="bottom" id="PaD-Lc-qj8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cF6-zD-cru">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ggL-LM-u7l">
+                                <rect key="frame" x="306" y="72" width="51" height="31"/>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="bluetoothSwitch" destination="ggL-LM-u7l" id="9jw-s9-4Xo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mtV-Fp-Zzu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1340.5" y="248.5"/>
         </scene>
         <!--History-->
         <scene sceneID="Y0f-mf-PTG">

@@ -1,5 +1,5 @@
 //
-//  CommunicationDisplayViewController.swift
+//  WiFiComViewController.swift
 //  BTWF
 //
 //  Created by Guntur Dharma Putra on 10/05/16.
@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class CommunicationDisplayViewController: UIViewController {
+class WiFiComViewController: UIViewController {
     
     var communicationMethod:String = ""
     var timeInterval:Int = 0
