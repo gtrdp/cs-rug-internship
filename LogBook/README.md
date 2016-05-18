@@ -115,6 +115,12 @@ May #3 (Midterm Eval)
 	- Got the first scanning of BLE. Thanks to https://smidgeonpigeon.wordpress.com/2015/07/21/raspberry-pi-2-ble-ti-sensor-tag/
 - **Wed May 18 11:02:37 CEST 2016**
 	- Worked on BT app in the PC.
+		- NOPASSWD is now enabled. Please **be careful**.
+	- The connection successful, the PC can detect available LE devices and connect to it. Done by the Ian Harve's bluepy.
+		- However, there is a problem when trying to subscribe.
+		- The PC cannot subscribe, maybe the subscription process is not pretty clear.
+		- A character that must be send to let the peripheral knows that the PC wants to subscribe is unknown.
+		- The data that must be sent, possibly, is a handle and a character that inditaces a subscription. -> see the handles. or this might help https://github.com/IanHarvey/bluepy/issues/124
 	
 
 May #4 (Midterm Eval)
