@@ -33,6 +33,8 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate, UIText
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // Start up the CBPeripheralManager
+        peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -228,7 +230,7 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate, UIText
     
     /** Start advertising
      */
-    @IBAction func switchChanged(sender: UISwitch) {
+    @IBAction func switchClicked(sender: UISwitch) {
         if bluetoothSwitch.on {
             // All we advertise is our service's UUID
             peripheralManager!.startAdvertising([

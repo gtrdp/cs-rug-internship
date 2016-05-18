@@ -15,3 +15,11 @@ Things to be developed
 - Mobile Phone:
 	- Bluetooth communication
 	- Tap to hide keyboard -> using delegate pattern?
+	
+For the Report
+--------------
+- Explanation about Bluetooth LE
+	- What is the version
+	- technical specification
+	- what are the characteristics
+	- how to communicate (what libraries are used)

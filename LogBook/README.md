@@ -105,10 +105,17 @@ May #2
 	
 May #3 (Midterm Eval)
 ---------------------
+- **Mon May 16 10:52:39 CEST 2016** (white monday)
+	- Nothing
 - **Tue May 17 10:52:39 CEST 2016**
 	- Setting up the PC for bluetooth server.
 		- Ian Harvey's bluepy is used for interacting with BLE. (https://github.com/IanHarvey/bluepy)
 	- Looking up how to hide keyboard -> using delegate pattern.
+	- Bluetooth communication prototype (for the iOS) done.
+	- Got the first scanning of BLE. Thanks to https://smidgeonpigeon.wordpress.com/2015/07/21/raspberry-pi-2-ble-ti-sensor-tag/
+- **Wed May 18 11:02:37 CEST 2016**
+	- Worked on BT app in the PC.
+	
 
 May #4 (Midterm Eval)
 ---------------------
