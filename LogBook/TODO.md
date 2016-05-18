@@ -23,3 +23,5 @@ For the Report
 	- technical specification
 	- what are the characteristics
 	- how to communicate (what libraries are used)
+	
+- Explain whici one is more high or low level. Xcode or bluepy

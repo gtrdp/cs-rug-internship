@@ -89,7 +89,7 @@ class SettingsViewController: UITableViewController {
                 self.performSegueWithIdentifier("BTCommunication", sender: nil)
             }
             
-            displayAlert("BTWF", content: "Communication started.")
+            // displayAlert("BTWF", content: "Communication started.")
         } else {
             displayAlert("BTWF", content: "Something goes wrong. Please fill out the form first.")
         }
