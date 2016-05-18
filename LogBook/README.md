@@ -121,6 +121,7 @@ May #3 (Midterm Eval)
 		- The PC cannot subscribe, maybe the subscription process is not pretty clear.
 		- A character that must be send to let the peripheral knows that the PC wants to subscribe is unknown.
 		- The data that must be sent, possibly, is a handle and a character that inditaces a subscription. -> see the handles. or this might help https://github.com/IanHarvey/bluepy/issues/124
+		- The bluepy seemed to be unstable. Later today, the code was unable to scan for a LE device. However, normal scanning using `$ sudo hcitool lescan` worked.
 	
 
 May #4 (Midterm Eval)
