@@ -121,7 +121,14 @@ May #3 (Midterm Eval)
 		- The PC cannot subscribe, maybe the subscription process is not pretty clear.
 		- A character that must be send to let the peripheral knows that the PC wants to subscribe is unknown.
 		- The data that must be sent, possibly, is a handle and a character that inditaces a subscription. -> see the handles. or this might help https://github.com/IanHarvey/bluepy/issues/124
-	
+- **do mei 19 11:17:26 CEST 2016**
+	- Continued working on BTLE communication, mainly focuses on the PC.
+	- Figuring out the character to begin subscribing.
+	- Extended the xubuntu hard drive size to 21 GB due to limited free space.
+	- Found another library to play with BLE device using Nodejs:
+		- For Central: https://github.com/sandeepmistry/noble
+		- For peripheral: https://github.com/sandeepmistry/bleno
+	- BTLE communication was successfully carried out using `noble` library.
 
 May #4 (Midterm Eval)
 ---------------------

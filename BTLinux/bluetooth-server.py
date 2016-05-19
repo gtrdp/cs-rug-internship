@@ -39,6 +39,7 @@ def main():
     # uuid definition
     targetDevice = ""
     targetUUID   = UUID("08590f7e-db05-467e-8757-72f6f66666d4")
+    # targetUUID   = UUID(0x2a2b)
     serviceUUID  = UUID("e20a39f4-73f5-4bc4-a12f-17d1ad666661")
 
     # scanning for Bluetooth LE device
@@ -77,12 +78,16 @@ def main():
         print "now try to subscribe..."
 
         try:
+            # try to get the handle first
             p = Peripheral(targetDevice, "random")
             p.setDelegate(NotificationDelegate())
-            svc = p.getServiceByUUID(serviceUUID)
-            ch = svc.getCharacteristics(targetUUID)[0]
+            # svc = p.getServiceByUUID(serviceUUID)
+            ch = p.getCharacteristics(uuid=targetUUID)[0] # svc.getCharacteristics(targetUUID)[0]
+            handle = ch.getHandle()
+            print handle
             ch.write(struct.pack('<bb', 0x01, 0x00))
-            p.writeCharacteristic(2902,struct.pack('<bb', 0x01, 0x00))
+            # ch.write(bytes('aa', 'utf-8'))
+            # p.writeCharacteristic(handle, struct.pack('<bb', 0x01, 0x00), True)
 
             print
 
