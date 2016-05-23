@@ -115,7 +115,7 @@ May #3 (Midterm Eval)
 	- Got the first scanning of BLE. Thanks to https://smidgeonpigeon.wordpress.com/2015/07/21/raspberry-pi-2-ble-ti-sensor-tag/
 - **Wed May 18 11:02:37 CEST 2016**
 	- Worked on BT app in the PC.
-		- NOPASSWD is now enabled. Please **be careful**.
+		- NOPASSWD is now enabled. Please **be careful**. *UPDATE*: has been disabled.
 	- The connection successful, the PC can detect available LE devices and connect to it. Done by the Ian Harve's bluepy.
 		- However, there is a problem when trying to subscribe.
 		- The PC cannot subscribe, maybe the subscription process is not pretty clear.
@@ -130,9 +130,18 @@ May #3 (Midterm Eval)
 		- For Central: https://github.com/sandeepmistry/noble
 		- For peripheral: https://github.com/sandeepmistry/bleno
 	- BTLE communication was successfully carried out using `noble` library.
+- **Fri May 20 11:17:56 CEST 2016** (Working on Data Handling Course)
+	- Nothing.
 
 May #4 (Midterm Eval)
 ---------------------
-
+- **Mon May 23 11:47:54 CEST 2016**
+	- Continue working on bluetooth communication on PC and mobile phone.
+	- Filled out a draft of mid-term evaluation form.
+	- Sending the data must be careful. Watch out for **sending failure**.
+	- Understanding bluetooth advertising packet: An example of how to make use of limited data size in BTLE (20 bytes)
+		- http://j2abro.blogspot.nl/2014/06/understanding-bluetooth-advertising.html
+	
+	
 June #4 (Final Eval)
 --------------------
