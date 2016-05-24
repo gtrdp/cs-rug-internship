@@ -21,14 +21,14 @@ noble.on('discover', function(peripheral) {
   peripheral.connect(function(error) {
     console.log('connected to peripheral: ' + peripheral.uuid);
 
-    peripheral.discoverServices(['e20a39f473f54bc4a12f17d1ad666661'], function(error, services) {
+    peripheral.discoverServices(['740efdc9e0ce4b308c18577d8275c17f'], function(error, services) {
     	console.log(services.length + ' services found')
 
     	if (services.length > 0) {
     		var batteryService = services[0];
 			console.log('discoveredBatter service');
 
-			batteryService.discoverCharacteristics(['08590f7edb05467e875772f6f66666d4'], function(error, characteristics) {
+			batteryService.discoverCharacteristics(['534b0ed747de4e5a9e3eda4bd3b33d2e'], function(error, characteristics) {
 			var batteryLevelCharacteristic = characteristics[0];
 			console.log('discovered Battery Level characteristic');
 
