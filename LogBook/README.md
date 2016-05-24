@@ -145,7 +145,10 @@ May #4 (Midterm Eval)
 - **Tue May 24 10:47:42 CEST 2016**
 	- Focusing on working on bluetooth communication.
 		- Bluetooth LE communication now **works**!
-	- 
+	- Tried to work on history tabs.
+		- An article to learn about SQLite in iOS:
+			- https://www.raywenderlich.com/123579/sqlite-tutorial-swift
+	- Tried to work on hiding the keyboard. Now **working**.
 	
 	
 June #4 (Final Eval)

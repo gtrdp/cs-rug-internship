@@ -408,7 +408,7 @@
         <scene sceneID="Y0f-mf-PTG">
             <objects>
                 <navigationController title="History" automaticallyAdjustsScrollViewInsets="NO" id="cY4-vG-bNb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" id="GsX-sS-gaN"/>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="GsX-sS-gaN"/>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MgK-Xj-WDi">
@@ -424,11 +424,11 @@
             </objects>
             <point key="canvasLocation" x="165.5" y="568.5"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="iy2-ny-KSC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oor-Wm-Hpe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ls2-OO-f7S"/>
+                    <tabBarItem key="tabBarItem" title="Settings" selectedImage="logo" id="ls2-OO-f7S"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PuU-Hs-FeH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -444,4 +444,7 @@
             <point key="canvasLocation" x="165.5" y="-263.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="60" height="60"/>
+    </resources>
 </document>

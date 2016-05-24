@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UITableViewController {
+class SettingsViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var timeInterfalTextField: UITextField!
@@ -26,12 +26,27 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.hideKeyboardWhenTappedAround()
+        
+        timeInterfalTextField.delegate = self
+        serverAddressTextField.delegate = self
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        timeInterfalTextField.resignFirstResponder()
+        serverAddressTextField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        timeInterfalTextField.resignFirstResponder()
+        serverAddressTextField.resignFirstResponder()
+        
+        return true
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,6 +58,16 @@ class SettingsViewController: UITableViewController {
         if let selectMethodViewController = segue.sourceViewController as? SelectMethodViewController,
             selectedMethod = selectMethodViewController.selectedMethod {
             method = selectedMethod
+        }
+        
+        if method == "Bluetooth" {
+            serverAddress = serverAddressTextField.text!
+            
+            serverAddressTextField.text = "Not applicable."
+            serverAddressTextField.userInteractionEnabled = false
+        } else {
+            serverAddressTextField.text = serverAddress
+            serverAddressTextField.userInteractionEnabled = true
         }
     }
     
