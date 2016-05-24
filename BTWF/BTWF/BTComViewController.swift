@@ -9,14 +9,25 @@
 import UIKit
 import CoreBluetooth
 
-let TRANSFER_SERVICE_UUID = "E20A39F4-73F5-4BC4-A12F-17D1AD666661"
-let TRANSFER_CHARACTERISTIC_UUID = "08590F7E-DB05-467E-8757-72F6F66666D4"
+let TRANSFER_SERVICE_UUID        = "740efdc9-e0ce-4b30-8c18-577d8275c17f"
+let TRANSFER_CHARACTERISTIC_UUID = "534b0ed7-47de-4e5a-9e3e-da4bd3b33d2e"
 let NOTIFY_MTU = 20
 
 let transferServiceUUID = CBUUID(string: TRANSFER_SERVICE_UUID)
 let transferCharacteristicUUID = CBUUID(string: TRANSFER_CHARACTERISTIC_UUID)
 
-class BTComViewController: UIViewController, CBPeripheralManagerDelegate, UITextViewDelegate {
+// context data
+var NEAR = 1
+var FAR  = 0
+var proximityDistance: [Double] = [1.8456140098254021, 3.171936276300526,3.171936276300526,3.7248832499617226,4.0058561246511655]
+var rssi: [UInt8] = [81, 87, 87, 71, 91]
+var major: [UInt16] = [1, 2, 1, 0, 1]
+var minor: [UInt16] = [2222, 9999, 9999, 0, 1111]
+
+class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
+    
+    // To-Do:
+    // Stop advertising when already connected to central
     
     var communicationMethod:String = ""
     var timeInterval:Int = 0
@@ -25,9 +36,41 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate, UIText
     private var peripheralManager: CBPeripheralManager?
     private var transferCharacteristic: CBMutableCharacteristic?
     
-    private var dataToSend: NSData?
-    private var sendDataIndex: Int?
-    @IBOutlet weak var bluetoothSwitch: UISwitch!
+    private var sendDataIndex: Int = 0
+    
+    private let proximityZoneData: [NSData] = [NSData(bytes: &NEAR, length: 1),
+                                           NSData(bytes: &FAR , length: 1),
+                                           NSData(bytes: &FAR , length: 1),
+                                           NSData(bytes: &FAR , length: 1),
+                                           NSData(bytes: &FAR , length: 1)]
+    private let proximityDistanceData: [NSData] = [NSData(bytes: &proximityDistance[0], length: 8),
+                                                   NSData(bytes: &proximityDistance[1], length: 8),
+                                                   NSData(bytes: &proximityDistance[2], length: 8),
+                                                   NSData(bytes: &proximityDistance[3], length: 8),
+                                                   NSData(bytes: &proximityDistance[4], length: 8),]
+    private let rssiData: [NSData] = [NSData(bytes: &rssi[0], length: 1),
+                                      NSData(bytes: &rssi[1], length: 1),
+                                      NSData(bytes: &rssi[2], length: 1),
+                                      NSData(bytes: &rssi[3], length: 1),
+                                      NSData(bytes: &rssi[4], length: 1),]
+    private let majorData: [NSData] = [NSData(bytes: &major[0], length: 2),
+                                   NSData(bytes: &major[1], length: 2),
+                                   NSData(bytes: &major[2], length: 2),
+                                   NSData(bytes: &major[3], length: 2),
+                                   NSData(bytes: &major[4], length: 2),]
+    private let minorData: [NSData] = [NSData(bytes: &minor[0], length: 2),
+                                       NSData(bytes: &minor[1], length: 2),
+                                       NSData(bytes: &minor[2], length: 2),
+                                       NSData(bytes: &minor[3], length: 2),
+                                       NSData(bytes: &minor[4], length: 2),]
+    private var finalData: [NSData] = []
+    
+    // outlets from the storyboard
+    @IBOutlet weak var stopwatchLabel: UILabel!
+    @IBOutlet weak var sentPacketsLabel: UILabel!
+    @IBOutlet weak var methodLabel: UILabel!
+    @IBOutlet weak var timeIntervalLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +103,7 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate, UIText
         
         // We're in CBPeripheralManagerStatePoweredOn state...
         print("self.peripheralManager powered on.")
+        statusLabel.text = "self.peripheralManager powered on."
         
         // ... so build our service.
         
@@ -82,17 +126,45 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate, UIText
         
         // And add it to the peripheral manager
         peripheralManager!.addService(transferService)
+        
+        // start advertising right away
+        // All we advertise is our service's UUID
+        peripheralManager!.startAdvertising([
+            CBAdvertisementDataServiceUUIDsKey : [transferServiceUUID]
+            ])
     }
     
     /** Catch when someone subscribes to our characteristic, then start sending them data
      */
     func peripheralManager(peripheral: CBPeripheralManager, central: CBCentral, didSubscribeToCharacteristic characteristic: CBCharacteristic) {
-        print("Central subscribed to characteristic")
+        // notify the user through a label
+        print(central.identifier)
+        statusLabel.text = "Central subscribed to characteristic."
         
-        let someString = "lorem ipsum dolor sit amet"
+        // prepare the chunks
+        // the format is (20 bytes):
+        // 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20
+        // pz|     user name   |  proximity distance   |rs|major|minor
+        //
+        // pz: Proximity Zone
+        // rs: RSSI
+        //
+        // the dummy data is available online: https://gist.github.com/azkario/636ddca0ff1d229df3d9667f9d905782
         
-        // Get the data
-        dataToSend = someString.dataUsingEncoding(NSUTF8StringEncoding)
+        // we're going to send 4 bursts of data
+        var foo = NSMutableData()
+        
+        for i in 0...4 {
+            foo.appendData(proximityZoneData[i])
+            foo.appendData("pratam".dataUsingEncoding(NSUTF8StringEncoding)!)
+            foo.appendData(proximityDistanceData[i])
+            foo.appendData(rssiData[i])
+            foo.appendData(majorData[i])
+            foo.appendData(minorData[i])
+            
+            finalData.append(foo)
+            foo = NSMutableData()
+        }
         
         // Reset the index
         sendDataIndex = 0;
@@ -105,6 +177,7 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate, UIText
      */
     func peripheralManager(peripheral: CBPeripheralManager, central: CBCentral, didUnsubscribeFromCharacteristic characteristic: CBCharacteristic) {
         print("Central unsubscribed from characteristic")
+        statusLabel.text = "Central unsubscribed from characteristic."
     }
     
     // First up, check if we're meant to be sending an EOM
@@ -113,58 +186,11 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate, UIText
     /** Sends the next amount of data to the connected central
      */
     private func sendData() {
-        if sendingEOM {
-            // send it
-            let didSend = peripheralManager?.updateValue(
-                "EOM".dataUsingEncoding(NSUTF8StringEncoding)!,
-                forCharacteristic: transferCharacteristic!,
-                onSubscribedCentrals: nil
-            )
-            
-            // Did it send?
-            if (didSend == true) {
-                
-                // It did, so mark it as sent
-                sendingEOM = false
-                
-                print("Sent: EOM")
-            }
-            
-            // It didn't send, so we'll exit and wait for peripheralManagerIsReadyToUpdateSubscribers to call sendData again
-            return
-        }
-        
-        // We're not sending an EOM, so we're sending data
-        
-        // Is there any left to send?
-        guard sendDataIndex < dataToSend?.length else {
-            // No data left.  Do nothing
-            return
-        }
-        
-        // There's data left, so send until the callback fails, or we're done.
-        var didSend = true
-        
-        while didSend {
-            // Make the next chunk
-            
-            // Work out how big it should be
-            var amountToSend = dataToSend!.length - sendDataIndex!;
-            
-            // Can't be longer than 20 bytes
-            if (amountToSend > NOTIFY_MTU) {
-                amountToSend = NOTIFY_MTU;
-            }
-            
-            // Copy out the data we want
-            let chunk = NSData(
-                bytes: dataToSend!.bytes + sendDataIndex!,
-                length: amountToSend
-            )
-            
+        if sendDataIndex < 5 {
+            var didSend = true
             // Send it
             didSend = peripheralManager!.updateValue(
-                chunk,
+                finalData[sendDataIndex],
                 forCharacteristic: transferCharacteristic!,
                 onSubscribedCentrals: nil
             )
@@ -174,39 +200,10 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate, UIText
                 return
             }
             
-            let stringFromData = NSString(
-                data: chunk,
-                encoding: NSUTF8StringEncoding
-            )
-            
-            print("Sent: \(stringFromData)")
-            
-            // It did send, so update our index
-            sendDataIndex! += amountToSend;
-            
-            // Was it the last one?
-            if (sendDataIndex! >= dataToSend!.length) {
-                
-                // It was - send an EOM
-                
-                // Set this so if the send fails, we'll send it next time
-                sendingEOM = true
-                
-                // Send it
-                let eomSent = peripheralManager!.updateValue(
-                    "EOM".dataUsingEncoding(NSUTF8StringEncoding)!,
-                    forCharacteristic: transferCharacteristic!,
-                    onSubscribedCentrals: nil
-                )
-                
-                if (eomSent) {
-                    // It sent, we're all done
-                    sendingEOM = false
-                    print("Sent: EOM")
-                }
-                
-                return
-            }
+            sendDataIndex += 1
+            sendData()
+        } else {
+            sendDataIndex = 0
         }
     }
     
@@ -216,29 +213,6 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate, UIText
     func peripheralManagerIsReadyToUpdateSubscribers(peripheral: CBPeripheralManager) {
         // Start sending again
         sendData()
-    }
-    
-    /** This is called when a change happens, so we know to stop advertising
-     */
-    func textViewDidChange(textView: UITextView) {
-        // If we're already advertising, stop
-        if (bluetoothSwitch.on) {
-            bluetoothSwitch.setOn(false, animated: true)
-            peripheralManager?.stopAdvertising()
-        }
-    }
-    
-    /** Start advertising
-     */
-    @IBAction func switchClicked(sender: UISwitch) {
-        if bluetoothSwitch.on {
-            // All we advertise is our service's UUID
-            peripheralManager!.startAdvertising([
-                CBAdvertisementDataServiceUUIDsKey : [transferServiceUUID]
-                ])
-        } else {
-            peripheralManager?.stopAdvertising()
-        }
     }
     
     func peripheralManagerDidStartAdvertising(peripheral: CBPeripheralManager, error: NSError?) {

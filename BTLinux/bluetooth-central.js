@@ -46,7 +46,6 @@ noble.on('discover', function(peripheral) {
   });
 });
 
-
 // noble.on('discover', function(peripheral) {
 //   // if (peripheral.id === peripheralIdOrAddress || peripheral.address === peripheralIdOrAddress) {
 //     // noble.stopScanning();

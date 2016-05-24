@@ -141,6 +141,9 @@ May #4 (Midterm Eval)
 	- Sending the data must be careful. Watch out for **sending failure**.
 	- Understanding bluetooth advertising packet: An example of how to make use of limited data size in BTLE (20 bytes)
 		- http://j2abro.blogspot.nl/2014/06/understanding-bluetooth-advertising.html
+	- Studied how to make use of limited data size in BLE: learn by the iBeacon.
+- **Tue May 24 10:47:42 CEST 2016**
+	- Focusing on working on bluetooth communication.
 	
 	
 June #4 (Final Eval)
