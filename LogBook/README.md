@@ -144,6 +144,8 @@ May #4 (Midterm Eval)
 	- Studied how to make use of limited data size in BLE: learn by the iBeacon.
 - **Tue May 24 10:47:42 CEST 2016**
 	- Focusing on working on bluetooth communication.
+		- Bluetooth LE communication now **works**!
+	- 
 	
 	
 June #4 (Final Eval)

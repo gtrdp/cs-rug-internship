@@ -14,7 +14,7 @@ Things to be developed
 	- Scala app for HTTP.
 	- App for Bluetooth.
 - Mobile Phone:
-	- Bluetooth communication
+	- [DONE] Bluetooth communication
 	- Tap to hide keyboard -> using delegate pattern?
 	- History tab.
 	

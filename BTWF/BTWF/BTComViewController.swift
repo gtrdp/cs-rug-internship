@@ -72,12 +72,29 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
     @IBOutlet weak var timeIntervalLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     
+    // variables for timer
+    var timer = NSTimer()
+    var clockTimer = NSTimer()
+    
+    var packetsCounter:Int = 0
+    var secondsCounter:Int = 0
+    var minutesCounter:Int = 0
+    var hoursCounter:Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // prepare the view
+        sentPacketsLabel.text = "0"
+        methodLabel.text = communicationMethod
+        timeIntervalLabel.text = String(timeInterval) + " ms"
 
         // Do any additional setup after loading the view.
         // Start up the CBPeripheralManager
         peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
+        
+        // start the timer
+        clockTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(updateClock), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,6 +107,32 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
         
         // Don't keep it going while we're not showing.
         peripheralManager?.stopAdvertising()
+        
+        // stop the timer
+        timer.invalidate()
+        clockTimer.invalidate()
+    }
+    
+    func updateClock() {
+        secondsCounter += 1
+        
+        if secondsCounter == 60 {
+            secondsCounter = 0
+            minutesCounter += 1
+        }
+        if minutesCounter == 60 {
+            minutesCounter = 0
+            hoursCounter += 1
+        }
+        
+        // set the counter label
+        stopwatchLabel.text = String(format: "%02d", hoursCounter) + ":" + String(format: "%02d", minutesCounter) + ":" + String(format: "%02d", secondsCounter)
+    }
+    
+    func timerFunction() {
+        sendData()
+        packetsCounter += 1
+        sentPacketsLabel.text = String(packetsCounter)
     }
     
     /** Required protocol method.  A full app should take care of all the possible states,
@@ -138,7 +181,7 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
      */
     func peripheralManager(peripheral: CBPeripheralManager, central: CBCentral, didSubscribeToCharacteristic characteristic: CBCharacteristic) {
         // notify the user through a label
-        print(central.identifier)
+        print(central.identifier.UUIDString)
         statusLabel.text = "Central subscribed to characteristic."
         
         // prepare the chunks
@@ -170,7 +213,7 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
         sendDataIndex = 0;
         
         // Start sending
-        sendData()
+        timer = NSTimer.scheduledTimerWithTimeInterval(Double(timeInterval)/1000, target: self, selector: #selector(timerFunction), userInfo: nil, repeats: true)
     }
     
     /** Recognise when the central unsubscribes
@@ -178,6 +221,9 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
     func peripheralManager(peripheral: CBPeripheralManager, central: CBCentral, didUnsubscribeFromCharacteristic characteristic: CBCharacteristic) {
         print("Central unsubscribed from characteristic")
         statusLabel.text = "Central unsubscribed from characteristic."
+        
+        // stop the timer
+        timer.invalidate()
     }
     
     // First up, check if we're meant to be sending an EOM
@@ -186,8 +232,9 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
     /** Sends the next amount of data to the connected central
      */
     private func sendData() {
+        var didSend = true
+        
         if sendDataIndex < 5 {
-            var didSend = true
             // Send it
             didSend = peripheralManager!.updateValue(
                 finalData[sendDataIndex],
@@ -203,6 +250,17 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
             sendDataIndex += 1
             sendData()
         } else {
+            didSend = peripheralManager!.updateValue(
+                "EOM".dataUsingEncoding(NSUTF8StringEncoding)!,
+                forCharacteristic: transferCharacteristic!,
+                onSubscribedCentrals: nil
+            )
+            
+            // If it didn't work, drop out and wait for the callback
+            if (!didSend) {
+                return
+            }
+    
             sendDataIndex = 0
         }
     }
