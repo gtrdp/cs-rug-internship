@@ -6,6 +6,7 @@ Things to do
 ------------
 - Look for how to run an app in background.
 - Bluetooth communication.
+- Add README about installing noble.
 
 Things to be developed
 ----------------------
@@ -13,8 +14,9 @@ Things to be developed
 	- Scala app for HTTP.
 	- App for Bluetooth.
 - Mobile Phone:
-	- Bluetooth communication
+	- [DONE] Bluetooth communication
 	- Tap to hide keyboard -> using delegate pattern?
+	- History tab.
 	
 For the Report
 --------------
@@ -25,6 +27,8 @@ For the Report
 	- how to communicate (what libraries are used)
 	- Explain whici one is more high or low level. Xcode or bluepy
 	- what characteristic is used and why
+	- explain how Bluetooth LE works: what is central, what is peripheral, etc
+	- what is uuid
 - Explanation about the development of the program
 	- What libraries are used
 	- What IDE are used and why
