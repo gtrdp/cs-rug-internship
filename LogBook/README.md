@@ -149,6 +149,10 @@ May #4 (Midterm Eval)
 		- An article to learn about SQLite in iOS:
 			- https://www.raywenderlich.com/123579/sqlite-tutorial-swift
 	- Tried to work on hiding the keyboard. Now **working**.
+- **Wed May 25 12:04:16 CEST 2016**
+	- Learned SQLite in swift in iOS.
+		- Other options to persist data on iOS: Realm, Core Data, Firebase.
+		- Decided to use CoreData rather than SQLite.
 	
 	
 June #4 (Final Eval)

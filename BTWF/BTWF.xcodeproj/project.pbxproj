@@ -12,6 +12,8 @@
 		518ADC691CCFCD6D006028B8 /* SelectMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC681CCFCD6D006028B8 /* SelectMethodViewController.swift */; };
 		518ADC6B1CE24254006028B8 /* WiFiComViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC6A1CE24254006028B8 /* WiFiComViewController.swift */; };
 		518ADC731CEB5B07006028B8 /* BTComViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC721CEB5B07006028B8 /* BTComViewController.swift */; };
+		518ADC751CF5BA01006028B8 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC741CF5BA01006028B8 /* HistoryTableViewController.swift */; };
+		518ADC791CF5C583006028B8 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC781CF5C583006028B8 /* HistoryTableViewCell.swift */; };
 		518EEA401CC7F1C10087ED50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EEA3F1CC7F1C10087ED50 /* AppDelegate.swift */; };
 		518EEA451CC7F1C10087ED50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518EEA431CC7F1C10087ED50 /* Main.storyboard */; };
 		518EEA471CC7F1C10087ED50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 518EEA461CC7F1C10087ED50 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 		518ADC681CCFCD6D006028B8 /* SelectMethodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMethodViewController.swift; sourceTree = "<group>"; };
 		518ADC6A1CE24254006028B8 /* WiFiComViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiComViewController.swift; sourceTree = "<group>"; };
 		518ADC721CEB5B07006028B8 /* BTComViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTComViewController.swift; sourceTree = "<group>"; };
+		518ADC741CF5BA01006028B8 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		518ADC781CF5C583006028B8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		518EEA3C1CC7F1C10087ED50 /* BTWF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTWF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		518EEA3F1CC7F1C10087ED50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		518EEA441CC7F1C10087ED50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -85,6 +89,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		518ADC761CF5C52B006028B8 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				518ADC741CF5BA01006028B8 /* HistoryTableViewController.swift */,
+				518ADC781CF5C583006028B8 /* HistoryTableViewCell.swift */,
+			);
+			name = History;
+			sourceTree = "<group>";
+		};
+		518ADC771CF5C55C006028B8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				518ADC721CEB5B07006028B8 /* BTComViewController.swift */,
+				518ADC6A1CE24254006028B8 /* WiFiComViewController.swift */,
+				518ADC661CCFBED7006028B8 /* SettingsViewController.swift */,
+				518ADC681CCFCD6D006028B8 /* SelectMethodViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		518EEA331CC7F1C10087ED50 = {
 			isa = PBXGroup;
 			children = (
@@ -111,10 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				518EEA3F1CC7F1C10087ED50 /* AppDelegate.swift */,
-				518ADC721CEB5B07006028B8 /* BTComViewController.swift */,
-				518ADC6A1CE24254006028B8 /* WiFiComViewController.swift */,
-				518ADC661CCFBED7006028B8 /* SettingsViewController.swift */,
-				518ADC681CCFCD6D006028B8 /* SelectMethodViewController.swift */,
+				518ADC761CF5C52B006028B8 /* History */,
+				518ADC771CF5C55C006028B8 /* Settings */,
 				518EEA431CC7F1C10087ED50 /* Main.storyboard */,
 				518EEA481CC7F1C10087ED50 /* LaunchScreen.storyboard */,
 				518EEA461CC7F1C10087ED50 /* Assets.xcassets */,
@@ -345,6 +367,8 @@
 			files = (
 				518ADC6B1CE24254006028B8 /* WiFiComViewController.swift in Sources */,
 				518ADC731CEB5B07006028B8 /* BTComViewController.swift in Sources */,
+				518ADC791CF5C583006028B8 /* HistoryTableViewCell.swift in Sources */,
+				518ADC751CF5BA01006028B8 /* HistoryTableViewController.swift in Sources */,
 				518EEA401CC7F1C10087ED50 /* AppDelegate.swift in Sources */,
 				518ADC691CCFCD6D006028B8 /* SelectMethodViewController.swift in Sources */,
 				518ADC671CCFBED8006028B8 /* SettingsViewController.swift in Sources */,

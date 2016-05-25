@@ -27,7 +27,7 @@
         <!--History-->
         <scene sceneID="SUh-sB-OfS">
             <objects>
-                <tableViewController id="EiD-z0-hSh" sceneMemberID="viewController">
+                <tableViewController id="EiD-z0-hSh" customClass="HistoryTableViewController" customModule="BTWF" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pC5-Mr-dfk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,12 +43,15 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="EiD-z0-hSh" id="lIg-84-TkZ"/>
+                            <outlet property="dataSource" destination="EiD-z0-hSh" id="Gma-qR-QCx"/>
                             <outlet property="delegate" destination="EiD-z0-hSh" id="TsX-AF-4Mh"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="History" id="CgU-Ba-pCh"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="historyTableView" destination="pC5-Mr-dfk" id="eo8-5P-5Qe"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Iq-Q4-xVT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,7 +145,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDJ-dv-Nhf">
-                                                    <rect key="frame" x="115" y="7" width="145" height="30"/>
+                                                    <rect key="frame" x="8" y="7" width="359" height="30"/>
                                                     <state key="normal" title="Start Communication"/>
                                                     <connections>
                                                         <action selector="startCommunication:" destination="fbi-ex-3TX" eventType="touchUpInside" id="B6h-wY-1X1"/>

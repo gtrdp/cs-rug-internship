@@ -5,14 +5,14 @@ A to-do list for research internship at Rug.
 Things to do
 ------------
 - Look for how to run an app in background.
-- Bluetooth communication.
+- [DONE] Bluetooth communication.
 - Add README about installing noble.
 
 Things to be developed
 ----------------------
 - PC:
 	- Scala app for HTTP.
-	- App for Bluetooth.
+	- [DONE]App for Bluetooth.
 - Mobile Phone:
 	- [DONE] Bluetooth communication
 	- [DONE]Tap to hide keyboard -> using delegate pattern?
