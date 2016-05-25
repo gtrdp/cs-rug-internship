@@ -14,6 +14,7 @@
 		518ADC731CEB5B07006028B8 /* BTComViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC721CEB5B07006028B8 /* BTComViewController.swift */; };
 		518ADC751CF5BA01006028B8 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC741CF5BA01006028B8 /* HistoryTableViewController.swift */; };
 		518ADC791CF5C583006028B8 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC781CF5C583006028B8 /* HistoryTableViewCell.swift */; };
+		518ADC7B1CF5DF15006028B8 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518ADC7A1CF5DF15006028B8 /* History.swift */; };
 		518EEA401CC7F1C10087ED50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518EEA3F1CC7F1C10087ED50 /* AppDelegate.swift */; };
 		518EEA451CC7F1C10087ED50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518EEA431CC7F1C10087ED50 /* Main.storyboard */; };
 		518EEA471CC7F1C10087ED50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 518EEA461CC7F1C10087ED50 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		518ADC721CEB5B07006028B8 /* BTComViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTComViewController.swift; sourceTree = "<group>"; };
 		518ADC741CF5BA01006028B8 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		518ADC781CF5C583006028B8 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		518ADC7A1CF5DF15006028B8 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		518EEA3C1CC7F1C10087ED50 /* BTWF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTWF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		518EEA3F1CC7F1C10087ED50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		518EEA441CC7F1C10087ED50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			children = (
 				518ADC741CF5BA01006028B8 /* HistoryTableViewController.swift */,
 				518ADC781CF5C583006028B8 /* HistoryTableViewCell.swift */,
+				518ADC7A1CF5DF15006028B8 /* History.swift */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 			files = (
 				518ADC6B1CE24254006028B8 /* WiFiComViewController.swift in Sources */,
 				518ADC731CEB5B07006028B8 /* BTComViewController.swift in Sources */,
+				518ADC7B1CF5DF15006028B8 /* History.swift in Sources */,
 				518ADC791CF5C583006028B8 /* HistoryTableViewCell.swift in Sources */,
 				518ADC751CF5BA01006028B8 /* HistoryTableViewController.swift in Sources */,
 				518EEA401CC7F1C10087ED50 /* AppDelegate.swift in Sources */,

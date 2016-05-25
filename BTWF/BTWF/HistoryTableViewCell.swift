@@ -9,6 +9,10 @@
 import UIKit
 
 class HistoryTableViewCell: UITableViewCell {
+    @IBOutlet weak var methodLabel: UILabel!
+    @IBOutlet weak var sentPacketsLabel: UILabel!
+    @IBOutlet weak var timestampLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
