@@ -153,6 +153,7 @@ May #4 (Midterm Eval)
 	- Learned SQLite in swift in iOS.
 		- Other options to persist data on iOS: Realm, Core Data, Firebase.
 		- Decided to use CoreData rather than SQLite.
+	- Created `play-scala` project for the HTTP server.
 	
 	
 June #4 (Final Eval)
