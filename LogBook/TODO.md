@@ -11,11 +11,11 @@ Things to do
 Things to be developed
 ----------------------
 - PC:
-	- Scala app for HTTP.
-	- [DONE]App for Bluetooth.
+	- [DONE] Scala app for HTTP.
+	- [DONE] App for Bluetooth.
 - Mobile Phone:
 	- [DONE] Bluetooth communication
-	- [DONE]Tap to hide keyboard -> using delegate pattern?
+	- [DONE] Tap to hide keyboard -> using delegate pattern?
 	- History tab.
 	
 For the Report

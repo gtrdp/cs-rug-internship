@@ -1,0 +1,67 @@
+% \documentclass[a4paper, 10pt, twoside]{report}
+\documentclass[a4paper,11pt]{article}
+\usepackage[toc,page]{appendix}
+\usepackage{dirtytalk}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{multirow}
+
+\input{style/style.tex}
+
+\begin{document}
+
+\selectlanguage{english}
+
+%----------------------------------------------------------------------------------------
+%	TITLEPAGE
+%----------------------------------------------------------------------------------------
+\input{./content/titlepage}
+
+%----------------------------------------------------------------------------------------
+%	TABLEOFCONTENTS
+%----------------------------------------------------------------------------------------
+\pagenumbering{roman}
+
+\phantomsection
+\addcontentsline{toc}{section}{Contents}
+\tableofcontents
+\clearpage
+
+\addtocontents{lof}{\vskip 0.3cm}
+\phantomsection
+\addcontentsline{toc}{section}{List of Figures}
+\listoffigures
+
+\addtocontents{lot}{\vskip 0.3cm}
+\phantomsection
+\addcontentsline{toc}{section}{List of Tables}
+\listoftables
+
+\clearpage
+%----------------------------------------------------------------------------------------
+%	SECTIONS
+%----------------------------------------------------------------------------------------
+\pagenumbering{arabic}
+
+\input{./content/intro}
+\clearpage
+
+\input{./content/concluding_remark}
+
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{unsrtnat}
+\bibliography{cs-rug-internship}
+
+%----------------------------------------------------------------------------------------
+%	APPENDICES
+%----------------------------------------------------------------------------------------
+\clearpage
+\input{./content/appendix}
+
+\end{document}
