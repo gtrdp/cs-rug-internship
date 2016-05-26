@@ -13,6 +13,7 @@ class HistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var sentPacketsLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var timeIntervalLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

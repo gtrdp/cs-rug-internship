@@ -15,6 +15,9 @@ class WiFiComViewController: UIViewController {
     var timeInterval:Int = 0
     var serverAddress:String = ""
     
+    var histories = [History]()
+    var currentTime: String = ""
+    
     @IBOutlet weak var sentPacketsLabel: UILabel!
     @IBOutlet weak var communicationMethodLabel: UILabel!
     @IBOutlet weak var timeIntervalLabel: UILabel!
@@ -32,7 +35,14 @@ class WiFiComViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-//        self.hideKeyboardWhenTappedAround()
+        
+        // get current date and time
+        let date = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.timeZone = NSTimeZone(forSecondsFromGMT: 1)
+        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        currentTime = formatter.stringFromDate(date)
 
         // Do any additional setup after loading the view.
         sentPacketsLabel.text = String(packetsCounter)
@@ -57,6 +67,14 @@ class WiFiComViewController: UIViewController {
             timer.invalidate()
             clockTimer.invalidate()
         }
+        
+        // save the data
+        if let savedHistories = loadHistories() {
+            histories += savedHistories
+        }
+        histories += [History(method: communicationMethod, sentPackets: sentPacketsLabel.text!,
+            timestamp: currentTime, duration: counterLabel.text!, timeInterval: String(timeInterval))]
+        saveHistories()
     }
     
     func updateClock() {
@@ -101,5 +119,16 @@ class WiFiComViewController: UIViewController {
                 print(response.result)
         }
     }
-
+    
+    // MARK: NSCoding
+    func saveHistories() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(histories, toFile: History.ArchiveURL.path!)
+        if !isSuccessfulSave {
+            print("Failed to save histories...")
+        }
+    }
+    
+    func loadHistories() -> [History]? {
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(History.ArchiveURL.path!) as? [History]
+    }
 }

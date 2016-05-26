@@ -32,6 +32,9 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
     var communicationMethod:String = ""
     var timeInterval:Int = 0
     var serverAddress:String = ""
+    var currentTime: String = ""
+    
+    var histories = [History]()
     
     private var peripheralManager: CBPeripheralManager?
     private var transferCharacteristic: CBMutableCharacteristic?
@@ -84,6 +87,14 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // get current date and time
+        let date = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.timeZone = NSTimeZone(forSecondsFromGMT: 1)
+        formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        currentTime = formatter.stringFromDate(date)
+        
         // prepare the view
         sentPacketsLabel.text = "0"
         methodLabel.text = communicationMethod
@@ -111,6 +122,14 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
         // stop the timer
         timer.invalidate()
         clockTimer.invalidate()
+        
+        // save the data
+        if let savedHistories = loadHistories() {
+            histories += savedHistories
+        }
+        histories += [History(method: communicationMethod, sentPackets: sentPacketsLabel.text!,
+            timestamp: currentTime, duration: stopwatchLabel.text!, timeInterval: String(timeInterval))]
+        saveHistories()
     }
     
     func updateClock() {
@@ -276,5 +295,16 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
     func peripheralManagerDidStartAdvertising(peripheral: CBPeripheralManager, error: NSError?) {
         print(error)
     }
-
+        
+    // MARK: NSCoding
+    func saveHistories() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(histories, toFile: History.ArchiveURL.path!)
+        if !isSuccessfulSave {
+            print("Failed to save histories...")
+        }
+    }
+    
+    func loadHistories() -> [History]? {
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(History.ArchiveURL.path!) as? [History]
+    }
 }

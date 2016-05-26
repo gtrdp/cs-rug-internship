@@ -16,7 +16,7 @@ Things to be developed
 - Mobile Phone:
 	- [DONE] Bluetooth communication
 	- [DONE] Tap to hide keyboard -> using delegate pattern?
-	- History tab.
+	- [DONE] History tab.
 	
 For the Report
 --------------

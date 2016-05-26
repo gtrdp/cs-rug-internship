@@ -152,10 +152,11 @@ May #4 (Midterm Eval)
 - **Wed May 25 12:04:16 CEST 2016**
 	- Learned SQLite in swift in iOS.
 		- Other options to persist data on iOS: Realm, Core Data, Firebase.
-		- Decided to use CoreData rather than SQLite.
+		- Decided to use ~~CoreData~~ NSCoding rather than SQLite.
 	- Created `play-scala` project for the HTTP server.
 - **Thu May 26 11:32:23 CEST 2016**
-	- Added template for the report.	
+	- Added template for the report.
+	- Worked on persisting the history data. Now **works**!
 	
 June #4 (Final Eval)
 --------------------

@@ -105,7 +105,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         timeInterfal = (timeInterfalTextField.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))!
         serverAddress = (serverAddressTextField.text?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))!
         
-        if timeInterfal.isEmpty == false && serverAddress.isEmpty == false && verifyUrl(serverAddress) {
+        if timeInterfal.isEmpty == false && serverAddress.isEmpty == false && (verifyUrl(serverAddress) || serverAddress == "Not applicable."){
             // start the communication
             
             if method == "Wi-Fi (HTTP)" {
