@@ -157,6 +157,10 @@ May #4 (Midterm Eval)
 - **Thu May 26 11:32:23 CEST 2016**
 	- Added template for the report.
 	- Worked on persisting the history data. Now **works**!
+- **Fri May 27 11:25:25 CEST 2016**
+	- Ran the testing for data collection.
+	- Read how to make use of Instruments app in Xcode: to measure the energy consumption.
+	- Remembered to read the referenced papers about energy concern.
 	
 June #4 (Final Eval)
 --------------------
