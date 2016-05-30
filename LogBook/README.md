@@ -161,6 +161,17 @@ May #4 (Midterm Eval)
 	- Ran the testing for data collection.
 	- Read how to make use of Instruments app in Xcode: to measure the energy consumption.
 	- Remembered to read the referenced papers about energy concern.
+	- In order to measure the energy usage properly, restriction may be useful:
+		- https://support.apple.com/en-us/HT201304
+
+June #1
+-------
+- **Mon May 30 17:25:21 CEST 2016**
+	- Met Azkario for discussions, some modifications needed for improvements.
+		- Add number of beacon, relates with communication template (JSON or BLE packets).
+		- Find the optimum time window for particular number of beacons.
+		- Create map (single floor only) for data collection.
+		
 	
 June #4 (Final Eval)
 --------------------

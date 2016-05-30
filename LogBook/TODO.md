@@ -32,5 +32,7 @@ For the Report
 - Explanation about the development of the program
 	- What libraries are used
 	- What IDE are used and why
+	- Why noble is used, explain why and how it works inside.
 - Measuring the energy consumption
 	- also take RSSI into account
+	- compare the energy consumption when the phone runs no application as well.
