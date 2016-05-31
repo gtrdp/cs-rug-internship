@@ -171,6 +171,10 @@ June #1
 		- Add number of beacon, relates with communication template (JSON or BLE packets).
 		- Find the optimum time window for particular number of beacons.
 		- Create map (single floor only) for data collection.
+- **Tue May 31 10:28:10 CEST 2016**
+	- Figure out the time window and number of maximum beacon, before starting data collection.
+	- Printed the mid evaluation form.
+	
 		
 	
 June #4 (Final Eval)

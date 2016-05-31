@@ -1,5 +1,5 @@
 # Fdb version 3
-["bibtex cs-rug-internship"] 1464703582 "cs-rug-internship.aux" "cs-rug-internship.bbl" "cs-rug-internship" 1464703591
+["bibtex cs-rug-internship"] 1464703706 "cs-rug-internship.aux" "cs-rug-internship.bbl" "cs-rug-internship" 1464703706
   "abbrv-doi.bst" 0 -1 0 ""
   "cs-rug-internship.aux" 1464703590 203 65f21512987018eae766cbfbf385a4e6 ""
   "cs-rug-internship.bcf" 0 -1 0 ""
@@ -7,7 +7,7 @@
   (generated)
   "cs-rug-internship.bbl"
   "cs-rug-internship.blg"
-["pdflatex"] 1464703590 "cs-rug-internship.tex" "cs-rug-internship.pdf" "cs-rug-internship" 1464703591
+["pdflatex"] 1464261203 "cs-rug-internship.tex" "cs-rug-internship.pdf" "cs-rug-internship" 1464341201
   "./diamondrule.pdf" 1278327756 1335 e82887b13e7469ef004fc36f59818f7a ""
   "/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
@@ -84,7 +84,10 @@
   "diamondrule.pdf" 1278327756 1335 e82887b13e7469ef004fc36f59818f7a ""
   "vgtc.cls" 1458132620 31040 0ee85f7bfae989d8d635ae838ba5a72c ""
   (generated)
+  "cs-rug-internship.lot"
   "cs-rug-internship.pdf"
-  "cs-rug-internship.aux"
   "cs-rug-internship.log"
+  "cs-rug-internship.aux"
+  "cs-rug-internship.lof"
   "cs-rug-internship.out"
+  "cs-rug-internship.toc"
