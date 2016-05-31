@@ -36,3 +36,5 @@ For the Report
 - Measuring the energy consumption
 	- also take RSSI into account
 	- compare the energy consumption when the phone runs no application as well.
+	- using restriction to stop other apps.
+	- Figure out the time window and number of maximum beacon, before starting data collection.

@@ -172,8 +172,11 @@ June #1
 		- Find the optimum time window for particular number of beacons.
 		- Create map (single floor only) for data collection.
 - **Tue May 31 10:28:10 CEST 2016**
-	- Figure out the time window and number of maximum beacon, before starting data collection.
 	- Printed the mid evaluation form.
+	- Changed the final report template based on http://www.cs.rug.nl/ds/Teaching/ThesisGuidelines .
+	- After googling for a while, iOS does not allow 3rd party app to get the SSID of a particular Wi-Fi.
+	- Decided to use Mas Ury's home for data collection.
+		- Figure out the time window and number of maximum beacon, before starting data collection.
 	
 		
 	
