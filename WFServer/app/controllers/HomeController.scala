@@ -22,6 +22,7 @@ class HomeController @Inject() extends Controller {
   }
 
   def postController = Action {
+    println("Received occupancy data")
     Ok("Data is stored!")
   }
 
