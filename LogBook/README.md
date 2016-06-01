@@ -177,6 +177,13 @@ June #1
 	- After googling for a while, iOS does not allow 3rd party app to get the SSID of a particular Wi-Fi.
 	- Decided to use Mas Ury's home for data collection.
 		- Figure out the time window and number of maximum beacon, before starting data collection.
+- **Wed Jun  1 11:14:16 CEST 2016**
+	- The data format remains the original (inital)
+	- Changed the data packet format according to previous discussion.
+		- Changed raw username (utf8) to userid (UInt32)
+		- Changed proximity type from Double to Float
+		- Added random label to indicate a particular timestamp for a ceratain data packet
+	- Added number of beacon as parameter.
 	
 		
 	

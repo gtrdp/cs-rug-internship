@@ -14,6 +14,7 @@ class WiFiComViewController: UIViewController {
     var communicationMethod:String = ""
     var timeInterval:Int = 0
     var serverAddress:String = ""
+    var numberOfBeacon:Int = 0
     
     var histories = [History]()
     var currentTime: String = ""
@@ -32,6 +33,10 @@ class WiFiComViewController: UIViewController {
     var minutesCounter:Int = 0
     var hoursCounter:Int = 0
     
+    // the data to send
+    var occupancyData = ["nearby_data": [["proximity_zone": "NEAR","proximity_distance": 1.8456140098254021,"rssi":-81]],
+                         "userId": "pratama"]
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -49,6 +54,14 @@ class WiFiComViewController: UIViewController {
         communicationMethodLabel.text = communicationMethod
         timeIntervalLabel.text = String(timeInterval) + " ms"
         serverAddressLabel.text = serverAddress
+        
+        // Prepare the data
+        // replicate the data to match the number of sensors
+        var foo = [[String:NSObject]]()
+        for _ in 1...numberOfBeacon {
+            foo += [["proximity_zone": "NEAR","proximity_distance": 1.8456140098254021,"rssi":-81]]
+        }
+        occupancyData["nearby_data"] = foo
         
         // start the timer
         timer = NSTimer.scheduledTimerWithTimeInterval(Double(timeInterval)/1000, target: self, selector: #selector(timerFunction), userInfo: nil, repeats: true)
@@ -100,7 +113,6 @@ class WiFiComViewController: UIViewController {
     }
     
     func sendData() {
-        let occupancyData = ["nearby_data": ["proximity_zone": "NEAR","proximity_distance": 1.8456140098254021,"rssi":-81], "userId": "pratama"]
         let url: NSURL = NSURL(string: serverAddress)!
         
         let request = NSMutableURLRequest(URL: url)

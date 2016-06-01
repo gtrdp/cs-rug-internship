@@ -42,7 +42,7 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Wi-Fi (HTTP)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwm-hI-ITI">
                                             <rect key="frame" x="8" y="8" width="161" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -118,7 +118,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Iq-Q4-xVT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="730.5" y="568.5"/>
+            <point key="canvasLocation" x="706.5" y="568.5"/>
         </scene>
         <!--Settings-->
         <scene sceneID="PtO-hJ-swa">
@@ -190,6 +190,9 @@
                                             <subviews>
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="qap-gG-dpC">
                                                     <rect key="frame" x="273" y="7" width="94" height="29"/>
+                                                    <connections>
+                                                        <action selector="stepperValueChanged:" destination="fbi-ex-3TX" eventType="valueChanged" id="KhT-5P-Hkm"/>
+                                                    </connections>
                                                 </stepper>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEq-VJ-xR5">
                                                     <rect key="frame" x="8" y="11" width="257" height="21"/>
@@ -251,6 +254,8 @@
                     <navigationItem key="navigationItem" title="Settings" id="fNF-Qg-Je7"/>
                     <connections>
                         <outlet property="detailLabel" destination="mgS-Kl-Ezs" id="wkq-2u-eJU"/>
+                        <outlet property="numberOfBeaconLabel" destination="SEq-VJ-xR5" id="Zyj-ty-M99"/>
+                        <outlet property="numberOfBeaconStepper" destination="qap-gG-dpC" id="d2H-HV-ubn"/>
                         <outlet property="serverAddressTextField" destination="Enk-hv-xPb" id="szm-sD-tS4"/>
                         <outlet property="timeInterfalTextField" destination="2cA-05-bEa" id="EWw-rW-FVH"/>
                         <segue destination="w9V-6x-DK1" kind="show" identifier="GoToStartCommunication" id="wMO-Q1-lNj"/>
@@ -530,7 +535,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5N5-jZ-2Qg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="165.5" y="-263.5"/>
+            <point key="canvasLocation" x="165.5" y="-242.5"/>
         </scene>
     </scenes>
     <resources>

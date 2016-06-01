@@ -19,7 +19,8 @@ let transferCharacteristicUUID = CBUUID(string: TRANSFER_CHARACTERISTIC_UUID)
 // context data
 var NEAR = 1
 var FAR  = 0
-var proximityDistance: [Double] = [1.8456140098254021, 3.171936276300526,3.171936276300526,3.7248832499617226,4.0058561246511655]
+var userid = 7
+var proximityDistance: [Float] = [1.8456140098254021, 3.171936276300526,3.171936276300526,3.7248832499617226,4.0058561246511655]
 var rssi: [UInt8] = [81, 87, 87, 71, 91]
 var major: [UInt16] = [1, 2, 1, 0, 1]
 var minor: [UInt16] = [2222, 9999, 9999, 0, 1111]
@@ -33,6 +34,7 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
     var timeInterval:Int = 0
     var serverAddress:String = ""
     var currentTime: String = ""
+    var numberOfBeacon:Int = 0
     
     var histories = [History]()
     
@@ -46,11 +48,12 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
                                            NSData(bytes: &FAR , length: 1),
                                            NSData(bytes: &FAR , length: 1),
                                            NSData(bytes: &FAR , length: 1)]
-    private let proximityDistanceData: [NSData] = [NSData(bytes: &proximityDistance[0], length: 8),
-                                                   NSData(bytes: &proximityDistance[1], length: 8),
-                                                   NSData(bytes: &proximityDistance[2], length: 8),
-                                                   NSData(bytes: &proximityDistance[3], length: 8),
-                                                   NSData(bytes: &proximityDistance[4], length: 8),]
+    private let useridData = NSData(bytes: &userid, length: 4)
+    private let proximityDistanceData: [NSData] = [NSData(bytes: &proximityDistance[0], length: 4),
+                                                   NSData(bytes: &proximityDistance[1], length: 4),
+                                                   NSData(bytes: &proximityDistance[2], length: 4),
+                                                   NSData(bytes: &proximityDistance[3], length: 4),
+                                                   NSData(bytes: &proximityDistance[4], length: 4),]
     private let rssiData: [NSData] = [NSData(bytes: &rssi[0], length: 1),
                                       NSData(bytes: &rssi[1], length: 1),
                                       NSData(bytes: &rssi[2], length: 1),
@@ -148,12 +151,6 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
         stopwatchLabel.text = String(format: "%02d", hoursCounter) + ":" + String(format: "%02d", minutesCounter) + ":" + String(format: "%02d", secondsCounter)
     }
     
-    func timerFunction() {
-        sendData()
-        packetsCounter += 1
-        sentPacketsLabel.text = String(packetsCounter)
-    }
-    
     /** Required protocol method.  A full app should take care of all the possible states,
      *  but we're just waiting for  to know when the CBPeripheralManager is ready
      */
@@ -203,36 +200,44 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
         print(central.identifier.UUIDString)
         statusLabel.text = "Central subscribed to characteristic."
         
+        // Reset the index
+        sendDataIndex = 0;
+        
+        // Start sending
+        timer = NSTimer.scheduledTimerWithTimeInterval(Double(timeInterval)/1000, target: self, selector: #selector(timerFunction), userInfo: nil, repeats: true)
+    }
+    
+    func timerFunction() {
         // prepare the chunks
         // the format is (20 bytes):
         // 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20
-        // pz|     user name   |  proximity distance   |rs|major|minor
+        // pz| user name | prox dist |rs|major|minor|rndm label | FREE
         //
         // pz: Proximity Zone
         // rs: RSSI
         //
         // the dummy data is available online: https://gist.github.com/azkario/636ddca0ff1d229df3d9667f9d905782
         
-        // we're going to send 4 bursts of data
+        // we're going to send several bursts of data according to the number of beacon
         var foo = NSMutableData()
+        var randomLabel = arc4random() // random label to indicate that a certain burst of data is at a particular timestamp
         
-        for i in 0...4 {
-            foo.appendData(proximityZoneData[i])
-            foo.appendData("pratam".dataUsingEncoding(NSUTF8StringEncoding)!)
-            foo.appendData(proximityDistanceData[i])
-            foo.appendData(rssiData[i])
-            foo.appendData(majorData[i])
-            foo.appendData(minorData[i])
+        for i in 0...(numberOfBeacon-1) {
+            foo.appendData(proximityZoneData[i % 5])
+            foo.appendData(useridData)
+            foo.appendData(proximityDistanceData[i % 5])
+            foo.appendData(rssiData[i % 5])
+            foo.appendData(majorData[i % 5])
+            foo.appendData(minorData[i % 5])
+            foo.appendData(NSData(bytes: &randomLabel, length: 4))
             
             finalData.append(foo)
             foo = NSMutableData()
         }
         
-        // Reset the index
-        sendDataIndex = 0;
-        
-        // Start sending
-        timer = NSTimer.scheduledTimerWithTimeInterval(Double(timeInterval)/1000, target: self, selector: #selector(timerFunction), userInfo: nil, repeats: true)
+        sendData()
+        packetsCounter += 1
+        sentPacketsLabel.text = String(packetsCounter)
     }
     
     /** Recognise when the central unsubscribes
@@ -253,7 +258,7 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
     private func sendData() {
         var didSend = true
         
-        if sendDataIndex < 5 {
+        if sendDataIndex < numberOfBeacon {
             // Send it
             didSend = peripheralManager!.updateValue(
                 finalData[sendDataIndex],
