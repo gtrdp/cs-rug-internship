@@ -4,6 +4,11 @@ import javax.inject._
 import play.api._
 import play.api.mvc._
 
+// imports for handling date
+import java.util.Calendar
+import java.util.Date
+import java.text.SimpleDateFormat
+
 /**
  * This controller creates an `Action` to handle HTTP requests to the
  * application's home page.
@@ -22,7 +27,12 @@ class HomeController @Inject() extends Controller {
   }
 
   def postController = Action {
-    println("Received occupancy data")
+    val today = Calendar.getInstance().getTime()
+
+    // create the date/time formatters
+    val datetime = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss")
+
+    println("Received occupancy data: " + datetime.format(today))
     Ok("Data is stored!")
   }
 
