@@ -26,7 +26,7 @@
         <entry file="file://$PROJECT_DIR$/bluetooth-central.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="508">
-              <caret line="37" column="67" selection-start-line="37" selection-start-column="67" selection-end-line="37" selection-end-column="67" />
+              <caret line="37" column="71" selection-start-line="37" selection-start-column="71" selection-end-line="37" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -179,12 +179,12 @@
       <workItem from="1464190512256" duration="133000" />
       <workItem from="1464874539328" duration="699000" />
       <workItem from="1464960559306" duration="803000" />
-      <workItem from="1464961485561" duration="200000" />
+      <workItem from="1464961485561" duration="969000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1971000" />
+    <option name="totallyTimeSpent" value="2740000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
@@ -332,7 +332,7 @@
     <entry file="file://$PROJECT_DIR$/bluetooth-central.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="508">
-          <caret line="37" column="67" selection-start-line="37" selection-start-column="67" selection-end-line="37" selection-end-column="67" />
+          <caret line="37" column="71" selection-start-line="37" selection-start-column="71" selection-end-line="37" selection-end-column="71" />
           <folding />
         </state>
       </provider>
