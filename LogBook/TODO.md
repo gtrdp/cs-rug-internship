@@ -29,12 +29,26 @@ For the Report
 	- what characteristic is used and why
 	- explain how Bluetooth LE works: what is central, what is peripheral, etc
 	- what is uuid
+	
 - Explanation about the development of the program
 	- What libraries are used
 	- What IDE are used and why
 	- Why noble is used, explain why and how it works inside.
+	- Give screen shots of both pc and phone apps.
+	- Explain how many apps which were developed.
+	
 - Measuring the energy consumption
+	- Explain about Apple Instruments and the capabilities (wireles and wired)
 	- also take RSSI into account
 	- compare the energy consumption when the phone runs no application as well.
 	- using restriction to stop other apps.
 	- Figure out the time window and number of maximum beacon, before starting data collection.
+	- Can't run overnight because "if the device battery runs dry or the iOS Device is powered off, the log data is lost." This is a CRAZY restriction, and pretty much makes this approach useless for our case 
+	- Try to turn off the internet, so that other apps will not disturb
+	- Which method is used, tethered or untethered.
+	- Explain before all un-needed apps removed and after the un-needed apps removed.
+	
+- Problems
+	- The scanning that still needs human interaction
+	- Energy reporting which is un-exportable.	
+		- Solution: Creating applescript to copy and paste from instruments to excel automatically.

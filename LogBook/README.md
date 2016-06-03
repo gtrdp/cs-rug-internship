@@ -184,8 +184,22 @@ June #1
 		- Changed proximity type from Double to Float
 		- Added random label to indicate a particular timestamp for a ceratain data packet
 	- Added number of beacon as parameter.
-	
-		
+	- Tried to run the test.
+	- Turn off internet when measuring energy consumption.
+- **Thu Jun  2 10:11:00 CEST 2016**
+	- Ran data collection at Mas Ury's home. Condition:
+		- Background app refresh is disabled.
+		- Whatsapp and LINE notification are turned off.
+		- Both Wi-Fi and Bluetooth are turned on.
+	- Data collection method:
+		- Tethered: Using instruments (no result: always 0/20) and Using Xcode.
+		- Untethered.
+	- Added time for better monitoring in pc apps (wifi and bluetooth).
+	- Tried wireless logging. **Failed** due to Bonjour multicast which is disabled in wireless access point.
+	- Created apple script to automate copying and pasting from instruments to excel.
+	- Preparation of ideal energy measurement condition.
+	- Result of 1st experiment:
+		- bluetooth is slightly more efficient than Wi-Fi.
 	
 June #4 (Final Eval)
 --------------------
