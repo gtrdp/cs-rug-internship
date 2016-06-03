@@ -20,6 +20,10 @@ Things to be developed
 	
 For the Report
 --------------
+- Intro about context aware building (smart home/office)
+	- How this project is positioned.
+	- The hardware and software built in this project
+	
 - Explanation about Bluetooth LE
 	- What is the version
 	- technical specification

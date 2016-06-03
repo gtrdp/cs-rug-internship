@@ -200,6 +200,12 @@ June #1
 	- Preparation of ideal energy measurement condition.
 	- Result of 1st experiment:
 		- bluetooth is slightly more efficient than Wi-Fi.
+- **Fri Jun  3 12:47:00 CEST 2016**
+	- Try to figure out: What is the limit of maximum sensors?
+	- Tried to use `moment.js` to get the current time stamp, but it made the `noble` did not work.
+	- Tried to run the data collection again.
+	- 
+
 	
 June #4 (Final Eval)
 --------------------
