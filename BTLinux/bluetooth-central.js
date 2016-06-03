@@ -5,6 +5,7 @@
 
 var async = require('async');
 var noble = require('noble');
+var moment = require('moment');
 
 noble.on('stateChange', function(state) {
   if (state === 'poweredOn') {
@@ -33,10 +34,10 @@ noble.on('discover', function(peripheral) {
 				console.log('Discovered Context Data characteristic');
 
 				batteryLevelCharacteristic.on('read', function(data, isNotification) {
-					//var now = moment()
-					//var formatted = now.format('YYYY-MM-DD HH:mm:ss Z')
-					console.log('received from '+peripheral.uuid+': '+ data.toString('hex'));
-				  	// console.log('['+formatted+'] received from '+peripheral.uuid+': '+ data.toString('hex'));
+					var now = moment();
+					var formatted = now.format('YYYY-MM-DD HH:mm:ss');
+					// console.log('received from '+peripheral.uuid+': '+ data.toString('hex'));
+				  	console.log('['+formatted+'] received from '+peripheral.uuid+': '+ data.toString('hex'));
 				});
 
 				// true to enable notify
