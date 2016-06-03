@@ -45,7 +45,7 @@ class WiFiComViewController: UIViewController {
         let date = NSDate()
         let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        formatter.timeZone = NSTimeZone(forSecondsFromGMT: 1)
+        formatter.timeZone = NSTimeZone(abbreviation: "CEST")
         formatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
         currentTime = formatter.stringFromDate(date)
 
