@@ -35,7 +35,7 @@ noble.on('discover', function(peripheral) {
 
 				batteryLevelCharacteristic.on('read', function(data, isNotification) {
 					var now = moment();
-					var formatted = now.format('YYYY-MM-DD HH:mm:ss');
+					var formatted = now.format('YYYY-MM-DD HH:mm:ss:SSS');
 					// console.log('received from '+peripheral.uuid+': '+ data.toString('hex'));
 				  	console.log('['+formatted+'] received from '+peripheral.uuid+': '+ data.toString('hex'));
 				});
