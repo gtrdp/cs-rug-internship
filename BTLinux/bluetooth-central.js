@@ -51,7 +51,7 @@ noble.on('discover', function(peripheral) {
 						console.log('counter: ' + counter++);
 					}
 
-					if (counter == 7) {
+					if (counter == 3) {
 						batteryLevelCharacteristic.unsubscribe(function(err){
 							if (!err) {
 								console.log('successfully unsubscribe');
