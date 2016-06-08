@@ -204,8 +204,13 @@ June #1
 	- Try to figure out: What is the limit of maximum sensors?
 	- Tried to use `moment.js` to get the current time stamp, but it made the `noble` did not work.
 	- Tried to run the data collection again.
-	- 
+	- Average time to send a data packet in bluetooth: `+/- 100 ms`.
 
+June #2
+-------
+- **Mon Jun  6 12:22:21 CEST 2016**
+	- Sent the mid-term evaluation form.
+	- 
 	
 June #4 (Final Eval)
 --------------------

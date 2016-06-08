@@ -51,6 +51,7 @@ For the Report
 	- Try to turn off the internet, so that other apps will not disturb
 	- Which method is used, tethered or untethered.
 	- Explain before all un-needed apps removed and after the un-needed apps removed.
+	- The time needed to send a chunk, use more than one comparison.
 	
 - Problems
 	- The scanning that still needs human interaction
