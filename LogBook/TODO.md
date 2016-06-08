@@ -52,6 +52,7 @@ For the Report
 	- Which method is used, tethered or untethered.
 	- Explain before all un-needed apps removed and after the un-needed apps removed.
 	- The time needed to send a chunk, use more than one comparison.
+	- Please turn off the Bluetooth when recording Wifi, and Wifi when recording bluetooth.
 	
 - Problems
 	- The scanning that still needs human interaction
