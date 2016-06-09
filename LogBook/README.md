@@ -196,7 +196,7 @@ June #1
 		- Untethered.
 	- Added time for better monitoring in pc apps (wifi and bluetooth).
 	- Tried wireless logging. **Failed** due to Bonjour multicast which is disabled in wireless access point.
-	- Created apple script to automate copying and pasting from instruments to excel.
+	- Created an `Apple script` to automate copying and pasting from instruments to excel.
 	- Preparation of ideal energy measurement condition.
 	- Result of 1st experiment:
 		- bluetooth is slightly more efficient than Wi-Fi.
@@ -230,6 +230,13 @@ June #2
 		- Now we will work with 3 spots, each has two categories (LoS and non-LoS).
 		- Number of beacon will be: 5, 10, and 20.
 		- Data collection will be carried out 30 times, for each category.
+- **Thu Jun  9 13:06:59 CEST 2016**
+	- Ran the data collection.
+	- Resubscribing method to overcome the disconnected problem is proven to wrong.
+		- Tried many possible number of counter to reconnect, but it still did not work.
+	- Found another method to overcome the disconnect problem: reconnect when disconnected.
+		- By using `peripheral.on('disconnect')` method.
+	- Set up `VNC`  server in the thin clinet for the sake of measurement (efficiency).
 	
 June #4 (Final Eval)
 --------------------

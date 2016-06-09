@@ -58,3 +58,6 @@ For the Report
 	- The scanning that still needs human interaction
 	- Energy reporting which is un-exportable.	
 		- Solution: Creating applescript to copy and paste from instruments to excel automatically.
+	- The bluetooth is not stable:
+		- It always stops at 29 packets -> solution: using resubscribing method.
+		- It has to be triggered by GNOME (GUI) Bluetooth management tool.
