@@ -196,7 +196,7 @@ June #1
 		- Untethered.
 	- Added time for better monitoring in pc apps (wifi and bluetooth).
 	- Tried wireless logging. **Failed** due to Bonjour multicast which is disabled in wireless access point.
-	- Created apple script to automate copying and pasting from instruments to excel.
+	- Created an `Apple script` to automate copying and pasting from instruments to excel.
 	- Preparation of ideal energy measurement condition.
 	- Result of 1st experiment:
 		- bluetooth is slightly more efficient than Wi-Fi.
@@ -205,16 +205,45 @@ June #1
 	- Tried to use `moment.js` to get the current time stamp, but it made the `noble` did not work.
 	- Tried to run the data collection again.
 	- Average time to send a data packet in bluetooth: `+/- 100 ms`.
+		- If the time window (interval) is too short, it will lose some data packets.
 
 June #2
 -------
 - **Mon Jun  6 12:22:21 CEST 2016**
 	- Sent the mid-term evaluation form.
-	- 
-
-
 	- The same problem (stopped when the packets reach 29) also experienced by others:
 		- https://github.com/sandeepmistry/noble/issues/293
+	- Note:
+		- Please remember to **turn off** Wifi when measuring bluetooth, and vice versa.
+		- And turn off 4G (preferably by turning on Flight mode).
+- **Tue Jun  7 16:27:09 CEST 2016**
+	- Ran the data collection again (comprehensive).
+	- Bluetooth is not stable.
+		- It always stop when it already sent 29 packets (1000 ms) or 99 (300 ms).
+		- It stopped around second 30th.
+- **Wed Jun  8 13:38:38 CEST 2016**
+	- Ran the data collection again.
+	- The `noble` also seems to be unstable. It needs a trigger from Gnome's Bluetooth UI to discover a device.
+	- Found a solution to overcome the bug that always stops when it already sent 29 packets:
+		- The central will always re-subscribe (unsubscribe then subscribe) when it gets `9` packets.
+		- `9` is defined randomly this afternoon.
+		- Changed to `7` because it is not a factor of `29` or `30`. `9` also turned out that did not fix the problem.
+	- Met Azkario and discussed about the data collection:
+		- Now we will work with 3 spots, each has two categories (LoS and non-LoS).
+		- Number of beacon will be: 5, 10, and 20.
+		- Data collection will be carried out 30 times, for each category.
+- **Thu Jun  9 13:06:59 CEST 2016**
+	- Ran the data collection.
+	- Resubscribing method to overcome the disconnected problem is proven to wrong.
+		- Tried many possible number of counter to reconnect, but it still did not work.
+	- Found another method to overcome the disconnect problem: reconnect when disconnected.
+		- By using `peripheral.on('disconnect')` method.
+	- Set up `VNC`  server in the thin clinet for the sake of measurement (efficiency).
+- **Fri Jun 10 16:50:31 CEST 2016**
+	- Ran the data collection.
+	- The instability encountered in BLE communication may be caused by `noble`: Thus, `noble` is not really stable.
+- **Sat Jun 11 18:30:52 CEST 2016**
+	- Ran data collection.
 	
 June #4 (Final Eval)
 --------------------
