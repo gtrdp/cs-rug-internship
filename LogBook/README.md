@@ -237,6 +237,11 @@ June #2
 	- Found another method to overcome the disconnect problem: reconnect when disconnected.
 		- By using `peripheral.on('disconnect')` method.
 	- Set up `VNC`  server in the thin clinet for the sake of measurement (efficiency).
+- **Fri Jun 10 16:50:31 CEST 2016**
+	- Ran the data collection.
+	- The instability encountered in BLE communication may be caused by `noble`: Thus, `noble` is not really stable.
+- **Sat Jun 11 18:30:52 CEST 2016**
+	- Ran data collection.
 	
 June #4 (Final Eval)
 --------------------
