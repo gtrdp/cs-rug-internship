@@ -211,6 +211,10 @@ June #2
 - **Mon Jun  6 12:22:21 CEST 2016**
 	- Sent the mid-term evaluation form.
 	- 
+
+
+	- The same problem (stopped when the packets reach 29) also experienced by others:
+		- https://github.com/sandeepmistry/noble/issues/293
 	
 June #4 (Final Eval)
 --------------------
