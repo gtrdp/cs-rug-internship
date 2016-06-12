@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreBluetooth
+import AVFoundation
 
 let TRANSFER_SERVICE_UUID        = "740efdc9-e0ce-4b30-8c18-577d8275c17f"
 let TRANSFER_CHARACTERISTIC_UUID = "534b0ed7-47de-4e5a-9e3e-da4bd3b33d2e"
@@ -24,6 +25,9 @@ var proximityDistance: [Float] = [1.8456140098254021, 3.171936276300526,3.171936
 var rssi: [UInt8] = [81, 87, 87, 71, 91]
 var major: [UInt16] = [1, 2, 1, 0, 1]
 var minor: [UInt16] = [2222, 9999, 9999, 0, 1111]
+
+// for sound
+let systemSoundID: SystemSoundID = 1008
 
 class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
     
@@ -145,6 +149,12 @@ class BTComViewController: UIViewController, CBPeripheralManagerDelegate{
         if minutesCounter == 60 {
             minutesCounter = 0
             hoursCounter += 1
+        }
+        
+        // check whether it is 3 minutes
+        if minutesCounter == 3 {
+            // play sound
+            AudioServicesPlaySystemSound(systemSoundID)
         }
         
         // set the counter label

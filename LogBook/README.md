@@ -244,6 +244,10 @@ June #2
 	- The instability encountered in BLE communication may be caused by `noble`: Thus, `noble` is not really stable.
 - **Sat Jun 11 18:30:52 CEST 2016**
 	- Ran data collection.
+	- After a few run of experiment, the bluetooth become not working. Possibly caused by `noble`.
+		- The error message: `unknown peripheral`.
+- **Sun Jun 12 17:57:27 CEST 2016**
+	- Added a timer when the clock ticks at 3 minute.
 	
 June #4 (Final Eval)
 --------------------

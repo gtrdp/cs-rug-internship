@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import AVFoundation
 
 class WiFiComViewController: UIViewController {
     
@@ -100,6 +101,12 @@ class WiFiComViewController: UIViewController {
         if minutesCounter == 60 {
             minutesCounter = 0
             hoursCounter += 1
+        }
+        
+        // check whether it is 3 minutes
+        if minutesCounter == 3 {
+            // play sound
+            AudioServicesPlaySystemSound(systemSoundID)
         }
         
         // set the counter label
