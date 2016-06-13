@@ -53,6 +53,10 @@ For the Report
 	- Explain before all un-needed apps removed and after the un-needed apps removed.
 	- The time needed to send a chunk, use more than one comparison.
 	- Please turn off the Bluetooth when recording Wifi, and Wifi when recording bluetooth.
+	- Why we are choosing those parameters:
+		- Number of sensor is impactful esp. for bluetooth.
+		- The distance may cause some difference.
+		- The LoS and non LoS may have some effect.
 	
 - Problems
 	- The scanning that still needs human interaction

@@ -246,8 +246,15 @@ June #2
 	- Ran data collection.
 	- After a few run of experiment, the bluetooth become not working. Possibly caused by `noble`.
 		- The error message: `unknown peripheral`.
+		- The solution: the thin client has to be restarted.
 - **Sun Jun 12 17:57:27 CEST 2016**
 	- Added a timer when the clock ticks at 3 minute.
+	- Coded the applescript for automating file conversion from instruments to excel.
+	
+June #3
+-------
+- **Mon Jun 13 13:59:52 CEST 2016**
+	- Ran data collection.
 	
 June #4 (Final Eval)
 --------------------
