@@ -255,6 +255,10 @@ June #3
 -------
 - **Mon Jun 13 13:59:52 CEST 2016**
 	- Ran data collection.
+	- The apple script for automatic copying and pasting done [improved].
+		- Now works automatically for batch files.
+- **Tue Jun 14 15:24:31 CEST 2016**
+	- Ran data collection.
 	
 June #4 (Final Eval)
 --------------------

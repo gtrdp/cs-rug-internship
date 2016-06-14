@@ -57,6 +57,12 @@ For the Report
 		- Number of sensor is impactful esp. for bluetooth.
 		- The distance may cause some difference.
 		- The LoS and non LoS may have some effect.
+	- How did the measurement was conducted.
+		- Turn off every communication method (airplane mode).
+		- Only enable wifi or bluetooth, depends on what is needed.
+		- Using untethered instruments (logging in iOS).
+		- Each run is 3 minutes long.
+		- And other 5W1H (where is it, how big is the room, etc.)
 	
 - Problems
 	- The scanning that still needs human interaction
@@ -65,3 +71,5 @@ For the Report
 	- The bluetooth is not stable:
 		- It always stops at 29 packets -> solution: using resubscribing method.
 		- It has to be triggered by GNOME (GUI) Bluetooth management tool.
+	- Why it is unstable?
+		- Is it because of `noble`?
