@@ -259,6 +259,14 @@ June #3
 		- Now works automatically for batch files.
 - **Tue Jun 14 15:24:31 CEST 2016**
 	- Ran data collection.
+- **Wed Jun 15 10:40:25 CEST 2016** (Wind Day 2016 Rotterdam)
+	- Nothing.
+- **Thu Jun 16 10:40:25 CEST 2016** (Wind Day 2016 Rotterdam)
+	- Nothing.
+- **Fri Jun 17 10:40:25 CEST 2016**
+	- Ran data collection.
+- **Sat Jun 18 19:51:48 CEST 2016**
+	- Ran data collection.
 	
 June #4 (Final Eval)
 --------------------
