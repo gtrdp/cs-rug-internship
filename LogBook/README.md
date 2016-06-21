@@ -270,3 +270,6 @@ June #3
 	
 June #4 (Final Eval)
 --------------------
+- Apple script is also not so stable.
+- Some error occured, the solution was only to restart the operation.
+	- Error example: Application is not running.
