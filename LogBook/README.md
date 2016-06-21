@@ -272,4 +272,8 @@ June #4 (Final Eval)
 --------------------
 - Apple script is also not so stable.
 - Some error occured, the solution was only to restart the operation.
-	- Error example: Application is not running.
+	- Error example:
+		- Application is not running. (600)
+		- Connection is invalid (609)
+		- Microsoft Excel got an error: The object you are trying to access does not exist.
+	
