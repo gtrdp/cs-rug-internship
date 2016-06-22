@@ -276,4 +276,4 @@ June #4 (Final Eval)
 		- Application is not running. (600)
 		- Connection is invalid (609)
 		- Microsoft Excel got an error: The object you are trying to access does not exist.
-	
+	- Other solution is to resart the Mac and open only necessary programs.
