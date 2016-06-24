@@ -275,6 +275,13 @@ June #4 (Final Eval)
 - **Tue Jun 21 13:22:39 CEST 2016**
 	- Ran data collection (the last one).
 	- Extracting some data from `Apple instruments`.
+	- Apple script is also not so stable.
+	- Some error occured, the solution was only to restart the operation.
+		- Error example:
+			- Application is not running. (600)
+			- Connection is invalid (609)
+			- Microsoft Excel got an error: The object you are trying to access does not exist.
+		- Other solution is to resart the Mac and open only necessary programs.
 - **Tue Jun 21 13:22:39 CEST 2016**
 	- Extracting data from `Apple instruments`.
 - **Wed Jun 22 15:36:40 CEST 2016**
