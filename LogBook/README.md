@@ -283,3 +283,5 @@ June #4 (Final Eval)
 	- Working on Excel.
 	- Met Azkario.
 	- Redoing data collection for 1st location.
+- **Fri Jun 24 15:24:59 CEST 2016**
+	- Data collection for 7th location. 

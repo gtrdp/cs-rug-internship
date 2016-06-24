@@ -24,6 +24,15 @@ For the Report
 	- How this project is positioned.
 	- The hardware and software built in this project.
 	- Explain about occupancy and cite a paper.
+	- Explain how is the architecture of the system and where does this study reside.
+		- Using a diagram: current (using wifi to server) and possible architecture if bluetooth is better (using ble to server)
+		- Show that the number of sensor may change.
+		- how is the implementation going to be if bluetooth is used: using thin client or raspberry pi acting as ble central and accesspoint.
+
+- Research question
+	- Is bluetooth more energy efficient than wifi to transfer occupancy data to server?
+		- To what extent?
+		- Based on number of sensor and location.
 	
 - Explanation about Bluetooth LE
 	- What is the version
