@@ -22,7 +22,8 @@ For the Report
 --------------
 - Intro about context aware building (smart home/office)
 	- How this project is positioned.
-	- The hardware and software built in this project
+	- The hardware and software built in this project.
+	- Explain about occupancy and cite a paper.
 	
 - Explanation about Bluetooth LE
 	- What is the version
@@ -40,6 +41,7 @@ For the Report
 	- Why noble is used, explain why and how it works inside.
 	- Give screen shots of both pc and phone apps.
 	- Explain how many apps which were developed.
+	- Give a diagram about the system architecture.
 	
 - Measuring the energy consumption
 	- Explain about Apple Instruments and the capabilities (wireles and wired)
@@ -73,3 +75,5 @@ For the Report
 		- It has to be triggered by GNOME (GUI) Bluetooth management tool.
 	- Why it is unstable?
 		- Is it because of `noble`?
+	- This research is only energy consumption for sending data. Without sensing etc.
+		- Explain, this may differ in the real implementation, as both bluetooth and wifi may be turned on. The result might be slightly different.

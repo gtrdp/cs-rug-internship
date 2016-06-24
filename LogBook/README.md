@@ -267,6 +267,19 @@ June #3
 	- Ran data collection.
 - **Sat Jun 18 19:51:48 CEST 2016**
 	- Ran data collection.
+- **Sun Jun 19 17:23:19 CEST 2016**
+	- Ran data collection.	
 	
 June #4 (Final Eval)
 --------------------
+- **Tue Jun 21 13:22:39 CEST 2016**
+	- Ran data collection (the last one).
+	- Extracting some data from `Apple instruments`.
+- **Tue Jun 21 13:22:39 CEST 2016**
+	- Extracting data from `Apple instruments`.
+- **Wed Jun 22 15:36:40 CEST 2016**
+	- Extracting data from `Apple instruments`.	- Working on Excel.
+- **Thu Jun 23 15:36:40 CEST 2016**
+	- Working on Excel.
+	- Met Azkario.
+	- Redoing data collection for 1st location.
