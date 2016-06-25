@@ -188,9 +188,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1000" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2cA-05-bEa">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1000" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2cA-05-bEa">
                                                     <rect key="frame" x="8" y="7" width="359" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -207,18 +207,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="qap-gG-dpC">
-                                                    <rect key="frame" x="273" y="7" width="94" height="29"/>
-                                                    <connections>
-                                                        <action selector="stepperValueChanged:" destination="fbi-ex-3TX" eventType="valueChanged" id="KhT-5P-Hkm"/>
-                                                    </connections>
-                                                </stepper>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SEq-VJ-xR5">
-                                                    <rect key="frame" x="8" y="11" width="257" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r2d-8N-x8N">
+                                                    <rect key="frame" x="8" y="7" width="359" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -254,8 +247,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="fNF-Qg-Je7"/>
                     <connections>
                         <outlet property="detailLabel" destination="mgS-Kl-Ezs" id="wkq-2u-eJU"/>
-                        <outlet property="numberOfBeaconLabel" destination="SEq-VJ-xR5" id="Zyj-ty-M99"/>
-                        <outlet property="numberOfBeaconStepper" destination="qap-gG-dpC" id="d2H-HV-ubn"/>
+                        <outlet property="numberOfBeaconTextField" destination="r2d-8N-x8N" id="NiE-AM-M7q"/>
                         <outlet property="serverAddressTextField" destination="Enk-hv-xPb" id="szm-sD-tS4"/>
                         <outlet property="timeInterfalTextField" destination="2cA-05-bEa" id="EWw-rW-FVH"/>
                         <segue destination="w9V-6x-DK1" kind="show" identifier="GoToStartCommunication" id="wMO-Q1-lNj"/>

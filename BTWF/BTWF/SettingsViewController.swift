@@ -13,8 +13,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var timeInterfalTextField: UITextField!
     @IBOutlet weak var serverAddressTextField: UITextField!
-    @IBOutlet weak var numberOfBeaconLabel: UILabel!
-    @IBOutlet weak var numberOfBeaconStepper: UIStepper!
+    @IBOutlet weak var numberOfBeaconTextField: UITextField!
     
     var timeInterfal = ""
     var serverAddress = ""
@@ -38,11 +37,8 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        // stepper settings
-        numberOfBeaconStepper.autorepeat = true
-        numberOfBeaconStepper.wraps = true
-        numberOfBeaconStepper.maximumValue = 25
-        numberOfBeaconStepper.value = 5
+        timeInterfalTextField.keyboardType = UIKeyboardType.DecimalPad
+        numberOfBeaconTextField.keyboardType = UIKeyboardType.DecimalPad
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
@@ -93,7 +89,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             svc.communicationMethod = method
             svc.timeInterval = (timeInterfal as NSString).integerValue
             svc.serverAddress = serverAddress
-            svc.numberOfBeacon = Int(numberOfBeaconLabel.text!)!
+            svc.numberOfBeacon = Int(numberOfBeaconTextField.text!)!
         }
         
         if segue.identifier == "BTCommunication" {
@@ -103,16 +99,12 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             svc.communicationMethod = method
             svc.timeInterval = (timeInterfal as NSString).integerValue
             svc.serverAddress = serverAddress
-            svc.numberOfBeacon = Int(numberOfBeaconLabel.text!)!
+            svc.numberOfBeacon = Int(numberOfBeaconTextField.text!)!
         }
     }
     
     override func viewWillAppear(animated: Bool) {
         navigationItem.title = "Settings"
-    }
-    
-    @IBAction func stepperValueChanged(sender: UIStepper) {
-        numberOfBeaconLabel.text = Int(sender.value).description
     }
     
     @IBAction func startCommunication(sender: UIButton) {
