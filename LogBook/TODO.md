@@ -86,3 +86,4 @@ For the Report
 		- Is it because of `noble`?
 	- This research is only energy consumption for sending data. Without sensing etc.
 		- Explain, this may differ in the real implementation, as both bluetooth and wifi may be turned on. The result might be slightly different.
+	- Limitation: only tested for iPhone 6 running iOS 9.3.2.

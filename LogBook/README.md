@@ -291,4 +291,14 @@ June #4 (Final Eval)
 	- Met Azkario.
 	- Redoing data collection for 1st location.
 - **Fri Jun 24 15:24:59 CEST 2016**
-	- Data collection for 7th location. 
+	- Data collection for 7th location.
+	- Downloaded many paper references from ACM.
+	- The eneregy measurements seem unstable. It always show value >14 or even >16.
+	- The value of measurement is always high outdoor. It turned out that it is caused by auto screenbrightness that automatically adjust the screen to be really high brightness.
+		- Solution: turn off auto screen brightness.
+- **Sat Jun 25 15:59:46 CEST 2016**
+	- Data collection for 7th location.
+	- BLE device's battery can lasts up to 3 years. Thus, if the BLE device which has small mAh of power can last up to 3 years, a mobile phone which has way more power than that must be able to last longer.
+		- The phone is transmitting the same amount of signal power regardless how far it is from the central -> there is no significant power consumption difference. If the central goes beyond the limit of BLE signal border, the communication simply un-do-able, i.e., the peripheral is not required to boost up the transmitting power to maintain the communication.
+		- There is no API to change the transmitting power of BLE in swift (AFAIK).
+	- Developing custom app for next measurement (hundreds of sensors).
