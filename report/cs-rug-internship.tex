@@ -128,9 +128,16 @@ Context awareness has been an interesting topic recently. Its ability to infer w
 \firstsection{Introduction}
 
 \maketitle
+Smart building has been an interesting topic of research recently. One portion of research in smart home is occupancy detection, which aims to detect whether a person is present in a particular location. Its importance to detect user presence is crucial in the building energy management, since the building can manage energy allocation efficiently regarding how many persons are present.
+
+Several methods have been proposed to overcome the occupancy detection. One of them makes use of Bluetooth Low Energy (BLE) beacon, as the beacon is useful because it always transmitting a unique data packet that indicates certain location information. Assuming that the users always bring mobile phone with them, an application can be installed on the mobile phone to scan a particular beacon, so that the application knows where currently the user is, then the application sends the data to the central server. The data can be analyzed later on to detect user presence.
+
+Normally, the application sends the data to the server through HTTP communication done via Wi-Fi connectivity, as the BLE is already used to sense the beacon. No BLE utilization for data transmission to the server has been found. In fact, BLE is obviously more energy efficient compared to WiFi, as BLE is designed to be implemented in devices coupled with limited source of energy, e.g., battery.
+
+This study tries to investigate BLE utilization for transmitting the occupancy data to the server. This study measures and compares the energy consumption of the mobile phone when performing data transmission via WiFif and BLE. A tailored application is developed and several possible scenario is also taken into consideration, such as number of detected sensor and user location relative to the server or access point. The result of this study may be useful for the future decision whether BLE will be implemented instead of WiFi to transmit occupancy data to the server.
 
 %% \section{Introduction} %for journal use above \firstsection{..} instead
-The rest of this report is structured as follows.
+The rest of this report is structured as follows. Section \ref{sec:related_work} presents other related work to this study. Methodology is described in section \ref{sec:methodology}, while the results and discussion is discussed in section \ref{sec:results_and_discussion}. Lastly, a conclusion is drawn in section \ref{sec:conclusion}
 
 \section{Related Work} % (fold)
 \label{sec:related_work}
@@ -145,6 +152,21 @@ give details for each publication (authors, title, year, page numbers, publisher
 
 \section{Methodology} % (fold)
 \label{sec:methodology}
+As a term project, this study was performed in three consecutive months. As the main part of this study, the energy measurement was carried out in iPhone 6, which runs iOS operating system. Additionally, Asus vivo mini PC was also utilized as a thin client that runs the server application. 
+
+\subsection{Tailored Application Development} % (fold)
+\label{sub:tailored_application_development}
+The application is written in Swift, which is the new general-purpose programming language developed by Apple Inc. Xcode, with Storyboard, is used to develop the application, with Git as the source code repository.
+
+A dummy occupancy data is sent to the server, as this study imitates the real implementation of user occupancy but not necessarily involves the sensing part.
+
+Alamofire library is used to cope the HTTP communication.
+% subsection tailored_application (end)
+
+\subsection{Measuring the Energy Consumption} % (fold)
+\label{sub:tracing_}
+
+% subsection tracing (end)
 
 % section methodology (end)
 
@@ -154,12 +176,14 @@ Explain in detail first, separately for bluetooth and wifi.
 Then explain the comparison of bluetooth and wifi and the baseline.
 % section results_and_discussion (end)
 
-\section{Conclusion}
+\section{Conclusion} % (fold)
+\label{sec:conclusion}
 We have presented that Bluetooth is more energy efficient than Wi-Fi.
 
 Wifi may still be a consideration because usually mobilephone are also using wifi extensively.
 
 Some drawbacks may persist if bluetooth is implemented, such as instability. Other implementation than what is impelemented here must be looked for.
+% section conclusion (end)
 
 
 %% if specified like this the section will be committed in review mode

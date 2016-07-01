@@ -302,3 +302,5 @@ June #4 (Final Eval)
 		- The phone is transmitting the same amount of signal power regardless how far it is from the central -> there is no significant power consumption difference. If the central goes beyond the limit of BLE signal border, the communication simply un-do-able, i.e., the peripheral is not required to boost up the transmitting power to maintain the communication.
 		- There is no API to change the transmitting power of BLE in swift (AFAIK).
 	- Developing custom app for next measurement (hundreds of sensors).
+	
+	- asalak dalam limit ok.
