@@ -48,6 +48,7 @@
 \usepackage{times}                     % we use Times as the main font
 \renewcommand*\ttdefault{txtt}         % a nicer typewriter font
 \usepackage{cite}
+\usepackage{hyperref}
 %% We encourage the use of mathptmx for consistent usage of times font
 %% throughout the proceedings. However, if you encounter conflicts
 %% with other math-related packages, you may want to disable it.
@@ -82,7 +83,7 @@
 
 %% Abstract section.
 \abstract{
-Context awareness has been an interesting topic recently. Its ability to infer whether a person exists on a particular room or building is really important for smart building. 
+Context awareness has been an interesting topic recently. Its ability to infer whether a person exists on a particular room or building is really important for smart building. The result shows that Bluetooth is 29.97\% more energy efficient than WiFi.
 } % end of abstract
 
 %% Keywords that describe your work. Will show as 'Index Terms' in journal
@@ -134,6 +135,7 @@ Several methods have been proposed to overcome the occupancy detection. One of t
 
 Normally, the application sends the data to the server through HTTP communication done via Wi-Fi connectivity, as the BLE is already used to sense the beacon. No BLE utilization for data transmission to the server has been found. In fact, BLE is obviously more energy efficient compared to WiFi, as BLE is designed to be implemented in devices coupled with limited source of energy, e.g., battery.
 
+% how this study is positioned.
 This study tries to investigate BLE utilization for transmitting the occupancy data to the server. This study measures and compares the energy consumption of the mobile phone when performing data transmission via WiFif and BLE. A tailored application is developed and several possible scenario is also taken into consideration, such as number of detected sensor and user location relative to the server or access point. The result of this study may be useful for the future decision whether BLE will be implemented instead of WiFi to transmit occupancy data to the server.
 
 %% \section{Introduction} %for journal use above \firstsection{..} instead
@@ -152,21 +154,106 @@ give details for each publication (authors, title, year, page numbers, publisher
 
 \section{Methodology} % (fold)
 \label{sec:methodology}
-As a term project, this study was performed in three consecutive months. As the main part of this study, the energy measurement was carried out in iPhone 6, which runs iOS operating system. Additionally, Asus vivo mini PC was also utilized as a thin client that runs the server application. 
+As a term project, this study was performed in three consecutive months. The main part of this study, the energy measurement, was carried out in iPhone 6, which runs iOS operating system. Additionally, Asus vivo mini PC, which runs Xubuntu as its operating system, was also utilized as a thin client that hosts the server application.
+
+\subsection{System Architecture} % (fold)
+\label{sub:system_architecture}
+This study is based on a study from Azkario that tries to get occupancy data in smart building. The system architecture is depicted in Figure 
+[give image about general structure of the system, with sensors and thin client.]
+
+[give the picture of the AP and thin client]
+% subsection system_architecture (end)
+
+\subsection{Measuring the Energy Consumption} % (fold)
+\label{sub:tracing_}
+Apple's Instrument application in Mac OS X was used to perform untethered energy monitoring on iOS. It reads energy log in iPhone and shows it for further analysis in its own format. Export feature is limited in Apple's Instrument and it does not support energy consumption log exporting to other commonly used format, e.g., csv or xls file. However, manual copying and pasting on each row is still supported. An Apple script was used to automate the copying and pasting the energy log to Excel for further processing.
+
+Apple script was also not stable. It encounters several errors during its runtime, which were caused by OS instability, and restarting the process was only way to overcome that.
+
+Wireless logging is not used as it requires Bonjour enabled router, which was unavailable.
+
+Flight mode was turned on when measuring energy consumption, to hinder Mobile data connection.
+
+Baseline energy consumption is measured with both WiFI and Bluetooth turned off.
+Or when it is turned on? But still in Flight mode.
+
+Explain the parameters and why those parameters were selected.
+Number of beacon (5, 10, 20, and even 100 and 200 for high throughput), distance from server (Line of Sight and non-Line of Sight).
+
+Background application may affect energy measuring result.
+
+When measuring on WiFi communication, Internet is disabled to prevent any running background application from fetching data from Internet through WiFi connection.
+Background app refresh is disabled to prevent significant impact of backgorund processes, altough this may seem unproven.
+
+Energy consumption is measured in each 3 minutes time interval.
+
+How to understand Apple's Instruments energy log. http://www.maytro.com/2014/06/06/profiling-power-and-network-usage.html
+Because it does not use standard energy measurement units, e.g., mAh etc.
+Power measurements are shown on a 20 point scale
+Each increment costs an hour of battery life
+Phone running at level 1/20 will have 20 hours of battery life
+Phone running at level 20/20 will have 1 hour of battery life
+
+
+Each packet is sent in every minute.
+
+The experiment was carried out in a Planetenlaan flat.
+[insert the map of the place]
 
 \subsection{Tailored Application Development} % (fold)
 \label{sub:tailored_application_development}
+Explain a bit about why an tailored application was used, compared with other research that used standard email, browsing, etc.
+Because we would like to test specifically for smart home application, with Azkario's architecture.
+
+Changed raw username (utf8) to userid (UInt32)
+Changed proximity type from Double to Float
+Added random label to indicate a particular timestamp for a ceratain data packet
+
 The application is written in Swift, which is the new general-purpose programming language developed by Apple Inc. Xcode, with Storyboard, is used to develop the application, with Git as the source code repository.
 
 A dummy occupancy data is sent to the server, as this study imitates the real implementation of user occupancy but not necessarily involves the sensing part.
 
-Alamofire library is used to cope the HTTP communication.
+History is also saved using NSCoding in iOS.
+
+% Wifi
+Alamofire library\footnote{\url{https://github.com/Alamofire/Alamofire}} is used to cope the HTTP communication.
+
+% BLE
+Bluetooth communication.
+Explain a bit about BLE communication scheme.
+And alleges that this study use subscription/notification method.
+
+Initially Ian Harvey's bluepy library\footnote{\url{https://github.com/IanHarvey/bluepy}}, which is a Python interface to Bluetooth LE on Linux, was used. However, it turned out that it does not work to handle the notification in BLE.
+
+Later on, Sandeep Mistry's noble\footnote{\url{https://github.com/sandeepmistry/noble}}, a node.js BLE central module, was used. It turned out that it is capable to handle notification scheme in BLE communication.
+
+iOS only supports BLE communication using central-peripheral communication scheme. It does not support classic Bluetooth communication.
+
+In Swift, the OS is not responsible to handle unsuccessful packet data transmission, the application itself must be aware to handle packet data transmission failure.
+
+Explain BLE 20 bytes of packet size policy, and explain how those packets are implemented. Cite specification of bluetooth and john abraham.
+
+Changed raw username (utf8) to userid (UInt32)
+Changed proximity type from Double to Float
+Added random label to indicate a particular timestamp for a ceratain data packet
+
+The application is written in Swift, which is the new general-purpose programming language developed by Apple Inc. Xcode, with Storyboard, is used to develop the application, with Git as the source code repository.
+
+A dummy occupancy data is sent to the server, as this study imitates the real implementation of user occupancy but not necessarily involves the sensing part.
+
+Bluetooth in noble is turned out to be unstable, it always loses connection when it reached 29th data packet. As a solution, the central application always reconnect to the peripheral when disconnected.
+
+Bluetooth connection requires manual trigger to start scanning nearby BLE devices. In order to do the experiment efficiently, beside SSH server that is used to access the thin client remotely. 
+
+History is also saved using NSCoding in iOS.
+
+[give an image depicting central and peripheral communication]
+
+The code is publicly stored in Github.com and is accessible at \url{https://github.com/gtrdp/cs-rug-internship}.
+
+Play Scala web server and Bluetooth server.
+
 % subsection tailored_application (end)
-
-\subsection{Measuring the Energy Consumption} % (fold)
-\label{sub:tracing_}
-
-% subsection tracing (end)
 
 % section methodology (end)
 
@@ -174,6 +261,27 @@ Alamofire library is used to cope the HTTP communication.
 \label{sec:results_and_discussion}
 Explain in detail first, separately for bluetooth and wifi.
 Then explain the comparison of bluetooth and wifi and the baseline.
+
+Time to send each BLE packet in this case is around 4ms. If the number of sensor is more that the threshold, some data will be lost.
+
+In the experiment, brightness was proven to be one of significant source of energy loss as it consumes much energy to light up the screen.
+
+BLE device's battery can lasts up to 3 years. Thus, if the BLE device which has small mAh of power can last up to 3 years, a mobile phone which has way more power than that must be able to last longer.
+The phone is transmitting the same amount of signal power regardless how far it is from the central -> there is no significant power consumption difference. If the central goes beyond the limit of BLE signal border, the communication simply un-do-able, i.e., the peripheral is not required to boost up the transmitting power to maintain the communication.
+There is no API to change the transmitting power of BLE in swift (AFAIK).
+
+
+The scanning that still needs human interaction
+Energy reporting which is un-exportable.
+Solution: Creating applescript to copy and paste from instruments to excel automatically.
+The bluetooth is not stable:
+It always stops at 29 packets -> solution: using resubscribing method.
+It has to be triggered by GNOME (GUI) Bluetooth management tool.
+Why it is unstable?
+Is it because of noble?
+This research is only energy consumption for sending data. Without sensing etc.
+Explain, this may differ in the real implementation, as both bluetooth and wifi may be turned on. The result might be slightly different.
+Limitation: only tested for iPhone 6 running iOS 9.3.2.
 % section results_and_discussion (end)
 
 \section{Conclusion} % (fold)
