@@ -296,7 +296,7 @@ According to~\cite{BluetoothSpecialInterestGroup2014}, there four main methods t
 In this study, the iPhone, which provides occupancy data, serves as the peripheral, while the thin client acts as the central. Notification characteristic is used in this study because of its simplicity. Thus, the peripheral will advertise its characteristics with Unique User ID (UUID)~\cite{BluetoothSpecialInterestGroup2014} and the central will subscribe for this characteristics in order to get updated for notification.
 
 % BLE packets
-A dummy data is also sent in BLE communication, with the maximum user data in packet is 20 bytes, as GATT protocol is used. This packet is relatively small to send occupancy data shown in Listings~\ref{lst-dummy-json}. That way, special format of data that can store all necessary data and fits with the constrains is created, as shown in Figure~\ref{fig:ble-packet-structure}. In this format, 20 bytes of data represents a single beacon. Thus, if more than one beacon has to be transmitted, the peripheral will transmit the packets multiple times, e.g., 10 times of transmission for 10 beacons.
+A dummy data is also sent in BLE communication, with the maximum user data in the packet is 20 bytes, as GATT protocol is used. This packet is relatively small to send occupancy data shown in Listings~\ref{lst-dummy-json}. That way, special format of data that can store all necessary data and fits with the constrains is created, as shown in Figure~\ref{fig:ble-packet-structure}. In this format, 20 bytes of data represents a single beacon. Thus, if more than one beacon has to be transmitted, the peripheral will transmit the packets multiple times, e.g., 10 times of transmission for 10 beacons.
 
 \begin{figure}
   \centering
@@ -305,71 +305,76 @@ A dummy data is also sent in BLE communication, with the maximum user data in pa
   \label{fig:ble-packet-structure}
 \end{figure}
 
-% explaining about the packet
+The structure of the 20 bytes of data packet is depicted in Figure~\ref{fig:ble-packet-structure}. The packet starts with proximity zone, which is coded in \texttt{PZ}. This block may have two possibilities, either \texttt{NEAR} or \texttt{FAR}, which are coded in binary. The \verb|user_id| is coded in 32 bit unsigned integer and a mapping between those numbers with particular users are also created. The \verb|proximity|, encoded in floating point data type, discloses the distance between the user's mobile phone and the sensed beacon in meter. RSSI data is also incorporated in the structure, within \verb|rssi| block, while beacon information is stored in \verb|major| and \verb|minor| block~\cite{AppleInc.2014}. Referring to the JSON encapsulation of the occupancy data, shown in Figure~\ref{lst-dummy-json}, all beacons data are stored in single JSON file that marks out the same timestamp. The BLE implementation spreads those beacons data into single individual BLE packets, which would be separated and received in the BLE central in different timestamp. In order to overcome this problem, a random 32 bit unsigned integer \verb|label|, which marks those separated BLE packets into the same timestamp, is incorporated in the end of the packet. Two bytes of free space is left for further research.
 
 % technical details
 
-Initially Ian Harvey's bluepy library\footnote{\url{https://github.com/IanHarvey/bluepy}}, which is a Python interface to Bluetooth LE on Linux, was used. However, it turned out that it does not work to handle the notification in BLE.
+Speaking the technical implementation of the central application, initially Ian Harvey's bluepy library\footnote{\url{https://github.com/IanHarvey/bluepy}}, a Python interface to Bluetooth LE on Linux, was utilized. However, further development revealed that this library does not work to handle the notification characteristic in BLE. Subsequently, Sandeep Mistry's noble\footnote{\url{https://github.com/sandeepmistry/noble}} library, a node.js BLE central module, was later used. It turned out that it is capable to handle notification characteristic in BLE communication to subscribe the update of occupancy data. In the peripheral implementation, i.e., the iPhone, native Swift \verb|CBPeripheralManagerDelegate|, is used to handle BLE communication.
 
-Later on, Sandeep Mistry's noble\footnote{\url{https://github.com/sandeepmistry/noble}}, a node.js BLE central module, was used. It turned out that it is capable to handle notification scheme in BLE communication.
-
-iOS only supports BLE communication using central-peripheral communication scheme. It does not support classic Bluetooth communication.
-
-In Swift, the OS is not responsible to handle unsuccessful packet data transmission, the application itself must be aware to handle packet data transmission failure.
-
-Explain BLE 20 bytes of packet size policy, and explain how those packets are implemented. Cite specification of bluetooth and john abraham.
-
-Changed raw username (utf8) to userid (UInt32)
-Changed proximity type from Double to Float
-Added random label to indicate a particular timestamp for a ceratain data packet
-
-Bluetooth in noble is turned out to be unstable, it always loses connection when it reached 29th data packet. As a solution, the central application always reconnect to the peripheral when disconnected.
-
-Bluetooth connection requires manual trigger to start scanning nearby BLE devices. In order to do the experiment efficiently, beside SSH server that is used to access the thin client remotely. 
-
-[give an image depicting central and peripheral communication]
-
-Play Scala web server and Bluetooth server.
-
-% give a schema of the BLE packet
-
-
+Furthermore, Bluetooth in noble is turned out to be a little bit unstable since it always loses the connection when it reached the 29th data packet. As a solution, the central application always tries to reconnect to the peripheral when it disconnected. Moreover, Bluetooth connection requires manual trigger to start scanning the nearby BLE devices. Thus, to accomplish the experiment efficiently, a VNC server is also set beside SSH server that is used to access the thin client remotely.
 % subsubsection ble_communication_scheme (end)
 % subsection tailored_application (end)
 % section methodology (end)
 
 \section{Results and Discussions} % (fold)
 \label{sec:results_and_discussion}
+The data measurement experiment was carried out for ten times for each parameters for both WiFi and BLE. The main results for WiFi and BLE measurements are presented in Figure~\ref{fig:wifi-result} and~\ref{fig:ble-result}.
+
+\subsection{WiFi Communication Results} % (fold)
+\label{sub:wifi_communication_results}
+Figure~\ref{fig:wifi-result} presents the measurement results graph of WiFi communication between iPhone and the WiFi Access Point. The value is scaled from 0 to 20.As explained in Section~\ref{sub:tracing_}, the higher the value the more the iPhone consumes the energy or, in the other way, drains up the battery. The measurement is grouped based on the measurement location, numbered from 1 to 7, with each location consists of three combination of number of beacons, 5, 10, and 20, colored in green, blue, and yellow respectively. Measurement location number 1 to 6 are located inside the house, while number 7 is located outside the house. Furthermore, Line of Sight is incorporated in odd number of measurement location, while non-Line of Sight is in even number.
+
+As the measurement location number increases, the distance between the WiFi Access Point and the iPhone increases as well. That way, such escalation of energy consumption is expected. However, such case is not found in the experiment. As seen in the measurement data number 1 to 6, the results seem to be fluctuating rather than increasing. An increase, however, is observed in the measurement number 7, in which the result exceeds 8 scale for 5 as the number of beacon. This case may be due to the location of the measurement which is outside the house. Moreover, there are also no differences of LoS and non-LoS communication. Small increasing is only observable in measurement number 3 and 4.
+
+Other than the distance between the WiFi Access Point and the iPhone, the increasing of number of beacon is also assumed to intensify the energy consumption of the iPhone. However, the results asserts differently. As seen in all location of measurement, there are no clear trends that indicate energy increase. The only measurement that points an energy increase is only measurement number 3. Most measurements show that 10 number of beacon consumes least energy, as seen in measurement number 1, 2, 4, and 6. Surprisingly, the measurement number 7 shows a decline of energy consumption as the number of beacon decreases.
+
+Summarizing those findings, there are no significant differences or trends in the WiFi energy measurement result. This situation may be caused by the distance difference that is not sufficiently far. The difference between each location is only one meter in length. Probably, significant difference could be noticed if the distance difference is increased. Furthermore, measuring the energy consumption using signal strength rather than distance can be an option.
 
 % Wifi result
 \begin{figure}
-  \caption{HTTP over WiFi measurement result.}
   \centering
     \includegraphics[width=.5\textwidth]{wifi}
+  \caption{HTTP over WiFi measurement result.}
   \label{fig:wifi-result}
 \end{figure}
+% subsection wifi_communication_results (end)
 
-% Blue tooth result
+\subsection{BLE Communication Results} % (fold)
+\label{sub:ble_communication_results}
+The BLE communication results are also presented in the same way with the WiFi communication, i.e., it is grouped to 7 groups based on location and each location consists of three combination of number of beacon.
+% Bluetooth result
 \begin{figure}
-  \caption{BLE communication measurement result.}
   \centering
     \includegraphics[width=.5\textwidth]{ble}
+  \caption{BLE communication measurement result.}
   \label{fig:ble-result}
 \end{figure}
 
+distance is selected, rather than RSSI (BLE) and signal strength (WiFi), to make the energy comparison is apple to apple.
+% subsection ble_communication_results (end)
+
+
+\subsection{Additional Results} % (fold)
+\label{sub:additional_results}
+show the percentage.
+% subsection additional_results (end)
+
+
+
+
 % WiFi and BT for high troughput
 \begin{figure}
-  \caption{HTTP over WiFi and BLE communication for high number of sensor.}
   \centering
     \includegraphics[width=.5\textwidth]{ble-vs-wifi}
+  \caption{HTTP over WiFi and BLE communication for high number of sensor.}
   \label{fig:ble-vs-wifi-result}
 \end{figure}
 
 % final result, with baseline
 \begin{figure}
-  \caption{Final energy comparison.}
   \centering
     \includegraphics[width=.5\textwidth]{baseline-ble-wifi}
+  \caption{Final energy comparison.}
   \label{fig:baseline-ble-wifi}
 \end{figure}
 
@@ -386,15 +391,6 @@ BLE device's battery can lasts up to 3 years. Thus, if the BLE device which has 
 The phone is transmitting the same amount of signal power regardless how far it is from the central -> there is no significant power consumption difference. If the central goes beyond the limit of BLE signal border, the communication simply un-do-able, i.e., the peripheral is not required to boost up the transmitting power to maintain the communication.
 There is no API to change the transmitting power of BLE in swift (AFAIK).
 
-
-The scanning that still needs human interaction
-Energy reporting which is un-exportable.
-Solution: Creating applescript to copy and paste from instruments to excel automatically.
-The bluetooth is not stable:
-It always stops at 29 packets -> solution: using resubscribing method.
-It has to be triggered by GNOME (GUI) Bluetooth management tool.
-Why it is unstable?
-Is it because of noble?
 This research is only energy consumption for sending data. Without sensing etc.
 Explain, this may differ in the real implementation, as both bluetooth and wifi may be turned on. The result might be slightly different.
 Limitation: only tested for iPhone 6 running iOS 9.3.2.
