@@ -49,8 +49,12 @@
 \renewcommand*\ttdefault{txtt}         % a nicer typewriter font
 \usepackage{cite}
 
-% For referring URLS
+% additional package
 \usepackage{hyperref}
+\usepackage{subcaption}
+\usepackage{listings}
+
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
 
 %% We encourage the use of mathptmx for consistent usage of times font
 %% throughout the proceedings. However, if you encounter conflicts
@@ -169,9 +173,9 @@ This study is based on a study from Azkario, which attempts to extract occupancy
 % add color as well, to the thin client
 % add a dashed box to indicate where does this study reside
 \begin{figure}
-  \caption{System architecture overview.}
   \centering
     \includegraphics[width=0.45\textwidth]{system-architecture}
+  \caption{System architecture overview.}
   \label{fig:system-architecture}
 \end{figure}
 
@@ -196,9 +200,9 @@ Furthermore, export feature is limited in Apple's Instrument, i.e., it does not 
 Some parameters were selected for measuring energy consumption, which are number of beacon and distance of communication. Three number of beacons are selected, which are 5, 10, and 20, because five beacons are the most common number of beacon sensed in real case, while 10 and 20 are the double size of it. Distance of communication is divided into two category, Line of Sight (LoS) and non-LoS. Each of category has three distance. The set up of the measurement experiment is shown in Figure~\ref{fig:experiment-map}.
 
 \begin{figure}
-  \caption{iPhone placement map.}
   \centering
     \includegraphics[width=0.35\textwidth]{experiment-map}
+  \caption{iPhone placement map.}
   \label{fig:experiment-map}
 \end{figure}
 
@@ -212,34 +216,98 @@ At the time of experiment, flight mode was turned on to hinder Mobile data conne
 
 \subsection{Tailored Application Development} % (fold)
 \label{sub:tailored_application_development}
-Explain a bit about why an tailored application was used, compared with other research that used standard email, browsing, etc.
-Because we would like to test specifically for smart home application, with Azkario's architecture.
+Unlike~\cite{Balasubramanian2009} that uses common tasks in mobile phone, such as Internet browsing and emailing, a tailored application that meets the requirements described in Section~\ref{ssub:measurement_parameters}. This tailored application allows controlled environment that may focuses the energy measurement into several criteria, specifically for smart building application, with Azkario's architecture.
 
-Changed raw username (utf8) to userid (UInt32)
-Changed proximity type from Double to Float
-Added random label to indicate a particular timestamp for a ceratain data packet
+The application is written in Swift, which is the new general-purpose programming language developed by Apple Inc. Xcode, with Storyboard, is used to develop the application, with Git as the source code repository. A dummy occupancy data is sent to the server each time, as this study imitates the real implementation of user occupancy but not necessarily involves the sensing part. Each communication history is also saved using NSCoding in iOS for the sake of logging. The code is publicly stored in Github.com and is accessible at \url{https://github.com/gtrdp/cs-rug-internship}.
 
-The application is written in Swift, which is the new general-purpose programming language developed by Apple Inc. Xcode, with Storyboard, is used to develop the application, with Git as the source code repository.
+% screenshot of the app
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.22\textwidth}
+        \includegraphics[width=\textwidth]{setting-screen}
+        \caption{Setting screen.}
+        \label{fig:setting-screen}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.22\textwidth}
+        \includegraphics[width=\textwidth]{running-screen}
+        \caption{Running screen.}
+        \label{fig:running-screen}
+    \end{subfigure}
+    \caption{Screenshots example of the application showing a view for setting up the experiment (a) and a view showing the experiment progress (b).}\label{fig:screenshot-example}
+\end{figure}
 
-A dummy occupancy data is sent to the server, as this study imitates the real implementation of user occupancy but not necessarily involves the sensing part.
-
-History is also saved using NSCoding in iOS.
+Figure~\ref{fig:screenshot-example} denotes two example of the application screenshots of the tailored application. As seen in Figure~\ref{fig:setting-screen}, the user could setting what communication method, the destination server, time interval (if needed), and number of beacon. When the measurement experiment is running, a progress screen is shown to the user that indicates the number of sent packets and current experiment runtime, as denoted in Figure~\ref{fig:running-screen}.
 
 % Wifi
 \subsubsection{WiFi Communication Scheme} % (fold)
 \label{ssub:wifi_communication_scheme}
-Alamofire library\footnote{\url{https://github.com/Alamofire/Alamofire}} is used to cope the HTTP communication.
+One of the communication method in the application is the WiFi communication. In this study, Alamofire library\footnote{\url{https://github.com/Alamofire/Alamofire}} is used to handle the HTTP communication as it encapsulates HTTP communication for easier and elegant use. A JSON object is sent via HTTP POST method in each time interval, i.e., 1000 ms, that contains occupancy data, as shown in Listing~\ref{lst-dummy-json}. The dummy data is derived from the real implementation of Azkario's architecture.
 
 % give an example of dummy data in JSON
+\begin{lstlisting}[caption=Example of dummy data in JSON., label=lst-dummy-json]
+{
+  "nearby_data":
+    [
+      {"data":{"proximity_zone":"NEAR",
+               "proximity_distance":1.8456140098254021,
+               "rssi":-81},
+        "minor":1,
+        "major":2222
+      },
+      {"data":{"proximity_zone":"FAR",
+               "proximity_distance":3.171936276300526,
+               "rssi":-87},
+       "minor":2,
+       "major":9999
+      }
+    ],
+  "userId":"pratama"
+}
+\end{lstlisting}
+
+Listing~\ref{lst-dummy-json} shows a JSON object that consists of two nearby beacons, denoted in JSON array, that is sensed by user with ID \texttt{pratama}. Each nearby data is composed of proximity data, which indicates the distance in meter and the signal strength, and beacon data, which is denoted by the major and minor number of beacon~\cite{AppleInc.2014}. If more beacons are set in the setting view, see Figure~\ref{fig:setting-screen}, \texttt{nearby\_data} object will have more element in its JSON array.
+
+Moreover, a HTTP server is also built by using Play Scala framework in order to receive occupancy data. No logic is implemented in this HTTP server as this server only reads dispatched data and shows the reception timestamp.
+
+% also explain about the server
 
 % subsubsection wifi_communication_scheme (end)
 
 % BLE
 \subsubsection{BLE Communication Scheme} % (fold)
 \label{ssub:ble_communication_scheme}
-Bluetooth communication.
-Explain a bit about BLE communication scheme.
-And alleges that this study use subscription/notification method.
+There are two main actors in BLE communication, the central and peripheral.  A peripheral is basically the device that owns the data, while a central is a device that uses the information presented by the peripheral to perform some desired jobs. Referring to the classic client-server architecture, a peripheral can be seen as a server that has the data and a central is the client who consumes the data. An illustration depicting central and peripheral device is shown in Figure~\ref{fig:central-peripheral}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.3\textwidth]{central-peripheral}
+  \caption{Central and peripheral device illustration.}
+  \label{fig:central-peripheral}
+\end{figure}
+
+% brief introduction of BLE protocol
+The way two BLE devices do data transmission is defined in Generic Attribute Profile (GATT)~\cite{BluetoothSpecialInterestGroup2014}. In this framework, GATT introduces concepts called Services and Characteristics. It utilizes a generic data protocol, namely Attribute Protocol (ATT), which is used to store Services, Characteristics and other related data.
+
+According to~\cite{BluetoothSpecialInterestGroup2014}, there four main methods to make use of BLE communication from central to peripheral that are defined in Characteristics Value Declaration, namely read, write, indication, and notification. Read and write characteristics are self-explanatory, i.e., it is used to read or write data from or to the peripheral. Indication and notification are the methods for pushing the data to central, which is good to send continuous data, e.g., heart rate. The important difference is indication characteristic requires an application level acknowledgment for every transmission of data. On the other hand, notification characteristics does not manage the acknowledgments by the application.
+
+% why notification is used and how to use it (subscription)
+In this study, the iPhone, which provides occupancy data, serves as the peripheral, while the thin client acts as the central. Notification characteristic is used in this study because of its simplicity. Thus, the peripheral will advertise its characteristics with Unique User ID (UUID)~\cite{BluetoothSpecialInterestGroup2014} and the central will subscribe for this characteristics in order to get updated for notification.
+
+% BLE packets
+A dummy data is also sent in BLE communication, with the maximum user data in packet is 20 bytes, as GATT protocol is used. This packet is relatively small to send occupancy data shown in Listings~\ref{lst-dummy-json}. That way, special format of data that can store all necessary data and fits with the constrains is created, as shown in Figure~\ref{fig:ble-packet-structure}. In this format, 20 bytes of data represents a single beacon. Thus, if more than one beacon has to be transmitted, the peripheral will transmit the packets multiple times, e.g., 10 times of transmission for 10 beacons.
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.51\textwidth]{ble-packet-structure}
+  \caption{BLE packet structure consisting of occupancy data and user ID.}
+  \label{fig:ble-packet-structure}
+\end{figure}
+
+% explaining about the packet
+
+% technical details
 
 Initially Ian Harvey's bluepy library\footnote{\url{https://github.com/IanHarvey/bluepy}}, which is a Python interface to Bluetooth LE on Linux, was used. However, it turned out that it does not work to handle the notification in BLE.
 
@@ -255,19 +323,11 @@ Changed raw username (utf8) to userid (UInt32)
 Changed proximity type from Double to Float
 Added random label to indicate a particular timestamp for a ceratain data packet
 
-The application is written in Swift, which is the new general-purpose programming language developed by Apple Inc. Xcode, with Storyboard, is used to develop the application, with Git as the source code repository.
-
-A dummy occupancy data is sent to the server, as this study imitates the real implementation of user occupancy but not necessarily involves the sensing part.
-
 Bluetooth in noble is turned out to be unstable, it always loses connection when it reached 29th data packet. As a solution, the central application always reconnect to the peripheral when disconnected.
 
 Bluetooth connection requires manual trigger to start scanning nearby BLE devices. In order to do the experiment efficiently, beside SSH server that is used to access the thin client remotely. 
 
-History is also saved using NSCoding in iOS.
-
 [give an image depicting central and peripheral communication]
-
-The code is publicly stored in Github.com and is accessible at \url{https://github.com/gtrdp/cs-rug-internship}.
 
 Play Scala web server and Bluetooth server.
 
@@ -312,6 +372,8 @@ Play Scala web server and Bluetooth server.
     \includegraphics[width=.5\textwidth]{baseline-ble-wifi}
   \label{fig:baseline-ble-wifi}
 \end{figure}
+
+In order to inspect the effect of packet size, the number of sensors are increased significantly. That way, the energy consumption is assumed to be increased as well.
 
 Explain in detail first, separately for bluetooth and wifi.
 Then explain the comparison of bluetooth and wifi and the baseline.
