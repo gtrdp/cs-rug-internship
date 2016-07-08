@@ -199,6 +199,7 @@ Furthermore, export feature is limited in Apple's Instrument, i.e., it does not 
 % what are the parameters? and why?
 Some parameters were selected for measuring energy consumption, which are number of beacon and distance of communication. Three number of beacons are selected, which are 5, 10, and 20, because five beacons are the most common number of beacon sensed in real case, while 10 and 20 are the double size of it. Distance of communication is divided into two category, Line of Sight (LoS) and non-LoS. Each of category has three distance. The set up of the measurement experiment is shown in Figure~\ref{fig:experiment-map}.
 
+[change the graph, so that LoS and non-LoS are gonna be highlighted differently]
 \begin{figure}
   \centering
     \includegraphics[width=0.35\textwidth]{experiment-map}
@@ -208,6 +209,9 @@ Some parameters were selected for measuring energy consumption, which are number
 
 % where was it carried out?
 The experiment was carried out in a Planetenlaan flat, Groningen, which has a living/bedroom, a kitchen, a toilet and shower room, and a storage room, as shown in Figure~\ref{fig:experiment-map}. The WiFi Access Point and the thin client is located in the right of the apartment next to the wall. There are seven positions of measurement in this case, in which even number indicates non-LoS, e.g., 2, 4, and 6, while odd number indicates LoS, e.g., 1, 3, and 5. The last position, 7, is added to measure the effect when the mobile phone is located outside the apartment. During the experiment, energy consumption is recorded when the mobile phone is positioned to each of the locations. Each experiment is measured in 3 minutes time interval.
+
+[although the communications are different: BLE->iPhone to thin client; WiFi->iPhone to Access Point, both of the end points are located closely together]
+[also add image about this]
 
 % at mobile phone, what was done
 At the time of experiment, flight mode was turned on to hinder Mobile data connection that may possibly affect energy consumption.  Background application may affect energy measuring result. Background App refresh in iOS is also disabled to prevent significant impact of background processes. When measuring WiFi communication, the Internet on the WiFi Access Point is disabled to prevent any running background application from fetching data from Internet through WiFi connection. Furthermore, only one means of communication is turned on during experiment, i.e., when recording HTTP over WiFi communication, WiFi is switched on and Bluetooth is switched off and vice versa.
@@ -341,7 +345,8 @@ Summarizing those findings, there are no significant differences or trends in th
 
 \subsection{BLE Communication Results} % (fold)
 \label{sub:ble_communication_results}
-The BLE communication results are also presented in the same way with the WiFi communication, i.e., it is grouped to 7 groups based on location and each location consists of three combination of number of beacon.
+The BLE communication results, shown in Figure~\ref{fig:ble-result}, are also presented in the same way with the WiFi communication, i.e., it is grouped to 7 groups based on location, in which each location consists of three combination of number of beacon.
+
 % Bluetooth result
 \begin{figure}
   \centering
@@ -349,6 +354,15 @@ The BLE communication results are also presented in the same way with the WiFi c
   \caption{BLE communication measurement result.}
   \label{fig:ble-result}
 \end{figure}
+
+The results of BLE energy consumption measurements also reveals slightly similar result with the WiFi energy measurements results. The results are also fluctuated and there are no such trends that marks out increasing energy consumption as the distance between iPhone and thin client increases. Looking at the LoS (odd number) and non-LoS communication, no significant differences are observable. Surprisingly, non-LoS communication in number 6 is much lower than the LoS counterpart, number 5. Unlike the WiFi counterpart, the last results of measurement, marked by number 7, does not significantly differ with the other measurement location.
+
+No compelling trends or differences are observed, in terms of energy consumption for each number of beacon. Such relatively small increasing is only noticeable in measurement number 3, while small decreasing is observable in measurement number 1 and 4. The other measurements reveals fluctuating values. However, those disparities are not somewhat significant, i.e., not more than scale 2. These findings are somewhat similar with those found in WiFi measurement result.
+
+In conclusion, ...
+Summarizing those findings, there are no significant differences or trends in the WiFi energy measurement result. This situation may be caused by the distance difference that is not sufficiently far. The difference between each location is only one meter in length. Probably, significant difference could be noticed if the distance difference is increased. Furthermore, measuring the energy consumption using signal strength rather than distance can be an option.
+
+The highest value is not more than 6, which much lower than the highest value of 
 
 distance is selected, rather than RSSI (BLE) and signal strength (WiFi), to make the energy comparison is apple to apple.
 % subsection ble_communication_results (end)
@@ -393,7 +407,7 @@ There is no API to change the transmitting power of BLE in swift (AFAIK).
 
 This research is only energy consumption for sending data. Without sensing etc.
 Explain, this may differ in the real implementation, as both bluetooth and wifi may be turned on. The result might be slightly different.
-Limitation: only tested for iPhone 6 running iOS 9.3.2.
+
 % section results_and_discussion (end)
 
 \section{Conclusion} % (fold)
@@ -403,6 +417,9 @@ We have presented that Bluetooth is more energy efficient than Wi-Fi.
 Wifi may still be a consideration because usually mobilephone are also using wifi extensively.
 
 Some drawbacks may persist if bluetooth is implemented, such as instability. Other implementation than what is impelemented here must be looked for.
+
+Limitation: only tested for iPhone 6 running iOS 9.3.2.
+Brightness is one factor.
 % section conclusion (end)
 
 
