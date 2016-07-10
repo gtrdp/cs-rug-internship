@@ -249,7 +249,7 @@ Figure~\ref{fig:screenshot-example} denotes two example of the application scree
 One of the communication method in the application is the WiFi communication. In this study, Alamofire library\footnote{\url{https://github.com/Alamofire/Alamofire}} is used to handle the HTTP communication as it encapsulates HTTP communication for easier and elegant use. A JSON object is sent via HTTP POST method in each time interval, i.e., 1000 ms, that contains occupancy data, as shown in Listing~\ref{lst-dummy-json}. The dummy data is derived from the real implementation of Azkario's architecture.
 
 % give an example of dummy data in JSON
-\begin{lstlisting}[caption=Example of dummy data in JSON., label=lst-dummy-json]
+\begin{lstlisting}[caption=Example of dummy occupancy data in JSON., label=lst-dummy-json]
 {
   "nearby_data":
     [
@@ -395,17 +395,13 @@ Previously, detailed results of energy measurements with arranged parameters for
 \begin{figure}
   \centering
     \includegraphics[width=.5\textwidth]{baseline-ble-wifi}
-  \caption{Final energy comparison.}
+  \caption{The average of energy consumption for both BLE and WiFi along with baseline energy consumption as a comparison.}
   \label{fig:baseline-ble-wifi}
 \end{figure}
 
-According to the measurements, baseline energy consumption, in average, is nearly 2.15 out of 20. This value means that the iPhone will have 18,85 hours of battery life. As the iPhone is totally passive, i.e., no applications running and all means of communication are switced off, this value is quite surprisingly high. However, the standard deviation is also quite high, which is 2.6.
+Based on the measurements, the baseline energy consumption is nearly 2.15 out of 20 in average. According to the scale conversion in Section~\ref{sub:tracing_}, this value means that the iPhone will have 18 hours and 51 minutes of battery life when set in the baseline configuration. As the iPhone is totally passive, i.e., no applications are running and all means of communication are switched off, this durability is somewhat low. However, the standard deviation is also fairly high, which is counted 2.6.
 
-Figure~\ref{fig:baseline-ble-wifi} also presents the average of BLE and WiFi energy consumption. It is . This value indicates that the iPhone will have of battery life in BLE and in WiFi. Based on this measurements, BLE is proven to be 29.97\% more energy efficient than WiFi. This result is may limited only to smart building application.
-
-Then explain the comparison of bluetooth and wifi and the baseline.
-
-show the percentage of efficiency.
+Figure~\ref{fig:baseline-ble-wifi} also presents the average value of BLE and WiFi energy consumption, which are 4.36 and 6.22 respectively. This value indicates that the iPhone will have 16 hours and 38 minutes of battery life in BLE communication and 14 hours and 46 minutes in WiFi. Based on this measurements, BLE is proven to be 29.97\% more energy efficient than WiFi. This result is may limited only to smart building application because the metrics and the parameters used in this study are devised for smart building application.
 
 % subsection additional_results (end)
 
@@ -414,23 +410,25 @@ show the percentage of efficiency.
 \section{Conclusion} % (fold)
 \label{sec:conclusion}
 % is it ok to add more findings or insights in conclusion, which are not presented in the previous chapters?
-We have presented that Bluetooth is more energy efficient than Wi-Fi.
+Bluetooth Low Energy (BLE) and WiFi are the most popular means of communication in current modern smart phones. As most of the recent smart phones, ranging from the entry level to the top class phone, own that, such opportunities to make use of them for solving problems in smart buildings are present, for instance, the application of BLE and WiFi to solve occupancy problems. This study has presented the comparison of energy consumption in BLE and WiFi communication, specifically for the case of occupancy detection in smart buildings. This study only focuses on the energy consumption of the transmission of occupancy data from the user's mobile phone to the communication end points, e.g., WiFi Access Point or BLE central.
 
-Wifi may still be a consideration because usually mobilephone are also using wifi extensively.
+% how to achieve that
+In order to investigate the energy consumption in transmitting occupancy data, some parameters are designed, such as the number of beacon sensed and the distance between those communication end points with Line of Sight and non-Line of Sight communication. A tailored application is also developed to support the measurement using those parameters.As this study only focuses on transmitting the data, no sensing activity is performed and dummy occupancy data is sent.
 
-Some drawbacks may persist if bluetooth is implemented, such as instability. Other implementation than what is impelemented here must be looked for.
+% what is the result
+The result alleges that BLE is actually 29.97\% more energy efficient than WiFi to transmit occupancy data from user's smart phone to the communication endpoints. According to the measurement statistics, the smart phone has 16 hours and 38 minutes of battery life when running on BLE communication scheme and 14 hours and 46 minutes in WiFi communication. However, no significant effect are observed on parameter change.
+
+% some discussion for drawbacks or comments or future works
+Instability was observed during BLE experiment that might be caused by the BLE central library's bug or some code smells in the central applications.
+
+In the experiment, brightness was proven to be one of significant source of energy loss as it consumes much energy to light up the screen.
 
 Limitation: only tested for iPhone 6 running iOS 9.3.2.
 Brightness is one factor.
 
-The phone is transmitting the same amount of signal power regardless how far it is from the central -> there is no significant power consumption difference.
-There is no API to change the transmitting power of BLE in swift (AFAIK).
+Wifi may still be a consideration because usually mobilephone are also using wifi extensively.
+Explain the pros and cons regarding the implementation of Bluetooth as replacement of WiFi. A protocol must be devised to prevent bottleneck in accessing Bluetooth.
 
-In the experiment, brightness was proven to be one of significant source of energy loss as it consumes much energy to light up the screen.
-
-BLE device's battery can lasts up to 3 years. Thus, if the BLE device which has small mAh of power can last up to 3 years, a mobile phone which has way more power than that must be able to last longer.
-
-Explain the pros and cons regarding the implementation of Bluetooth as replacement of WiFi. A protocol must be devised to prevent bottleneck in accessing Bluetooth. 
 % section conclusion (end)
 
 
