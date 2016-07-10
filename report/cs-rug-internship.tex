@@ -197,13 +197,12 @@ Furthermore, export feature is limited in Apple's Instrument, i.e., it does not 
 \subsubsection{Measurement Parameters} % (fold)
 \label{ssub:measurement_parameters}
 % what are the parameters? and why?
-Some parameters were selected for measuring energy consumption, which are number of beacon and distance of communication. Three number of beacons are selected, which are 5, 10, and 20, because five beacons are the most common number of beacon sensed in real case, while 10 and 20 are the double size of it. Distance of communication is divided into two category, Line of Sight (LoS) and non-LoS. Each of category has three distance. The set up of the measurement experiment is shown in Figure~\ref{fig:experiment-map}.
+Some parameters were selected for measuring energy consumption, which are number of beacon and distance of communication. Three number of beacons are selected, which are 5, 10, and 20, because five beacons are the most common number of beacon sensed in real case, while 10 and 20 are the double size of it. Distance of communication is divided into two category, Line of Sight (LoS) and non-LoS. Line of Sight is a communication in which both communication endpoints can see each other without obstacle, while non-LoS means otherwise. Each of category has three distance. The set up of the measurement experiment is shown in Figure~\ref{fig:experiment-map}.
 
-[change the graph, so that LoS and non-LoS are gonna be highlighted differently]
 \begin{figure}
   \centering
-    \includegraphics[width=0.35\textwidth]{experiment-map}
-  \caption{iPhone placement map.}
+    \includegraphics[width=0.37\textwidth]{experiment-map}
+  \caption{A floor plan showing the location where the measurement takes place  and where the WiFi AP and BLE central are placed. Dark gray indicates Line of Sight communication (LoS), while light gray indicates non-LoS communication.}
   \label{fig:experiment-map}
 \end{figure}
 
@@ -359,32 +358,40 @@ The results of BLE energy consumption measurements also reveals slightly similar
 
 No compelling trends or differences are observed, in terms of energy consumption for each number of beacon. Such relatively small increasing is only noticeable in measurement number 3, while small decreasing is observable in measurement number 1 and 4. The other measurements reveals fluctuating values. However, those disparities are not somewhat significant, i.e., not more than scale 2. These findings are somewhat similar with those found in WiFi measurement result.
 
-In conclusion, ...
-Summarizing those findings, there are no significant differences or trends in the WiFi energy measurement result. This situation may be caused by the distance difference that is not sufficiently far. The difference between each location is only one meter in length. Probably, significant difference could be noticed if the distance difference is increased. Furthermore, measuring the energy consumption using signal strength rather than distance can be an option.
+In conclusion, no significant differences or trends in the BLE energy consumption measurement are found. Although a small gain from location 2 to location 3 is observed it is not sufficiently substantial. The same cause as the WiFi measurement might be the reason of these findings, which is insignificant measurement difference between one location to another, as these measurement are also based on the same measurement locations. Measuring using signal strength rather than communication distance would be an option to make the measurement yields expected results. However, this would lead to unbalanced comparison since WiFi signal strength is normally measured using dBm, while BLE is using RSSI.
 
-The highest value is not more than 6, which much lower than the highest value of 
-
-distance is selected, rather than RSSI (BLE) and signal strength (WiFi), to make the energy comparison is apple to apple.
+% The highest value is not more than 6, which much lower than the highest value of 
 % subsection ble_communication_results (end)
 
 
 \subsection{Additional Results} % (fold)
 \label{sub:additional_results}
-show the percentage.
-% subsection additional_results (end)
-
-
-
+In order to reveal more insights from the energy consumption comparison, the number of beacons are increased significantly for both of the communication methods. That way, the effect of packet size can be determined and a significant increase is expected to be present. Early testing revealed that it took roughly 4ms to send each BLE packet, i.e., sending 200 BLE packets would take around 800ms, which is lower than the sending interval (1000ms). Thus, current measurement uses 100 and 200 as the number of beacons because that is the limit to perform the communication without losing some packets.  Location 7 is selected to perform this measurement with the same parameters for the other configuration. The result is shown in Figure~\ref{fig:high-throughput}.
 
 % WiFi and BT for high troughput
 \begin{figure}
-  \centering
-    \includegraphics[width=.5\textwidth]{ble-vs-wifi}
-  \caption{HTTP over WiFi and BLE communication for high number of sensor.}
-  \label{fig:ble-vs-wifi-result}
+    \centering
+    \begin{subfigure}[b]{0.13\textwidth}
+        \includegraphics[width=\textwidth]{ble-high-tp}
+        \caption{BLE energy consumption.}
+        \label{fig:ble-high-tp}
+    \end{subfigure}
+    ~\quad %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.13\textwidth}
+        \includegraphics[width=\textwidth]{wifi-high-tp}
+        \caption{WiFi energy consumption.}
+        \label{fig:wifi-high-tp}
+    \end{subfigure}
+    \caption{Measurement result with 100 and 200 of beacons data for both BLE (1) and WiFi (2), measured in location 7.}
+    \label{fig:high-throughput}
 \end{figure}
 
+As can be concluded from Figure~\ref{fig:high-throughput}, BLE communication consumes less energy than WiFi communication with roughly around 2 scale difference. However, there is no clear effect on the increase of the number of beacon in the results. The energy consumption slightly decreases by 0.2 in BLE communication, while WiFi communication energy consumption increases by 0.63. The change is relatively small, however. Thus, a conclusion can be drawn saying that there is no significant effect of the increase of number of beacon. Probably, the increase is quite small in size, i.e., bytes, so this small difference is actually consuming the roughly similar amount of energy, which leads to these results.
+
 % final result, with baseline
+Previously, detailed results of energy measurements with arranged parameters for both WiFi and BLE have been presented. However, no direct comparison for both main communication is shown. In order to compare the energy consumption directly, a baseline energy consumption is introduced. It is a measurement in which no unnecessary processes or communications present in the iPhone. That way, all of communication means are switched off, e.g., 4G, WiFi, and Bluetooth, and all of installed applications are halted. Some background processes, however, are still able to interfere the experiment by consuming some energy unexpectedly, although it would be in a small effect. As previous measurements, this experiment is also carried out within 3 minutes of time frame and repeated for 10 times. The result is depicted in Figure~\ref{fig:baseline-ble-wifi}.
+
 \begin{figure}
   \centering
     \includegraphics[width=.5\textwidth]{baseline-ble-wifi}
@@ -392,26 +399,21 @@ show the percentage.
   \label{fig:baseline-ble-wifi}
 \end{figure}
 
-In order to inspect the effect of packet size, the number of sensors are increased significantly. That way, the energy consumption is assumed to be increased as well.
+According to the measurements, baseline energy consumption, in average, is nearly 2.15 out of 20. This value means that the iPhone will have 18,85 hours of battery life. As the iPhone is totally passive, i.e., no applications running and all means of communication are switced off, this value is quite surprisingly high. However, the standard deviation is also quite high, which is 2.6.
 
-Explain in detail first, separately for bluetooth and wifi.
+Figure~\ref{fig:baseline-ble-wifi} also presents the average of BLE and WiFi energy consumption. It is . This value indicates that the iPhone will have of battery life in BLE and in WiFi. Based on this measurements, BLE is proven to be 29.97\% more energy efficient than WiFi. This result is may limited only to smart building application.
+
 Then explain the comparison of bluetooth and wifi and the baseline.
 
-Time to send each BLE packet in this case is around 4ms. If the number of sensor is more that the threshold, some data will be lost.
+show the percentage of efficiency.
 
-In the experiment, brightness was proven to be one of significant source of energy loss as it consumes much energy to light up the screen.
-
-BLE device's battery can lasts up to 3 years. Thus, if the BLE device which has small mAh of power can last up to 3 years, a mobile phone which has way more power than that must be able to last longer.
-The phone is transmitting the same amount of signal power regardless how far it is from the central -> there is no significant power consumption difference. If the central goes beyond the limit of BLE signal border, the communication simply un-do-able, i.e., the peripheral is not required to boost up the transmitting power to maintain the communication.
-There is no API to change the transmitting power of BLE in swift (AFAIK).
-
-This research is only energy consumption for sending data. Without sensing etc.
-Explain, this may differ in the real implementation, as both bluetooth and wifi may be turned on. The result might be slightly different.
+% subsection additional_results (end)
 
 % section results_and_discussion (end)
 
 \section{Conclusion} % (fold)
 \label{sec:conclusion}
+% is it ok to add more findings or insights in conclusion, which are not presented in the previous chapters?
 We have presented that Bluetooth is more energy efficient than Wi-Fi.
 
 Wifi may still be a consideration because usually mobilephone are also using wifi extensively.
@@ -420,6 +422,15 @@ Some drawbacks may persist if bluetooth is implemented, such as instability. Oth
 
 Limitation: only tested for iPhone 6 running iOS 9.3.2.
 Brightness is one factor.
+
+The phone is transmitting the same amount of signal power regardless how far it is from the central -> there is no significant power consumption difference.
+There is no API to change the transmitting power of BLE in swift (AFAIK).
+
+In the experiment, brightness was proven to be one of significant source of energy loss as it consumes much energy to light up the screen.
+
+BLE device's battery can lasts up to 3 years. Thus, if the BLE device which has small mAh of power can last up to 3 years, a mobile phone which has way more power than that must be able to last longer.
+
+Explain the pros and cons regarding the implementation of Bluetooth as replacement of WiFi. A protocol must be devised to prevent bottleneck in accessing Bluetooth. 
 % section conclusion (end)
 
 
