@@ -169,9 +169,7 @@ As a term project, this study was performed in three consecutive months. The mai
 \label{sub:system_architecture}
 This study is based on a study from Azkario, which attempts to extract occupancy data in smart building. This system consist of BLE beacons, which are placed accordingly in each room, a user's mobile phone, and a sensing infrastructure, which consists of WiFi infrastructure and sensing server. Currently, the user's mobile phone uses HTTP over WiFi to send occupancy data to the server, while Bluetooth is only used in mobile phone to or from BLE beacons. The Bluetooth communication in this study is intended to replace the mobile phone to server that is currently implemented using HTTP over WiFi. Briefly, the system architecture is depicted in Figure~\ref{fig:system-architecture}. 
 
-% To-Do add the sensing infrastructure on the right hand side
-% add color as well, to the thin client
-% add a dashed box to indicate where does this study reside
+% try to move this not on the first page
 \begin{figure}
   \centering
     \includegraphics[width=0.45\textwidth]{system-architecture}
@@ -419,23 +417,17 @@ In order to investigate the energy consumption in transmitting occupancy data, s
 The result alleges that BLE is actually 29.97\% more energy efficient than WiFi to transmit occupancy data from user's smart phone to the communication endpoints. According to the measurement statistics, the smart phone has 16 hours and 38 minutes of battery life when running on BLE communication scheme and 14 hours and 46 minutes in WiFi communication. However, no significant effect are observed on parameter change.
 
 % some discussion for drawbacks or comments or future works
-Instability was observed during BLE experiment that might be caused by the BLE central library's bug or some code smells in the central applications.
+Some limitations and drawbacks, however, are still encountered. For instance, this study is only tested for iPhone 6 that runs iOS 9.3.2 as its operating system. Thus, different outcome may be resulted if the experiment is carried out in different mobile phone. Furthermore, instability was also observed during BLE experiment that might be caused by the BLE central library's bug or some code smells in the central applications. Surprisingly, in the experiment, brightness was proven to be one of significant source of energy loss as it consumes much energy to light up the screen during the experiment.
 
-In the experiment, brightness was proven to be one of significant source of energy loss as it consumes much energy to light up the screen.
-
-Limitation: only tested for iPhone 6 running iOS 9.3.2.
-Brightness is one factor.
-
-Wifi may still be a consideration because usually mobilephone are also using wifi extensively.
-Explain the pros and cons regarding the implementation of Bluetooth as replacement of WiFi. A protocol must be devised to prevent bottleneck in accessing Bluetooth.
+BLE has a promising advantage if it is implemented as a replacement for WiFi as it has better energy consumption efficiency. If BLE is implemented, some protocol of BLE sensing is required to prevent BLE bottleneck as both sensing and transmitting events will probably occur in the same time. Further research may be aimed to inspect the best timing for sensing and transmitting the data or to combine this implementation with real sensing activities.
 
 % section conclusion (end)
 
 
 %% if specified like this the section will be committed in review mode
-\acknowledgments{
-The authors wish to thank A, B, C. This work was supported in part by
-a grant from XYZ.}
+% \acknowledgments{
+% The authors wish to thank A, B, C. This work was supported in part by
+% a grant from XYZ.}
 
 \bibliographystyle{abbrv-doi-hyperref-narrow}
 \bibliography{cs-rug-internship.bib}
