@@ -138,7 +138,11 @@ Context awareness has been an interesting topic recently. Its ability to infer w
 \firstsection{Introduction}
 
 \maketitle
-Smart building has been an interesting topic of research recently. One portion of research in smart home is occupancy detection, which aims to detect whether a person is present in a particular location. Its importance to detect user presence is crucial in the building energy management, since the building can manage energy allocation efficiently regarding how many persons are present.
+Smart building has been an interesting topic of research. Smart building aims to create a smart environment in a building which can adapt with the user needs. One portion of research in smart home is occupancy detection, which aims to detect whether a person is present in a particular location. Its importance to detect user presence is crucial in the building energy management, since the building can manage energy allocation efficiently regarding how many persons are present.
+
+Mobile devices consider battery to be limiting resource.
+Smart building is proposed to tackle the high wasteful energy consumption in a building, without sacrificing the level of comfort.
+Implementing the occupants' mobile phone as a sensor has been proposed as a method to tackle this problem \cite{Conte2014}.
 
 Several methods have been proposed to overcome the occupancy detection. One of them makes use of Bluetooth Low Energy (BLE) beacon, as the beacon is useful because it always transmitting a unique data packet that indicates certain location information. Assuming that the users always bring mobile phone with them, an application can be installed on the mobile phone to scan a particular beacon, so that the application knows where currently the user is, then the application sends the data to the central server. The data can be analyzed later on to detect user presence.
 
@@ -153,6 +157,32 @@ The rest of this report is structured as follows. Section~\ref{sec:related_work}
 \section{Related Work} % (fold)
 \label{sec:related_work}
 cite all the related work properly that you base your own work on
+- background
+- method
+- findings / results
+
+Several works with regard to energy consumption investigation on mobile phones have been found, with or without a relation with smart building research topic. Most works that analyze the energy consumption deal with particular issues, for instance quantification of the consumption of components other than network interfaces, e.g., CPU, memory, and screen, and measurement of battery discharge state through available APIs.
+
+A research \cite{Balasubramanian2009} tried to study the implication of energy consumption in mobile phones with focusing on the three widespread networking technologies: 3G, GSM, and WiFi and using common mobile applications as the parameters. This study created model of energy consumption based on the measurements and developed TailEnder, a protocol that reduces energy consumption of common mobile applications.
+
+Algorithmic effect in energy consumption is also investigated in \cite{Jain2005}. It tested based on switching complexity and randomness, which have been tested in preliminary experiments.
+
+A detailed anatomy of the per-packet consumption of 802.11 devices is presented in \cite{Garcia-Saavedra2012}.
+
+Another study also created a theoretical model for power consumption estimation of multiple components and applications based on 802.11 \cite{Marcu2011}.
+
+\cite{Vergara2013} compared Message Queuing Telemetry Transport Protocol (MQTT) with HTTP as a protocol to share location in mobile phones. MQTT offers better quality of user experience at comparable bandwidth and energy expenses.
+
+More energy consumption analyses on GUI components and their usages are carried out in \cite{Bernal-cardenas2015}. Its approach generates customized color palettes, which is acceptable by the questionnaire participants, that consumes 42\% less energy on average than the original.
+
+A study \cite{Corna2015} alleges that using Bluetooth based architecture obtained energy saving of 15\%. \cite{Corna2015} also proposed a solution of occupancy detection using BLE beacons which is slightly similar with the architecture in this study. However, the technological deployment is different, this study utilizes Android devices.
+
+Interestingly, \cite{Oliver2010} studies the diversity in mobile phone energy consumption. It uses blackberry and with over 1050 years of cumulative data. The results show three distinct user types: opportunistic chargers, light-consumers, and nighttime charges.
+
+802.11n standard is also compared in low level, between the implementation in desktop/laptop and mobile phone, in \cite{Warty2012}. The result shows that Rx power consumption increases significantly with the bitrate.
+
+A similar method to this work, namely BLUESENTINEL, is proposed to tackle occupancy detection problem in a smart building in \cite{Conte2014}. It uses BLE beacons and occupants' mobile phone, as a sensor, to gather occupancy data. However, this work does not incorporate BLE as means to transfer occupancy data to server.
+
 
 discuss why it is relevant and what is similar or different to your own work
 use images (from other papers) to illustrate the related work, credit the authors with a reference in the image caption
@@ -188,6 +218,8 @@ Energy consumption measurement or tracing is the core of this study. It is done 
 
 % how to measure
 Apple's Instrument application in Mac OS X was used to import the logged energy measurement in iPhone, as done in~\cite{Conte2014}. It does not show the measurement result in standard energy measurement format, e.g., mAh, but it shows that in its own format, which is scaled from 0 to 20. Each increment in the scale costs an hour of battery life~\cite{Lucchesi2014}. Thus, phone running at level 1/20 will have 20 hours of battery life, while phone running at level 20/20 will have only 1 hour of battery life.
+
+[Add image about the deployment]
 
 Furthermore, export feature is limited in Apple's Instrument, i.e., it does not support energy consumption log exporting to other commonly used format, e.g., csv or xls file. However, manual copying and pasting on each row is still supported. An Apple script was used to automate the copying and pasting the energy log to Excel for further processing. However, it was also not stable. It encountered several errors during its runtime, which were caused by OS instability, and restarting the process was only way to overcome that.
 % probably put a pseudo code, if it has some logic
@@ -420,6 +452,8 @@ The result alleges that BLE is actually 29.97\% more energy efficient than WiFi 
 Some limitations and drawbacks, however, are still encountered. For instance, this study is only tested for iPhone 6 that runs iOS 9.3.2 as its operating system. Thus, different outcome may be resulted if the experiment is carried out in different mobile phone. Furthermore, instability was also observed during BLE experiment that might be caused by the BLE central library's bug or some code smells in the central applications. Surprisingly, in the experiment, brightness was proven to be one of significant source of energy loss as it consumes much energy to light up the screen during the experiment.
 
 BLE has a promising advantage if it is implemented as a replacement for WiFi as it has better energy consumption efficiency. If BLE is implemented, some protocol of BLE sensing is required to prevent BLE bottleneck as both sensing and transmitting events will probably occur in the same time. Further research may be aimed to inspect the best timing for sensing and transmitting the data or to combine this implementation with real sensing activities.
+
+Possible interference may disturb the connection if multiple Bluetooth devices are running simultaneously\cite{Conte2014}.
 
 % section conclusion (end)
 
