@@ -142,7 +142,7 @@ Smart building has been an interesting topic of research. Smart building aims to
 
 Mobile devices consider battery to be limiting resource.
 Smart building is proposed to tackle the high wasteful energy consumption in a building, without sacrificing the level of comfort.
-Implementing the occupants' mobile phone as a sensor has been proposed as a method to tackle this problem \cite{Conte2014}.
+Implementing the occupants' mobile phone as a sensor has been proposed as a method to tackle this problem~\cite{Conte2014}.
 
 Several methods have been proposed to overcome the occupancy detection. One of them makes use of Bluetooth Low Energy (BLE) beacon, as the beacon is useful because it always transmitting a unique data packet that indicates certain location information. Assuming that the users always bring mobile phone with them, an application can be installed on the mobile phone to scan a particular beacon, so that the application knows where currently the user is, then the application sends the data to the central server. The data can be analyzed later on to detect user presence.
 
@@ -152,42 +152,70 @@ Normally, the application sends the data to the server through HTTP communicatio
 This study tries to investigate BLE utilization for transmitting the occupancy data to the server. This study measures and compares the energy consumption of the mobile phone when performing data transmission via WiFif and BLE. A tailored application is developed and several possible scenario is also taken into consideration, such as number of detected sensor and user location relative to the server or access point. The result of this study may be useful for the future decision whether BLE will be implemented instead of WiFi to transmit occupancy data to the server.
 
 %% \section{Introduction} %for journal use above \firstsection{..} instead
-The rest of this report is structured as follows. Section~\ref{sec:related_work} presents other related work to this study. Methodology is described in section~\ref{sec:methodology}, while the results and discussion is discussed in section~\ref{sec:results_and_discussion}. Lastly, a conclusion is drawn in section~\ref{sec:conclusion}
+The rest of the report is structured as follows. Section~\ref{sec:related_work} presents other related work to this study. Methodology is described in section~\ref{sec:methodology}, while the results and discussion is discussed in section~\ref{sec:results_and_discussion}. Lastly, a conclusion is drawn in section~\ref{sec:conclusion}
 
 \section{Related Work} % (fold)
 \label{sec:related_work}
-cite all the related work properly that you base your own work on
-- background
-- method
-- findings / results
+Several works in relation to energy consumption investigation on mobile phones have been found, with or without a relation with smart building research topic. Most works that analyze the energy consumption deal with particular issues, for instance quantification of the consumption of components other than network interfaces, e.g., CPU, memory, and screen, and measurement of battery discharge state through available APIs. The analysis is ranging from simulation to real hardware level analysis.
 
-Several works with regard to energy consumption investigation on mobile phones have been found, with or without a relation with smart building research topic. Most works that analyze the energy consumption deal with particular issues, for instance quantification of the consumption of components other than network interfaces, e.g., CPU, memory, and screen, and measurement of battery discharge state through available APIs.
+% closely related, i.e., with localization or smart building
+A somewhat similar architecture to this work, namely BLUESENTINEL, is proposed to tackle occupancy detection issue in a smart building~\cite{Conte2014}. It uses BLE beacons and occupants' mobile phones, as sensors, to gather occupancy data. However, this work only employs HTTP through WiFi to transfer occupancy data to server, thus, this work does not incorporate BLE. Furthermore, the same author as~\cite{Conte2014} alleged in different work~\cite{Corna2015} that Bluetooth based architecture obtained energy saving up to 15\%. \cite{Corna2015} also proposed a solution of occupancy detection using BLE beacons which is slightly similar with the architecture in this study. Another means of indoor localization, which is closely related with user occupancy, is proposed by using inertial measurement units as well as available RF signals, e.g., Bluetooth and WiFi~\cite{Mirowski2013}, namely SignalSLAM, which mainly relies on Simultaneous Localization and Mapping (SLAM). However, no energy concern are described in this work. Moreover, a study studies regarding localization, specifically about the issues regarding WiFi positioning~\cite{Pei2012}. It alleges that WiFi positioning suffers from the interference in a coexistence environment.
 
-A research \cite{Balasubramanian2009} tried to study the implication of energy consumption in mobile phones with focusing on the three widespread networking technologies: 3G, GSM, and WiFi and using common mobile applications as the parameters. This study created model of energy consumption based on the measurements and developed TailEnder, a protocol that reduces energy consumption of common mobile applications.
+%% without smart building or localization relation
+A study is inspecting energy profile or consumption in wireless communication of mobile phone without any relation to user occupancy, localization, or smart building. It studies the correlation of throughput and power in WiFi and Bluetooth~\cite{Friedman2013}, which resulted that Bluetooth is more energy efficient than WiFi. However, this study does not put BLE into account.
 
-Algorithmic effect in energy consumption is also investigated in \cite{Jain2005}. It tested based on switching complexity and randomness, which have been tested in preliminary experiments.
+% software
+Several studies address power consumption of mobile phone from software perspective. For example, algorithmic effect in energy consumption is investigated in~\cite{Jain2005}. It tested the power consumption based on switching complexity and randomness, which have been tested in preliminary experiments. Another energy consumption analyses on GUI components and their usages are carried out in~\cite{Bernal-cardenas2015}. Its approach generates customized color palettes, which is acceptable by the questionnaire participants, that consumes 42\% less energy on average than the original. Another work in software perspective~\cite{Vergara2013} compared Message Queuing Telemetry Transport Protocol (MQTT) and HTTP as a protocol to share location in mobile phones. MQTT offers better quality of user experience at comparable bandwidth and energy expenses.
 
-A detailed anatomy of the per-packet consumption of 802.11 devices is presented in \cite{Garcia-Saavedra2012}.
+% ieee 802.11
+WiFi communication in mobile phone seems 
+Another study also created a theoretical model for power consumption estimation of multiple components and applications based on 802.11~\cite{Marcu2011}.
+A detailed anatomy of the per-packet consumption of 802.11 devices is presented in~\cite{Garcia-Saavedra2012}.
+A study also concerns about the multi-hop network effect on IEEE 802.11b wireless communication~\cite{Andriani2013}. By conducting a simulation, the result suggested that multi-hop topology may be an alternative green communication as it has better energy efficiency.
+Energy efficiency analysis in WiFi communication with regard to video on demand transmission is investigated in~\cite{Trestian2012}. It utilized Android devices in a controlled IEEE 802.11g environment with five different quality levels of multimedia content. The results show that the quality of multimedia stream correlates with the energy efficiency. The results also show that TCP is more energy efficient than UDP in all situations.
+802.11n standard is also compared in low level, between the implementation in desktop/laptop and mobile phone, in~\cite{Warty2012}. The result shows that Rx power consumption increases significantly with the bitrate.
 
-Another study also created a theoretical model for power consumption estimation of multiple components and applications based on 802.11 \cite{Marcu2011}.
+% mobile network
+A study regarding mobile data communication, such as GSM and UMTS with classic use of mobile phone, e.g., making a call and sending an SMS, is presented to compare the energy usage for particular tasks in 2G and 3G~\cite{Perrucci2009}.
+Another low level analysis is also presented in~\cite{Vergara2012}. The energy footprint is characterized by performing real hardware level measurements on a modern broadband module.
 
-\cite{Vergara2013} compared Message Queuing Telemetry Transport Protocol (MQTT) with HTTP as a protocol to share location in mobile phones. MQTT offers better quality of user experience at comparable bandwidth and energy expenses.
+% energy conserving
+Several energy efficiency researches were also carried out, such as~\cite{Bandara2015}, that uses data driven approach to lessen the unneeded scanning or idle mode WiFi energy consumption.
+A framework to conserve energy in wireless communication is also proposed in~\cite{Chareen2011}. This framework, namely WINA (Wireless Interface Notification and Activation), introduces a low-powered auxiliary receiver that receives signal from access point to activate relevant wireless interfaces on the mobile phone.
+A research~\cite{Balasubramanian2009} tried to study the implication of energy consumption in mobile phones with focusing on the three widespread networking technologies: 3G, GSM, and WiFi and using common mobile applications as the parameters. This study created model of energy consumption based on the measurements and developed TailEnder, a protocol that reduces energy consumption of common mobile applications.
 
-More energy consumption analyses on GUI components and their usages are carried out in \cite{Bernal-cardenas2015}. Its approach generates customized color palettes, which is acceptable by the questionnaire participants, that consumes 42\% less energy on average than the original.
-
-A study \cite{Corna2015} alleges that using Bluetooth based architecture obtained energy saving of 15\%. \cite{Corna2015} also proposed a solution of occupancy detection using BLE beacons which is slightly similar with the architecture in this study. However, the technological deployment is different, this study utilizes Android devices.
-
+% global
 Interestingly, \cite{Oliver2010} studies the diversity in mobile phone energy consumption. It uses blackberry and with over 1050 years of cumulative data. The results show three distinct user types: opportunistic chargers, light-consumers, and nighttime charges.
 
-802.11n standard is also compared in low level, between the implementation in desktop/laptop and mobile phone, in \cite{Warty2012}. The result shows that Rx power consumption increases significantly with the bitrate.
-
-A similar method to this work, namely BLUESENTINEL, is proposed to tackle occupancy detection problem in a smart building in \cite{Conte2014}. It uses BLE beacons and occupants' mobile phone, as a sensor, to gather occupancy data. However, this work does not incorporate BLE as means to transfer occupancy data to server.
 
 
-discuss why it is relevant and what is similar or different to your own work
-use images (from other papers) to illustrate the related work, credit the authors with a reference in the image caption
 
-give details for each publication (authors, title, year, page numbers, publisher, publisher address (town); for articles volume and number and month; for things other than books, articles, or papers also the type of publication)
+
+For Intro:
+Currently, nearly half of the global population is benefiting from mobile communication~\cite{Fowdur2016}.
+Main energy consuming part is wireless communication~\cite{Fowdur2016}.
+WiFi is main means of communications~\cite{Fowdur2016}.
+WiFi based positioning suffers from the interference in a coexistence environment~\cite{Pei2012}.
+The mobile phone's batteries are not capable to keep up with the rapid growth of the other technologies, e.g., processing power and memory. This makes researches find a method to perform efficient tasks.
+CPU and wireless communication are the largest consumers of energy sources in mobile devices~\cite{Crk2009}. 
+
+
+For methodology:
+Because wireless communication power footprint is not only affected by the size, but also the signal strength~\cite{Vergara2012}.
+Main energy consuming part is wireless communication~\cite{Fowdur2016}
+Network load and the signal quality level have a combined significant impact on the energy consumption~\cite{Trestian2012}
+HTTP is chosen because it works on top of TCP, which is proven to be more energy efficient than UDP~\cite{Trestian2012}.
+
+Use the word off-the-shelf smart phone, for iPhone
+
+For Conclusion or others:
+WiFi scanning and idle mode consume significant amount of energy~\cite{Bandara2015}.
+Interference between WiFi and Bluetooth signal could be another factor to be considered~\cite{Lin2013}.
+Bluetooth is more efficient for transmitting low bit-rate data~\cite{Friedman2013}.
+Bluetooth is more resilient to interference by nearby transmissions than WiFi~\cite{Friedman2011}.
+
+Use the word off-the-shelf smart phone, for iPhone
+Change non line-of-sight to NLOS
 
 % section related_work (end)
 
@@ -454,6 +482,8 @@ Some limitations and drawbacks, however, are still encountered. For instance, th
 BLE has a promising advantage if it is implemented as a replacement for WiFi as it has better energy consumption efficiency. If BLE is implemented, some protocol of BLE sensing is required to prevent BLE bottleneck as both sensing and transmitting events will probably occur in the same time. Further research may be aimed to inspect the best timing for sensing and transmitting the data or to combine this implementation with real sensing activities.
 
 Possible interference may disturb the connection if multiple Bluetooth devices are running simultaneously\cite{Conte2014}.
+
+Please make sure that the references are in a good format.
 
 % section conclusion (end)
 

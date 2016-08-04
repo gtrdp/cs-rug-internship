@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex cs-rug-internship"] 1470064744 "cs-rug-internship.aux" "cs-rug-internship.bbl" "cs-rug-internship" 1470064746
+["bibtex cs-rug-internship"] 1470318375 "cs-rug-internship.aux" "cs-rug-internship.bbl" "cs-rug-internship" 1470318376
   "./abbrv-doi-hyperref-narrow.bst" 1458138196 26792 2680e69c1b6b4584a4a49e7172bdff74 ""
-  "cs-rug-internship.aux" 1470064745 8231 eade393082d7422e3ce53a496dccf837 ""
+  "cs-rug-internship.aux" 1470318376 9120 36be8eecb6a7ad424fa914fc68f09659 ""
   "cs-rug-internship.bcf" 0 -1 0 ""
   "cs-rug-internship.bib" 1467736821 38317 e444b2295faa5d0183384a6881103eae ""
   (generated)
-  "cs-rug-internship.bbl"
   "cs-rug-internship.blg"
-["pdflatex"] 1470064745 "cs-rug-internship.tex" "cs-rug-internship.pdf" "cs-rug-internship" 1470064746
-  "./cs-rug-internship.out" 1470064745 942 6231565cd620c5de6d7208c4cd760026 ""
+  "cs-rug-internship.bbl"
+["pdflatex"] 1470318375 "cs-rug-internship.tex" "cs-rug-internship.pdf" "cs-rug-internship" 1470318376
+  "./cs-rug-internship.out" 1470318376 942 6231565cd620c5de6d7208c4cd760026 ""
   "./diamondrule.pdf" 1278327756 1335 e82887b13e7469ef004fc36f59818f7a ""
   "./img/baseline-ble-wifi.pdf" 1468042314 8717 38b999f4b1eabcd412f068097785a8d1 ""
   "./img/ble-high-tp.pdf" 1468161160 7485 bc5d8b35f289f8b4130103b68edeea0a ""
@@ -110,10 +110,10 @@
   "/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1432479641 1764542 91654ba72bdb667e84ea24f076ae16d8 ""
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1441572394 3849858 4d8ee73bbb26eda2f328cdd66503e6ca ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
-  "cs-rug-internship.aux" 1470064745 8231 eade393082d7422e3ce53a496dccf837 ""
-  "cs-rug-internship.bbl" 1470064745 8373 9ac9aaf02db5880f6edd98ca52203ed7 "bibtex cs-rug-internship"
-  "cs-rug-internship.out" 1470064745 942 6231565cd620c5de6d7208c4cd760026 ""
-  "cs-rug-internship.tex" 1469808528 42605 22c4ceb33f63958cfc372c5800c28a66 ""
+  "cs-rug-internship.aux" 1470318376 9120 36be8eecb6a7ad424fa914fc68f09659 ""
+  "cs-rug-internship.bbl" 1470318375 15361 2008a2272d60ba5edf38cbbe96bc923a "bibtex cs-rug-internship"
+  "cs-rug-internship.out" 1470318376 942 6231565cd620c5de6d7208c4cd760026 ""
+  "cs-rug-internship.tex" 1470318372 46984 e0e98b53ea0a2d424735816037c94297 ""
   "diamondrule.pdf" 1278327756 1335 e82887b13e7469ef004fc36f59818f7a ""
   "img/baseline-ble-wifi.pdf" 1468042314 8717 38b999f4b1eabcd412f068097785a8d1 ""
   "img/ble-high-tp.pdf" 1468161160 7485 bc5d8b35f289f8b4130103b68edeea0a ""
@@ -128,7 +128,7 @@
   "img/wifi.pdf" 1467986240 9439 76e61e4470b9b572c6103d95185c040a ""
   "vgtc.cls" 1467558977 31040 0ee85f7bfae989d8d635ae838ba5a72c ""
   (generated)
-  "cs-rug-internship.pdf"
   "cs-rug-internship.out"
   "cs-rug-internship.aux"
   "cs-rug-internship.log"
+  "cs-rug-internship.pdf"

@@ -217,13 +217,13 @@ INPUT img/running-screen.png
 INPUT ./img/running-screen.png
 INPUT ./img/running-screen.png
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/txfonts/txtt.tfm
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT img/central-peripheral.pdf
 INPUT ./img/central-peripheral.pdf
 INPUT ./img/central-peripheral.pdf
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT img/ble-packet-structure.pdf
 INPUT ./img/ble-packet-structure.pdf
 INPUT ./img/ble-packet-structure.pdf
