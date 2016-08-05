@@ -138,18 +138,14 @@ Context awareness has been an interesting topic recently. Its ability to infer w
 \firstsection{Introduction}
 
 \maketitle
-Smart building has been an interesting topic of research. Smart building aims to create a smart environment in a building which can adapt with the user needs. One portion of research in smart home is occupancy detection, which aims to detect whether a person is present in a particular location. Its importance to detect user presence is crucial in the building energy management, since the building can manage energy allocation efficiently regarding how many persons are present.
+Smart building has been an interesting topic of research. Smart building aims to create a smart environment in a building which can adapt with the user needs. Furthermore, smart building also targets to tackle the high wasteful energy consumption in a building, without sacrificing the level of comfort. One portion of research in smart home is occupancy detection, which aims to detect whether or not a person is present in a particular location. Its importance to detect user presence is crucial in the building energy management, since the building can manage energy allocation efficiently regarding how many persons are present.
 
-Mobile devices consider battery to be limiting resource.
-Smart building is proposed to tackle the high wasteful energy consumption in a building, without sacrificing the level of comfort.
-Implementing the occupants' mobile phone as a sensor has been proposed as a method to tackle this problem~\cite{Conte2014}.
+Several methods have been proposed to overcome the occupancy detection, such as WiFi based approach, although it suffers from the interference in a coexistence environment~\cite{Pei2012}. Another method is proposed by using Bluetooth Low Energy (BLE) beacons~\cite{Conte2014}, which always transmit unique data packets that indicate certain location information. As currently nearly half of the global population is benefiting from mobile communication~\cite{Fowdur2016}, it can be assumed that the users always bring mobile phone with them. That way, an application can be installed on the mobile phone to scan a particular beacon, so that the application knows where currently the user is, then the application sends the data to the central server. The data can be analyzed later on to detect user presence.
 
-Several methods have been proposed to overcome the occupancy detection. One of them makes use of Bluetooth Low Energy (BLE) beacon, as the beacon is useful because it always transmitting a unique data packet that indicates certain location information. Assuming that the users always bring mobile phone with them, an application can be installed on the mobile phone to scan a particular beacon, so that the application knows where currently the user is, then the application sends the data to the central server. The data can be analyzed later on to detect user presence.
-
-Normally, the application sends the data to the server through HTTP communication done via Wi-Fi connectivity, as the BLE is already used to sense the beacon. No BLE utilization for data transmission to the server has been found. In fact, BLE is obviously more energy efficient compared to WiFi, as BLE is designed to be implemented in devices coupled with limited source of energy, e.g., battery.
+Normally, the application sends the data to the server through HTTP communication done via Wi-Fi connectivity, as WiFi is the main communication gateway~\cite{Fowdur2016} and the BLE is already used to sense the beacon. However, WiFi is known to be energy expensive, while mobile phone's main energy consuming part is wireless communication~\cite{Fowdur2016,Crk2009}. As a matter of fact, recent model of mobile phones are also equipped with BLE, which is obviously more energy efficient compared to WiFi, as BLE is designed to be implemented in devices coupled with limited source of energy, e.g., battery, and for transmitting low bit-rate data~\cite{Friedman2013}. That way, BLE offers another possibility to transmit the occupancy data to the server with lower energy profile.
 
 % how this study is positioned.
-This study tries to investigate BLE utilization for transmitting the occupancy data to the server. This study measures and compares the energy consumption of the mobile phone when performing data transmission via WiFif and BLE. A tailored application is developed and several possible scenario is also taken into consideration, such as number of detected sensor and user location relative to the server or access point. The result of this study may be useful for the future decision whether BLE will be implemented instead of WiFi to transmit occupancy data to the server.
+This study investigates BLE utilization for transmitting the occupancy data to the server. This study measures and compares the energy consumption of the mobile phone when performing data transmission via WiFif and BLE. A tailored application is developed and several possible scenario is also taken into consideration, such as number of detected sensor and user location relative to the server or access point. The result of this study may be useful for the future decision whether BLE will be implemented instead of WiFi to transmit occupancy data to the server.
 
 %% \section{Introduction} %for journal use above \firstsection{..} instead
 The rest of the report is structured as follows. Section~\ref{sec:related_work} presents other related work to this study. Methodology is described in section~\ref{sec:methodology}, while the results and discussion is discussed in section~\ref{sec:results_and_discussion}. Lastly, a conclusion is drawn in section~\ref{sec:conclusion}
@@ -168,60 +164,21 @@ A study is inspecting energy profile or consumption in wireless communication of
 Several studies address power consumption of mobile phone from software perspective. For example, algorithmic effect in energy consumption is investigated in~\cite{Jain2005}. It tested the power consumption based on switching complexity and randomness, which have been tested in preliminary experiments. Another energy consumption analyses on GUI components and their usages are carried out in~\cite{Bernal-cardenas2015}. Its approach generates customized color palettes, which is acceptable by the questionnaire participants, that consumes 42\% less energy on average than the original. Another work in software perspective~\cite{Vergara2013} compared Message Queuing Telemetry Transport Protocol (MQTT) and HTTP as a protocol to share location in mobile phones. MQTT offers better quality of user experience at comparable bandwidth and energy expenses.
 
 % ieee 802.11
-WiFi communication in mobile phone seems 
-Another study also created a theoretical model for power consumption estimation of multiple components and applications based on 802.11~\cite{Marcu2011}.
-A detailed anatomy of the per-packet consumption of 802.11 devices is presented in~\cite{Garcia-Saavedra2012}.
-A study also concerns about the multi-hop network effect on IEEE 802.11b wireless communication~\cite{Andriani2013}. By conducting a simulation, the result suggested that multi-hop topology may be an alternative green communication as it has better energy efficiency.
-Energy efficiency analysis in WiFi communication with regard to video on demand transmission is investigated in~\cite{Trestian2012}. It utilized Android devices in a controlled IEEE 802.11g environment with five different quality levels of multimedia content. The results show that the quality of multimedia stream correlates with the energy efficiency. The results also show that TCP is more energy efficient than UDP in all situations.
-802.11n standard is also compared in low level, between the implementation in desktop/laptop and mobile phone, in~\cite{Warty2012}. The result shows that Rx power consumption increases significantly with the bitrate.
+More studies are interested in inspecting power consumption in IEEE 802.11 standard alone, such as a study that created a theoretical model for power consumption estimation of multiple components and applications based on 802.11~\cite{Marcu2011}. Moreover, a detailed anatomy of the per-packet consumption of 802.11 devices is presented in~\cite{Garcia-Saavedra2012}. Multi-hop network effect on IEEE 802.11b wireless communication also turned out to be affecting energy consumption as well, as investigated in~\cite{Andriani2013}. The study conducted a simulation, which then suggested that multi-hop topology may be an alternative green communication as it has better energy efficiency. 802.11n standard is also compared in low level, between the implementation in desktop/laptop and mobile phone~\cite{Warty2012}. The result shows that Rx power consumption increases significantly with the bitrate. Furthermore, energy efficiency analysis in WiFi communication with regard to video on demand transmission is investigated~\cite{Trestian2012}. It utilized Android devices in a controlled IEEE 802.11g environment with five different quality levels of multimedia content. The results show that the quality of multimedia stream correlates with the energy efficiency. The results also show that TCP is more energy efficient than UDP in all situations.
 
 % mobile network
-A study regarding mobile data communication, such as GSM and UMTS with classic use of mobile phone, e.g., making a call and sending an SMS, is presented to compare the energy usage for particular tasks in 2G and 3G~\cite{Perrucci2009}.
-Another low level analysis is also presented in~\cite{Vergara2012}. The energy footprint is characterized by performing real hardware level measurements on a modern broadband module.
+Beside the power consumption analysis on IEEE 802.11, several works are also concerned about the energy usage on mobile network, e.g., 3G and 4G, as in~\cite{Perrucci2009}. It studies mobile data communication, such as GSM and UMTS, with common tasks on mobile phone, e.g., making a call and sending an SMS. It is presented to compare the energy usage for particular tasks in 2G and 3G~\cite{Perrucci2009}. Another low level analysis is also presented in mobile network on mobile phone~\cite{Vergara2012}. The energy footprint is characterized by performing real hardware level measurements on a modern broadband module.
 
 % energy conserving
-Several energy efficiency researches were also carried out, such as~\cite{Bandara2015}, that uses data driven approach to lessen the unneeded scanning or idle mode WiFi energy consumption.
-A framework to conserve energy in wireless communication is also proposed in~\cite{Chareen2011}. This framework, namely WINA (Wireless Interface Notification and Activation), introduces a low-powered auxiliary receiver that receives signal from access point to activate relevant wireless interfaces on the mobile phone.
-A research~\cite{Balasubramanian2009} tried to study the implication of energy consumption in mobile phones with focusing on the three widespread networking technologies: 3G, GSM, and WiFi and using common mobile applications as the parameters. This study created model of energy consumption based on the measurements and developed TailEnder, a protocol that reduces energy consumption of common mobile applications.
+Beside power consumption profiling in Bluetooth, WiFi, or mobile phone's telephony network, energy conservation is also discussed in several papers, such as~\cite{Bandara2015}, that uses data driven approach to lessen the unneeded scanning or idle mode WiFi energy consumption. A framework to conserve energy in wireless communication is also proposed in~\cite{Chareen2011}. This framework, namely WINA (Wireless Interface Notification and Activation), introduces a low-powered auxiliary receiver that receives signal from access point to activate relevant wireless interfaces on the mobile phone. Furthermore, a research~\cite{Balasubramanian2009} tried to study the implication of energy consumption in mobile phones with focusing on the three widespread networking technologies: 3G, GSM, and WiFi and using common mobile applications as the parameters. This study created model of energy consumption based on the measurements and developed TailEnder, a protocol that reduces energy consumption of common mobile applications.
 
 % global
-Interestingly, \cite{Oliver2010} studies the diversity in mobile phone energy consumption. It uses blackberry and with over 1050 years of cumulative data. The results show three distinct user types: opportunistic chargers, light-consumers, and nighttime charges.
-
-
-
-
-
-For Intro:
-Currently, nearly half of the global population is benefiting from mobile communication~\cite{Fowdur2016}.
-Main energy consuming part is wireless communication~\cite{Fowdur2016}.
-WiFi is main means of communications~\cite{Fowdur2016}.
-WiFi based positioning suffers from the interference in a coexistence environment~\cite{Pei2012}.
-The mobile phone's batteries are not capable to keep up with the rapid growth of the other technologies, e.g., processing power and memory. This makes researches find a method to perform efficient tasks.
-CPU and wireless communication are the largest consumers of energy sources in mobile devices~\cite{Crk2009}. 
-
-
-For methodology:
-Because wireless communication power footprint is not only affected by the size, but also the signal strength~\cite{Vergara2012}.
-Main energy consuming part is wireless communication~\cite{Fowdur2016}
-Network load and the signal quality level have a combined significant impact on the energy consumption~\cite{Trestian2012}
-HTTP is chosen because it works on top of TCP, which is proven to be more energy efficient than UDP~\cite{Trestian2012}.
-
-Use the word off-the-shelf smart phone, for iPhone
-
-For Conclusion or others:
-WiFi scanning and idle mode consume significant amount of energy~\cite{Bandara2015}.
-Interference between WiFi and Bluetooth signal could be another factor to be considered~\cite{Lin2013}.
-Bluetooth is more efficient for transmitting low bit-rate data~\cite{Friedman2013}.
-Bluetooth is more resilient to interference by nearby transmissions than WiFi~\cite{Friedman2011}.
-
-Use the word off-the-shelf smart phone, for iPhone
-Change non line-of-sight to NLOS
-
+Other aspect that is also investigated is the diversity on power consumption~\cite{Oliver2010}. It focuses on blackberry device with over 1050 years of cumulative data. The results show three distinct user types: opportunistic chargers, light-consumers, and nighttime charges.
 % section related_work (end)
 
 \section{Methodology} % (fold)
 \label{sec:methodology}
-As a term project, this study was performed in three consecutive months. The main part of this study, the energy measurement, was carried out in iPhone 6, which runs iOS operating system. Additionally, Asus vivo mini PC, which runs Xubuntu as its operating system, was also utilized as a thin client that hosts the server application.
+As a term project, this study was performed in three consecutive months. The main part of this study, the energy measurement, was carried out in off-the-shelf smart phone, iPhone 6, which runs iOS operating system. Additionally, Asus vivo mini PC, which runs Xubuntu as its operating system, was also utilized as a thin client that hosts the server application.
 
 \subsection{System Architecture} % (fold)
 \label{sub:system_architecture}
@@ -247,25 +204,25 @@ Energy consumption measurement or tracing is the core of this study. It is done 
 % how to measure
 Apple's Instrument application in Mac OS X was used to import the logged energy measurement in iPhone, as done in~\cite{Conte2014}. It does not show the measurement result in standard energy measurement format, e.g., mAh, but it shows that in its own format, which is scaled from 0 to 20. Each increment in the scale costs an hour of battery life~\cite{Lucchesi2014}. Thus, phone running at level 1/20 will have 20 hours of battery life, while phone running at level 20/20 will have only 1 hour of battery life.
 
-[Add image about the deployment]
-
 Furthermore, export feature is limited in Apple's Instrument, i.e., it does not support energy consumption log exporting to other commonly used format, e.g., csv or xls file. However, manual copying and pasting on each row is still supported. An Apple script was used to automate the copying and pasting the energy log to Excel for further processing. However, it was also not stable. It encountered several errors during its runtime, which were caused by OS instability, and restarting the process was only way to overcome that.
 % probably put a pseudo code, if it has some logic
 
 \subsubsection{Measurement Parameters} % (fold)
 \label{ssub:measurement_parameters}
 % what are the parameters? and why?
-Some parameters were selected for measuring energy consumption, which are number of beacon and distance of communication. Three number of beacons are selected, which are 5, 10, and 20, because five beacons are the most common number of beacon sensed in real case, while 10 and 20 are the double size of it. Distance of communication is divided into two category, Line of Sight (LoS) and non-LoS. Line of Sight is a communication in which both communication endpoints can see each other without obstacle, while non-LoS means otherwise. Each of category has three distance. The set up of the measurement experiment is shown in Figure~\ref{fig:experiment-map}.
+Some parameters were selected for measuring energy consumption, which are number of beacon and distance of communication as wireless communication power footprint is not only affected by the packet size, but also the signal strength~\cite{Vergara2012}. Number of beacon has little effect on the packet size, i.e., more number of beacon will have bigger packet size, while communication distance also affects the signal strength.
+
+Three number of beacons are selected, which are 5, 10, and 20, because five beacons are the most common number of beacon sensed in real case, while 10 and 20 are the double size of it. Distance of communication is divided into two category, Line of Sight (LOS) and non-LOS. Line of Sight is a communication in which both communication endpoints can see each other without obstacle, while non-LOS means otherwise. Each of category has three distance. The set up of the measurement experiment is shown in Figure~\ref{fig:experiment-map}.
 
 \begin{figure}
   \centering
     \includegraphics[width=0.37\textwidth]{experiment-map}
-  \caption{A floor plan showing the location where the measurement takes place  and where the WiFi AP and BLE central are placed. Dark gray indicates Line of Sight communication (LoS), while light gray indicates non-LoS communication.}
+  \caption{A floor plan showing the location where the measurement takes place  and where the WiFi AP and BLE central are placed. Dark gray indicates Line of Sight communication (LOS), while light gray indicates non-LOS communication.}
   \label{fig:experiment-map}
 \end{figure}
 
 % where was it carried out?
-The experiment was carried out in a Planetenlaan flat, Groningen, which has a living/bedroom, a kitchen, a toilet and shower room, and a storage room, as shown in Figure~\ref{fig:experiment-map}. The WiFi Access Point and the thin client is located in the right of the apartment next to the wall. There are seven positions of measurement in this case, in which even number indicates non-LoS, e.g., 2, 4, and 6, while odd number indicates LoS, e.g., 1, 3, and 5. The last position, 7, is added to measure the effect when the mobile phone is located outside the apartment. During the experiment, energy consumption is recorded when the mobile phone is positioned to each of the locations. Each experiment is measured in 3 minutes time interval.
+The experiment was carried out in a Planetenlaan flat, Groningen, which has a living/bedroom, a kitchen, a toilet and shower room, and a storage room, as shown in Figure~\ref{fig:experiment-map}. The WiFi Access Point and the thin client is located in the right of the apartment next to the wall. There are seven positions of measurement in this case, in which even number indicates non-LOS, e.g., 2, 4, and 6, while odd number indicates LOS, e.g., 1, 3, and 5. The last position, 7, is added to measure the effect when the mobile phone is located outside the apartment. During the experiment, energy consumption is recorded when the mobile phone is positioned to each of the locations. Each experiment is measured in 3 minutes time interval.
 
 [although the communications are different: BLE->iPhone to thin client; WiFi->iPhone to Access Point, both of the end points are located closely together]
 [also add image about this]
@@ -304,7 +261,7 @@ Figure~\ref{fig:screenshot-example} denotes two example of the application scree
 % Wifi
 \subsubsection{WiFi Communication Scheme} % (fold)
 \label{ssub:wifi_communication_scheme}
-One of the communication method in the application is the WiFi communication. In this study, Alamofire library\footnote{\url{https://github.com/Alamofire/Alamofire}} is used to handle the HTTP communication as it encapsulates HTTP communication for easier and elegant use. A JSON object is sent via HTTP POST method in each time interval, i.e., 1000 ms, that contains occupancy data, as shown in Listing~\ref{lst-dummy-json}. The dummy data is derived from the real implementation of Azkario's architecture.
+One of the communication method in the application is the WiFi communication, which utilizes HTTP as the communication protocol. HTTP is chosen because it works on top of TCP, which is proven to be more energy efficient than UDP~\cite{Trestian2012}. In this study, Alamofire library\footnote{\url{https://github.com/Alamofire/Alamofire}} is used to handle the HTTP communication as it encapsulates HTTP communication for easier and elegant use. A JSON object is sent via HTTP POST method in each time interval, i.e., 1000 ms, that contains occupancy data, as shown in Listing~\ref{lst-dummy-json}. The dummy data is derived from the real implementation of Azkario's architecture.
 
 % give an example of dummy data in JSON
 \begin{lstlisting}[caption=Example of dummy occupancy data in JSON., label=lst-dummy-json]
@@ -385,7 +342,7 @@ The data measurement experiment was carried out for ten times for each parameter
 \label{sub:wifi_communication_results}
 Figure~\ref{fig:wifi-result} presents the measurement results graph of WiFi communication between iPhone and the WiFi Access Point. The value is scaled from 0 to 20.As explained in Section~\ref{sub:tracing_}, the higher the value the more the iPhone consumes the energy or, in the other way, drains up the battery. The measurement is grouped based on the measurement location, numbered from 1 to 7, with each location consists of three combination of number of beacons, 5, 10, and 20, colored in green, blue, and yellow respectively. Measurement location number 1 to 6 are located inside the house, while number 7 is located outside the house. Furthermore, Line of Sight is incorporated in odd number of measurement location, while non-Line of Sight is in even number.
 
-As the measurement location number increases, the distance between the WiFi Access Point and the iPhone increases as well. That way, such escalation of energy consumption is expected. However, such case is not found in the experiment. As seen in the measurement data number 1 to 6, the results seem to be fluctuating rather than increasing. An increase, however, is observed in the measurement number 7, in which the result exceeds 8 scale for 5 as the number of beacon. This case may be due to the location of the measurement which is outside the house. Moreover, there are also no differences of LoS and non-LoS communication. Small increasing is only observable in measurement number 3 and 4.
+As the measurement location number increases, the distance between the WiFi Access Point and the iPhone increases as well. That way, such escalation of energy consumption is expected. However, such case is not found in the experiment. As seen in the measurement data number 1 to 6, the results seem to be fluctuating rather than increasing. An increase, however, is observed in the measurement number 7, in which the result exceeds 8 scale for 5 as the number of beacon. This case may be due to the location of the measurement which is outside the house. Moreover, there are also no differences of LOS and non-LOS communication. Small increasing is only observable in measurement number 3 and 4.
 
 Other than the distance between the WiFi Access Point and the iPhone, the increasing of number of beacon is also assumed to intensify the energy consumption of the iPhone. However, the results asserts differently. As seen in all location of measurement, there are no clear trends that indicate energy increase. The only measurement that points an energy increase is only measurement number 3. Most measurements show that 10 number of beacon consumes least energy, as seen in measurement number 1, 2, 4, and 6. Surprisingly, the measurement number 7 shows a decline of energy consumption as the number of beacon decreases.
 
@@ -412,7 +369,7 @@ The BLE communication results, shown in Figure~\ref{fig:ble-result}, are also pr
   \label{fig:ble-result}
 \end{figure}
 
-The results of BLE energy consumption measurements also reveals slightly similar result with the WiFi energy measurements results. The results are also fluctuated and there are no such trends that marks out increasing energy consumption as the distance between iPhone and thin client increases. Looking at the LoS (odd number) and non-LoS communication, no significant differences are observable. Surprisingly, non-LoS communication in number 6 is much lower than the LoS counterpart, number 5. Unlike the WiFi counterpart, the last results of measurement, marked by number 7, does not significantly differ with the other measurement location.
+The results of BLE energy consumption measurements also reveals slightly similar result with the WiFi energy measurements results. The results are also fluctuated and there are no such trends that marks out increasing energy consumption as the distance between iPhone and thin client increases. Looking at the LOS (odd number) and non-LOS communication, no significant differences are observable. Surprisingly, non-LOS communication in number 6 is much lower than the LOS counterpart, number 5. Unlike the WiFi counterpart, the last results of measurement, marked by number 7, does not significantly differ with the other measurement location.
 
 No compelling trends or differences are observed, in terms of energy consumption for each number of beacon. Such relatively small increasing is only noticeable in measurement number 3, while small decreasing is observable in measurement number 1 and 4. The other measurements reveals fluctuating values. However, those disparities are not somewhat significant, i.e., not more than scale 2. These findings are somewhat similar with those found in WiFi measurement result.
 
@@ -467,6 +424,17 @@ Figure~\ref{fig:baseline-ble-wifi} also presents the average value of BLE and Wi
 
 \section{Conclusion} % (fold)
 \label{sec:conclusion}
+
+For Conclusion or others:
+WiFi scanning and idle mode consume significant amount of energy~\cite{Bandara2015}.
+Interference between WiFi and Bluetooth signal could be another factor to be considered~\cite{Lin2013}.
+Bluetooth is more efficient for transmitting low bit-rate data~\cite{Friedman2013}.
+Bluetooth is more resilient to interference by nearby transmissions than WiFi~\cite{Friedman2011}.
+
+Use the word off-the-shelf smart phone, for iPhone
+Change non line-of-sight to NLOS
+
+
 % is it ok to add more findings or insights in conclusion, which are not presented in the previous chapters?
 Bluetooth Low Energy (BLE) and WiFi are the most popular means of communication in current modern smart phones. As most of the recent smart phones, ranging from the entry level to the top class phone, own that, such opportunities to make use of them for solving problems in smart buildings are present, for instance, the application of BLE and WiFi to solve occupancy problems. This study has presented the comparison of energy consumption in BLE and WiFi communication, specifically for the case of occupancy detection in smart buildings. This study only focuses on the energy consumption of the transmission of occupancy data from the user's mobile phone to the communication end points, e.g., WiFi Access Point or BLE central.
 
